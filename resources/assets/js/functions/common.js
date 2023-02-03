@@ -346,18 +346,18 @@
                 let day = Math.floor(d / 86400);
                 let hour = Math.ceil((d - (day * 86400)) / 3600);
                 if (hour > 0) {
-                    return day + '天' + hour + '小时';
+                    return day + '天' + hour + '小時';
                 } else {
                     return day + '天';
                 }
             } else if (d > 3600) {
-                return Math.ceil(d / 3600) + '小时';
+                return Math.ceil(d / 3600) + '小時';
             } else if (d > 60) {
-                return Math.ceil(d / 60) + '分钟';
+                return Math.ceil(d / 60) + '分鐘';
             } else if (d > 10) {
                 return d + '秒';
             } else {
-                return '刚刚';
+                return '剛剛';
             }
         },
 

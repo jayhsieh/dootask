@@ -442,14 +442,14 @@
           }
         }
       },
-      // BR 标签处理
+      // BR 標籤處理
       {
         filter: 'br',
         replacement: function () {
           return '  \n'
         }
       },
-      // H1 处理
+      // H1 處理
       {
         filter: 'h1',
         replacement: function (content, node) {
@@ -465,7 +465,7 @@
           }
         }
       },
-      // H2-H7 标签处理
+      // H2-H7 標籤處理
       {
         filter: ['h2', 'h3', 'h4', 'h5', 'h6', 'h7'],
         replacement: function (content, node) {
@@ -478,21 +478,21 @@
           return '\n\n' + hPrefix + ' ' + content + '\n\n'
         }
       },
-      // HR 标签处理
+      // HR 標籤處理
       {
         filter: 'hr',
         replacement: function () {
           return '\n\n* * *\n\n'
         }
       },
-      // em i 斜体处理
+      // em i 斜體處理
       {
         filter: ['em', 'i'],
         replacement: function (content) {
           return ' _' + content + '_ '
         }
       },
-      // Strong b 粗体处理
+      // Strong b 粗體處理
       {
         filter: ['strong', 'b'],
         replacement: function (content) {
@@ -511,7 +511,7 @@
           return '`' + content + '`'
         }
       },
-      // A 标签处理
+      // A 標籤處理
       {
         filter: function (node) {
           return node.nodeName === 'A' && node.getAttribute('href')
@@ -520,7 +520,7 @@
           return '[' + content + '](' + node.getAttribute('href') + ')'
         }
       },
-      // 特殊情况下的A标签处理
+      // 特殊情况下的A標籤處理
       {
         filter: function (node) {
           return node.nodeName === 'A' && node.getAttribute('style')
@@ -529,7 +529,7 @@
           return content
         }
       },
-      // IMG 标签处理
+      // IMG 標籤處理
       {
         filter: 'img',
         replacement: function (content, node) {
@@ -540,7 +540,7 @@
           return src ? '\n![' + alt + ']' + '(' + src + titlePart + ')\n' : ''
         }
       },
-      // 代码块处理
+      // 代碼塊處理
       {
         filter: 'pre',
         replacement: function (content, node) {
@@ -551,7 +551,7 @@
           return '\n```\n' + contentText + '```\n'
         }
       },
-      // 行内代码处理
+      // 行内代碼處理
       {
         filter: 'code',
         replacement: function (content, node) {
@@ -574,7 +574,7 @@
           return '\n ** 此处有Canvas,请手动处理 ** \n'
         }
       },
-      // div 处理
+      // div 處理
       {
         filter: 'div',
         replacement: function (content, node) {
@@ -595,7 +595,7 @@
           return ''
         }
       },
-      // 直接返回内容的标签
+      // 直接返回内容的標籤
       {
         filter: ['figure', 'span', 'small', 'section', 'font', 'asymspc', 'button', 'article', 'figcaption'],
         replacement: function (content) {
@@ -612,7 +612,7 @@
           return '\n\n' + content + '\n\n'
         }
       },
-      // 列表项
+      // 列表項
       {
         filter: 'li',
         replacement: function (content, node) {
@@ -625,7 +625,7 @@
           return prefix + content + '\n'
         }
       },
-      // 有序／无序列表
+      // 有序／無序列表
       {
         filter: ['ul', 'ol'],
         replacement: function (content, node) {
@@ -640,7 +640,7 @@
           return '\n\n' + strings.join('\n') + '\n\n'
         }
       },
-      // 判断是否是block，如果是block，前后加空行
+      // 判斷是否是block，如果是block，前後加空行
       {
         filter: function (node) {
           return this.isBlock(node)
@@ -743,7 +743,7 @@
     /**
      * whitespace(elem [, isBlock]) removes extraneous whitespace from an
      * the given element. The function isBlock may optionally be passed in
-     * to determine whether or not an element is a block element; if none
+     * to determine whether an element is a block element; if none
      * is provided, defaults to using the list of block elements provided
      * by the `block-elements` module.
      *

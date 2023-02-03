@@ -3,18 +3,18 @@
         <div class="report-title">{{ data.title }}</div>
         <div class="report-detail-context">
             <Form class="report-form" label-width="auto" inline>
-                <FormItem :label="$L('汇报人')">
+                <FormItem :label="$L('匯報人')">
                     <UserAvatar :userid="data.userid" :size="28"/>
                 </FormItem>
-                <FormItem :label="$L('提交时间')">
+                <FormItem :label="$L('提交時間')">
                     {{ data.created_at }}
                 </FormItem>
-                <FormItem :label="$L('汇报对象')">
+                <FormItem :label="$L('匯報對象')">
                     <UserAvatar v-for="(item, key) in data.receives_user" :key="key" :userid="item.userid" :size="28"/>
                 </FormItem>
             </Form>
             <Form class="report-form" label-width="auto">
-                <FormItem :label="$L('汇报内容')">
+                <FormItem :label="$L('匯報内容')">
                     <div class="report-content" v-html="data.content"></div>
                 </FormItem>
             </Form>

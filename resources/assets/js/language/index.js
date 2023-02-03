@@ -1,9 +1,5 @@
 const languageTypeLists = {
     "EN": "English",
-    "KM": "ភាសាខ្មែរ",
-    "TH": "ภาษาไทย",
-    "KO": "한국어",
-    "JA": "日本語",
     "CN": "简体中文",
     "TC": "繁體中文",
 };
@@ -35,7 +31,7 @@ export default {
 
             methods: {
                 /**
-                 * 获取浏览器默认语言
+                 * 獲取樓覽器預設語言
                  * @returns {string}
                  * @private
                  */
@@ -44,12 +40,6 @@ export default {
                     let navLang = (navigator.language || navigator.userLanguage + "").toUpperCase();
                     switch (navLang) {
                         case "EN":
-                        case "KM":
-                        case "TH":
-                        case "KO":
-                        case "JA":
-                            lang = navLang
-                            break;
                         case "ZH-CN":
                         case "ZH":
                             lang = 'CN'
@@ -63,7 +53,7 @@ export default {
                 },
 
                 /**
-                 * 初始化语言数据
+                 * 初始化語言數據
                  * @private
                  */
                 __initLanguageData() {
@@ -86,7 +76,7 @@ export default {
                 },
 
                 /**
-                 * 是否数组
+                 * 是否數組
                  * @param obj
                  * @returns {boolean}
                  * @private
@@ -96,7 +86,7 @@ export default {
                 },
 
                 /**
-                 * 监听语言变化
+                 * 監聽語言變化
                  * @param callback
                  */
                 setLanguageListener(callback) {
@@ -108,7 +98,7 @@ export default {
                 },
 
                 /**
-                 * 语言包数据
+                 * 語言包數據
                  * @param data
                  */
                 addLanguageData(data) {
@@ -120,7 +110,7 @@ export default {
                 },
 
                 /**
-                 * 变化语言
+                 * 變化語言
                  * @param language
                  */
                 setLanguage(language) {
@@ -139,7 +129,7 @@ export default {
                 },
 
                 /**
-                 * 获取语言
+                 * 獲取語言
                  * @returns {*}
                  */
                 getLanguage() {
@@ -148,7 +138,7 @@ export default {
                 },
 
                 /**
-                 * 替换%遍历
+                 * 替換%遍歷
                  * @param text
                  * @param objects
                  */
@@ -166,7 +156,7 @@ export default {
                 },
 
                 /**
-                 * 译文转义
+                 * 議文轉義
                  * @param val
                  * @returns {string|*}
                  */
@@ -178,7 +168,7 @@ export default {
                 },
 
                 /**
-                 * 显示语言
+                 * 顯示語言
                  * @return {string}
                  */
                 $L(text) {

@@ -41,7 +41,7 @@
             },
             copyBtnText: {// 复制代码按钮文字
                 type: String,
-                default: '复制代码'
+                default: '複製代碼'
             }
         },
         data() {

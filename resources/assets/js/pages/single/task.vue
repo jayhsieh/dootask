@@ -58,9 +58,9 @@ export default {
                 if (this.$refs.taskDetail.checkUpdate()) {
                     this.canUpdateBlur = false;
                     $A.modalConfirm({
-                        content: '修改的内容尚未保存，真的要放弃修改吗？',
+                        content: '修改的内容尚未保存，真的要放棄修改嗎？',
                         cancelText: '取消',
-                        okText: '放弃',
+                        okText: '放棄',
                         onOk: () => {
                             this.$Electron.sendMessage('windowDestroy');
                         },

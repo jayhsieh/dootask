@@ -81,25 +81,25 @@ export default {
             let ToIndex = this.sessionStorage(To.path);
             let FromIndex = this.sessionStorage(From.path);
             if (ToIndex && ToIndex < FromIndex) {
-                isBack = true;      //后退
+                isBack = true;      //後退
                 this.sessionStorage(true, ToIndex);
             } else {
-                isBack = false;     //前进
+                isBack = false;     //前進
                 this.sessionStorage(To.path, this.sessionStorage('::count') + 1);
             }
             //
             if (To.meta.slide === false || From.meta.slide === false) {
-                //取消动画
+                //取消動畫
                 this.transitionName = 'app-slide-no'
             } else if (To.meta.slide === 'up' || From.meta.slide === 'up' || To.meta.slide === 'down' || From.meta.slide === 'down') {
-                //上下动画
+                //上下動畫
                 if (isBack) {
                     this.transitionName = 'app-slide-down'
                 } else {
                     this.transitionName = 'app-slide-up'
                 }
             } else {
-                //左右动画（默认）
+                //左右動畫（預設）
                 if (isBack) {
                     this.transitionName = 'app-slide-right'
                 } else {

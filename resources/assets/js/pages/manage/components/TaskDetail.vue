@@ -44,7 +44,7 @@
             ref="owner"
             class="subtask-avatar"
             popper-class="task-detail-user-popper"
-            :title="$L('修改负责人')"
+            :title="$L('修改負責人')"
             :width="240"
             placement="bottom"
             @on-popper-show="openOwner"
@@ -55,10 +55,10 @@
                     v-model="ownerData.owner_userid"
                     :multiple-max="1"
                     :project-id="taskDetail.project_id"
-                    :placeholder="$L('选择任务负责人')"
+                    :placeholder="$L('選擇任務負責人')"
                     :transfer="false"/>
                 <div class="task-detail-avatar-buttons">
-                    <Button size="small" type="primary" @click="$refs.owner.ok()">{{$L('确定')}}</Button>
+                    <Button size="small" type="primary" @click="$refs.owner.ok()">{{$L('確定')}}</Button>
                 </div>
             </div>
             <template v-if="getOwner.length > 0">
@@ -85,7 +85,7 @@
                     <span :class="taskDetail.flow_item_status" @click.stop="openMenu(taskDetail)">{{taskDetail.flow_item_name}}</span>
                 </div>
                 <div v-if="taskDetail.archived_at" class="flow">
-                    <span class="archived" @click.stop="openMenu(taskDetail)">{{$L('已归档')}}</span>
+                    <span class="archived" @click.stop="openMenu(taskDetail)">{{$L('已歸檔')}}</span>
                 </div>
                 <div class="nav">
                     <p v-if="projectName"><span>{{projectName}}</span></p>
@@ -100,7 +100,7 @@
                         <div class="task-detail-receive">
                             <div class="receive-title">
                                 <Icon type="ios-help-circle"/>
-                                {{$L('确认计划时间领取任务')}}
+                                {{$L('確認計畫時間領取任務')}}
                             </div>
                             <div class="receive-time">
                                 <DatePicker
@@ -108,18 +108,18 @@
                                     :options="timeOptions"
                                     format="yyyy/MM/dd HH:mm"
                                     type="datetimerange"
-                                    :placeholder="$L('请设置计划时间')"
+                                    :placeholder="$L('請設置計畫時間')"
                                     :clearable="false"
                                     :editable="false"/>
                             </div>
                             <div class="receive-bottom">
                                 <Button size="small" type="text" @click="receiveShow=false">取消</Button>
-                                <Button :loading="ownerLoad > 0" size="small" type="primary" @click="onOwner(true)">确定</Button>
+                                <Button :loading="ownerLoad > 0" size="small" type="primary" @click="onOwner(true)">確定</Button>
                             </div>
                         </div>
-                        <Button slot="reference" :loading="ownerLoad > 0" class="pick" type="primary">{{$L('我要领取任务')}}</Button>
+                        <Button slot="reference" :loading="ownerLoad > 0" class="pick" type="primary">{{$L('我要領取任務')}}</Button>
                     </EPopover>
-                    <ETooltip v-if="$Electron" :content="$L('新窗口打开')">
+                    <ETooltip v-if="$Electron" :content="$L('新窗口打開')">
                         <i class="taskfont open" @click="openNewWin">&#xe776;</i>
                     </ETooltip>
                     <div class="menu">
@@ -153,7 +153,7 @@
                         :plugins="taskPlugins"
                         :options="taskOptions"
                         :option-full="taskOptionFull"
-                        :placeholder="$L('详细描述...')"
+                        :placeholder="$L('詳細描述...')"
                         @on-blur="updateBlur('content')"
                         inline/>
                 </div>
@@ -185,11 +185,11 @@
                     </FormItem>
                     <FormItem v-if="getOwner.length > 0">
                         <div class="item-label" slot="label">
-                            <i class="taskfont">&#xe6e4;</i>{{$L('负责人')}}
+                            <i class="taskfont">&#xe6e4;</i>{{$L('負責人')}}
                         </div>
                         <Poptip
                             ref="owner"
-                            :title="$L('修改负责人')"
+                            :title="$L('修改負責人')"
                             :width="240"
                             class="item-content user"
                             popper-class="task-detail-user-popper"
@@ -202,10 +202,10 @@
                                     v-model="ownerData.owner_userid"
                                     :multiple-max="10"
                                     :project-id="taskDetail.project_id"
-                                    :placeholder="$L('选择任务负责人')"
+                                    :placeholder="$L('選擇任務負責人')"
                                     :transfer="false"/>
                                 <div class="task-detail-avatar-buttons">
-                                    <Button size="small" type="primary" @click="$refs.owner.ok()">{{$L('确定')}}</Button>
+                                    <Button size="small" type="primary" @click="$refs.owner.ok()">{{$L('確定')}}</Button>
                                 </div>
                             </div>
                             <div class="user-list">
@@ -215,11 +215,11 @@
                     </FormItem>
                     <FormItem v-if="getAssist.length > 0 || assistForce">
                         <div class="item-label" slot="label">
-                            <i class="taskfont">&#xe63f;</i>{{$L('协助人员')}}
+                            <i class="taskfont">&#xe63f;</i>{{$L('協助人員')}}
                         </div>
                         <Poptip
                             ref="assist"
-                            :title="$L(getAssist.length > 0 ? '修改协助人员' : '添加协助人员')"
+                            :title="$L(getAssist.length > 0 ? '修改協助人員' : '添加協助人員')"
                             :width="280"
                             class="item-content user"
                             popper-class="task-detail-user-popper"
@@ -233,10 +233,10 @@
                                     :multiple-max="10"
                                     :project-id="taskDetail.project_id"
                                     :disabled-choice="assistData.disabled"
-                                    :placeholder="$L('选择任务协助人员')"
+                                    :placeholder="$L('選擇任務協助人員')"
                                     :transfer="false"/>
                                 <div class="task-detail-avatar-buttons">
-                                    <Button size="small" type="primary" @click="$refs.assist.ok()">{{$L('确定')}}</Button>
+                                    <Button size="small" type="primary" @click="$refs.assist.ok()">{{$L('確定')}}</Button>
                                 </div>
                             </div>
                             <div v-if="getAssist.length > 0" class="user-list">
@@ -247,7 +247,7 @@
                     </FormItem>
                     <FormItem v-if="taskDetail.end_at || timeForce">
                         <div class="item-label" slot="label">
-                            <i class="taskfont">&#xe6e8;</i>{{$L('截止时间')}}
+                            <i class="taskfont">&#xe6e8;</i>{{$L('截止時間')}}
                         </div>
                         <ul class="item-content">
                             <li>
@@ -277,7 +277,7 @@
                             <i class="taskfont">&#xe6e6;</i>{{$L('附件')}}
                         </div>
                         <ul class="item-content file">
-                            <li v-if="taskDetail.file_num > 50" class="tip">{{$L(`共${taskDetail.file_num}个文件，仅显示最新50个`)}}</li>
+                            <li v-if="taskDetail.file_num > 50" class="tip">{{$L(`共${taskDetail.file_num}個文件，僅顯示最新50個`)}}</li>
                             <li v-for="file in fileList">
                                 <img v-if="file.id" class="file-ext" :src="file.thumb"/>
                                 <Loading v-else class="file-load"/>
@@ -288,10 +288,10 @@
                                     <Icon @click="downFile(file)" type="md-arrow-round-down" />
                                     <EPopover v-model="file._show_menu" class="file-delete">
                                         <div class="task-detail-delete-file-popover">
-                                            <p>{{$L('你确定要删除这个文件吗？')}}</p>
+                                            <p>{{$L('你確定要删除這個文件嗎？')}}</p>
                                             <div class="buttons">
                                                 <Button size="small" type="text" @click="file._show_menu=false">{{$L('取消')}}</Button>
-                                                <Button size="small" type="primary" @click="deleteFile(file)">{{$L('确定')}}</Button>
+                                                <Button size="small" type="primary" @click="deleteFile(file)">{{$L('確定')}}</Button>
                                             </div>
                                         </div>
                                         <i slot="reference" class="taskfont del">&#xe6ea;</i>
@@ -309,7 +309,7 @@
                     </FormItem>
                     <FormItem v-if="subList.length > 0 || addsubForce">
                         <div class="item-label" slot="label">
-                            <i class="taskfont">&#xe6f0;</i>{{$L('子任务')}}
+                            <i class="taskfont">&#xe6f0;</i>{{$L('子任務')}}
                         </div>
                         <ul class="item-content subtask">
                             <TaskDetail
@@ -328,13 +328,13 @@
                                     v-model="addsubName"
                                     ref="addsub"
                                     class="add-input"
-                                    :placeholder="$L('+ 输入子任务，回车添加子任务')"
+                                    :placeholder="$L('+ 輸入子任務，返回添加子任務')"
                                     :icon="addsubLoad > 0 ? 'ios-loading' : ''"
                                     :class="{loading: addsubLoad > 0}"
                                     @on-blur="addsubChackClose"
                                     @on-keydown="addsubKeydown"/>
                                 <div v-else class="add-button" @click="addsubOpen">
-                                    <i class="taskfont">&#xe6f2;</i>{{$L('添加子任务')}}
+                                    <i class="taskfont">&#xe6f2;</i>{{$L('添加子任務')}}
                                 </div>
                             </li>
                         </ul>
@@ -369,7 +369,7 @@
                         <Icon class="icon" type="ios-chatbubbles-outline" />
                         <div class="nav">
                             <p :class="{active:navActive=='dialog'}" @click="navActive='dialog'">{{$L('聊天')}}</p>
-                            <p :class="{active:navActive=='log'}" @click="navActive='log'">{{$L('动态')}}</p>
+                            <p :class="{active:navActive=='log'}" @click="navActive='log'">{{$L('動態')}}</p>
                             <div v-if="navActive=='log'" class="refresh">
                                 <Loading v-if="logLoadIng"/>
                                 <Icon v-else type="ios-refresh" @click="getLogLists"></Icon>
@@ -384,7 +384,7 @@
                     <Icon class="icon" type="ios-chatbubbles-outline" />
                     <div class="nav">
                         <p :class="{active:navActive=='dialog'}" @click="navActive='dialog'">{{$L('聊天')}}</p>
-                        <p :class="{active:navActive=='log'}" @click="navActive='log'">{{$L('动态')}}</p>
+                        <p :class="{active:navActive=='log'}" @click="navActive='log'">{{$L('動態')}}</p>
                         <div v-if="navActive=='log'" class="refresh">
                             <Loading v-if="logLoadIng"/>
                             <Icon v-else type="ios-refresh" @click="getLogLists"></Icon>
@@ -396,7 +396,7 @@
                      @drop.prevent="taskPasteDrag($event, 'drag')"
                      @dragover.prevent="taskDragOver(true, $event)"
                      @dragleave.prevent="taskDragOver(false, $event)">
-                    <div class="no-tip">{{$L('暂无消息')}}</div>
+                    <div class="no-tip">{{$L('暫無消息')}}</div>
                     <div class="no-input">
                         <DragInput
                             class="dialog-input"
@@ -406,7 +406,7 @@
                             :rows="1"
                             :autosize="{ minRows: 1, maxRows: 3 }"
                             :maxlength="20000"
-                            :placeholder="$L('输入消息...')"
+                            :placeholder="$L('輸入消息...')"
                             @on-keydown="msgKeydown"
                             @on-input-paste="msgPasteDrag"/>
                         <div class="no-send" @click="msgDialog">
@@ -418,7 +418,7 @@
                         </div>
                     </div>
                     <div v-if="dialogDrag" class="drag-over" @click="dialogDrag=false">
-                        <div class="drag-text">{{$L('拖动到这里发送')}}</div>
+                        <div class="drag-text">{{$L('拖動到這裡發送')}}</div>
                     </div>
                 </div>
             </div>
@@ -675,21 +675,21 @@ export default {
                 list.push({
                     command: 'priority',
                     icon: '&#xe6ec;',
-                    name: '优先级',
+                    name: '優先級',
                 });
             }
             if (!($A.isArray(taskDetail.task_user) && taskDetail.task_user.find(({owner}) => owner !== 1))) {
                 list.push({
                     command: 'assist',
                     icon: '&#xe63f;',
-                    name: '协助人员',
+                    name: '協助人員',
                 });
             }
             if (!taskDetail.end_at) {
                 list.push({
                     command: 'times',
                     icon: '&#xe6e8;',
-                    name: '截止时间',
+                    name: '截止時間',
                 });
             }
             if (this.fileList.length == 0) {
@@ -703,7 +703,7 @@ export default {
                 list.push({
                     command: 'subtask',
                     icon: '&#xe6f0;',
-                    name: '子任务',
+                    name: '子任務',
                 });
             }
             return list;
@@ -878,7 +878,7 @@ export default {
             if (pick === true) {
                 if (this.getOwner.length > 0) {
                     this.receiveShow = false;
-                    $A.messageError("任务已被领取");
+                    $A.messageError("任務已被領取");
                     return;
                 }
                 let times = $A.date2string(this.timeValue, "Y-m-d H:i");
@@ -887,7 +887,7 @@ export default {
                         times[1] = times[1].replace("00:00", "23:59");
                     }
                 } else {
-                    $A.messageError("请设置计划时间");
+                    $A.messageError("請設置計畫時間");
                     return;
                 }
                 data.times = times;
@@ -998,7 +998,7 @@ export default {
 
         onAddsub() {
             if (this.addsubName == '') {
-                $A.messageError('任务描述不能为空');
+                $A.messageError('任務描述不能為空');
                 return;
             }
             this.addsubLoad++;
@@ -1029,7 +1029,7 @@ export default {
         dropAdd(command) {
             switch (command) {
                 case 'priority':
-                    this.$set(this.taskDetail, 'p_name', this.$L('未设置'));
+                    this.$set(this.taskDetail, 'p_name', this.$L('未設置'));
                     this.$nextTick(() => {
                         this.$refs.priority.show();
                     })
@@ -1267,7 +1267,7 @@ export default {
 
         downFile(file) {
             $A.modalConfirm({
-                title: '下载文件',
+                title: '下載文件',
                 content: `${file.name} (${$A.bytesToSize(file.size)})`,
                 okText: '立即下载',
                 onOk: () => {

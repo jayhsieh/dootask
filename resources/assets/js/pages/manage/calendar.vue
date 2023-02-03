@@ -1,6 +1,6 @@
 <template>
     <div class="page-calendar">
-        <PageTitle :title="$L('日历')"/>
+        <PageTitle :title="$L('日曆')"/>
         <div class="calendar-head">
             <div class="calendar-titbox">
                 <div class="calendar-title">
@@ -149,7 +149,7 @@ export default {
                     task.title = `[+${data.sub_my.length}] ${task.title}`
                 }
                 if (data.sub_top === true) {
-                    task.title = `[${this.$L('子任务')}] ${task.title}`
+                    task.title = `[${this.$L('子任務')}] ${task.title}`
                 }
                 if (data.flow_item_name) {
                     task.title = `[${data.flow_item_name}] ${task.title}`
@@ -159,10 +159,10 @@ export default {
                     task.bgColor = "#f3f3f3"
                     task.borderColor = "#e3e3e3"
                 } else if (data.overdue) {
-                    task.title = `[${this.$L('超期')}] ${task.title}`
+                    task.title = `[${this.$L('過期')}] ${task.title}`
                     task.color = "#f56c6c"
                     task.bgColor = data.color || "#fef0f0"
-                    task.priority+= `<span class="overdue">${this.$L('超期未完成')}</span>`;
+                    task.priority+= `<span class="overdue">${this.$L('過期未完成')}</span>`;
                 }
                 if (!task.borderColor) {
                     task.borderColor = task.bgColor;
@@ -191,13 +191,13 @@ export default {
     methods: {
         initLanguage() {
             this.addLanguageData([
-                {"_": "{日}","CN": "日","EN": "Sun","TC": "日","KM": "Sun","TH": "Sun","KO": "Sun","JA": "Sun"},
-                {"_": "{一}","CN": "一","EN": "Mon","TC": "一","KM": "Mon","TH": "Mon","KO": "Mon","JA": "Mon"},
-                {"_": "{二}","CN": "二","EN": "Tue","TC": "二","KM": "Tue","TH": "Tue","KO": "Tue","JA": "Tue"},
-                {"_": "{三}","CN": "三","EN": "Wed","TC": "三","KM": "Wed","TH": "Wed","KO": "Wed","JA": "Wed"},
-                {"_": "{四}","CN": "四","EN": "Thu","TC": "四","KM": "Thu","TH": "Thu","KO": "Thu","JA": "Thu"},
-                {"_": "{五}","CN": "五","EN": "Fri","TC": "五","KM": "Fri","TH": "Fri","KO": "Fri","JA": "Fri"},
-                {"_": "{六}","CN": "六","EN": "Sat","TC": "六","KM": "Sat","TH": "Sat","KO": "Sat","JA": "Sat"},
+                {"_": "{日}","CN": "日","EN": "Sun","TC": "日"},
+                {"_": "{一}","CN": "一","EN": "Mon","TC": "一"},
+                {"_": "{二}","CN": "二","EN": "Tue","TC": "二"},
+                {"_": "{三}","CN": "三","EN": "Wed","TC": "三"},
+                {"_": "{四}","CN": "四","EN": "Thu","TC": "四"},
+                {"_": "{五}","CN": "五","EN": "Fri","TC": "五"},
+                {"_": "{六}","CN": "六","EN": "Sat","TC": "六"},
             ]);
             let daynames = [
                 this.$L('{日}'),
@@ -218,13 +218,13 @@ export default {
             }
             this.calendarTemplate = {
                 titlePlaceholder: () => {
-                    return this.$L("任务描述")
+                    return this.$L("任務描述")
                 },
                 popupSave: () => {
                     return this.$L("保存");
                 },
                 popupEdit: () => {
-                    return this.$L("详情");
+                    return this.$L("詳情");
                 },
                 popupDelete: () => {
                     return this.$L("删除");
@@ -357,8 +357,8 @@ export default {
 
                 case "delete":
                     $A.modalConfirm({
-                        title: '删除任务',
-                        content: '你确定要删除任务【' + data.name + '】吗？',
+                        title: '删除任務',
+                        content: '你確定要删除任務【' + data.name + '】嗎？',
                         loading: true,
                         onOk: () => {
                             this.$store.dispatch("removeTask", {task_id: data.id}).then(({msg}) => {

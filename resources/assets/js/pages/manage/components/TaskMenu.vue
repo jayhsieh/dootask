@@ -36,7 +36,7 @@
                     <template v-else>
                         <EDropdownItem v-if="task.complete_at" command="uncomplete">
                             <div class="item red">
-                                <Icon type="md-checkmark-circle-outline" />{{$L('标记未完成')}}
+                                <Icon type="md-checkmark-circle-outline" />{{$L('標記未完成')}}
                             </div>
                         </EDropdownItem>
                         <EDropdownItem v-else command="complete">
@@ -49,7 +49,7 @@
                     <template v-if="task.parent_id === 0">
                         <EDropdownItem :divided="turns.length > 0" command="archived">
                             <div class="item">
-                                <Icon type="ios-filing" />{{$L(task.archived_at ? '还原归档' : '归档')}}
+                                <Icon type="ios-filing" />{{$L(task.archived_at ? '還原歸檔' : '歸檔')}}
                             </div>
                         </EDropdownItem>
                         <EDropdownItem command="remove">
@@ -288,12 +288,12 @@ export default {
             let typeDispatch = 'removeTask';
             let typeName = '删除';
             let typeData = {task_id: this.task.id};
-            let typeTask = this.task.parent_id > 0 ? '子任务' : '任务';
+            let typeTask = this.task.parent_id > 0 ? '子任務' : '任務';
             if (type == 'archived') {
                 typeDispatch = 'archivedTask'
-                typeName = '归档'
+                typeName = '歸檔'
                 if (this.task.archived_at) {
-                    typeName = '还原归档'
+                    typeName = '還原歸檔'
                     typeData = {
                         task_id: this.task.id,
                         type: 'recovery'
@@ -302,7 +302,7 @@ export default {
             }
             $A.modalConfirm({
                 title: typeName + typeTask,
-                content: '你确定要' + typeName + typeTask + '【' + this.task.name + '】吗？',
+                content: '你確定要' + typeName + typeTask + '【' + this.task.name + '】嗎？',
                 loading: true,
                 onOk: () => {
                     if (this.loadIng) {

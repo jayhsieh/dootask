@@ -5,7 +5,7 @@
                 v-model="addData.cascader"
                 :data="cascaderData"
                 :clearable="false"
-                :placeholder="$L('请选择项目')"
+                :placeholder="$L('請選擇項目')"
                 :load-data="cascaderLoadData"
                 @on-change="cascaderChange"
                 @on-input-change="cascaderInputChange"
@@ -21,7 +21,7 @@
                     :rows="1"
                     :autosize="{ minRows: 1, maxRows: 8 }"
                     :maxlength="255"
-                    :placeholder="$L('任务描述')"
+                    :placeholder="$L('任務描述')"
                     @on-keydown="onKeydown"/>
             </div>
             <div class="desc">
@@ -30,12 +30,12 @@
                     :plugins="taskPlugins"
                     :options="taskOptions"
                     :option-full="taskOptionFull"
-                    :placeholder="$L(isDesktop ? '详细描述，选填...（点击右键使用工具栏）' : '详细描述，选填...')"
-                    :placeholderFull="$L('详细描述...')"
+                    :placeholder="$L(isDesktop ? '詳細描述，選填...（點擊右鍵使用工具欄）' : '詳細描述，選填...')"
+                    :placeholderFull="$L('詳細描述...')"
                     inline/>
             </div>
             <div class="advanced-option">
-                <Button :class="{advanced: advanced}" @click="advanced=!advanced">{{$L('高级选项')}}</Button>
+                <Button :class="{advanced: advanced}" @click="advanced=!advanced">{{$L('高級選項')}}</Button>
                 <ul class="advanced-priority">
                     <li v-for="(item, key) in taskPriority" :key="key">
                         <ETooltip :content="taskPriorityContent(item)">
@@ -52,7 +52,7 @@
                     :open="taskTimeOpen"
                     v-model="addData.times"
                     :options="timeOptions"
-                    :placeholder="$L('选择计划范围')"
+                    :placeholder="$L('選擇計畫範圍')"
                     format="yyyy/MM/dd HH:mm"
                     type="datetimerange"
                     placement="bottom"
@@ -67,26 +67,26 @@
         </div>
 
         <Form v-if="advanced" class="task-add-advanced" label-width="auto" @submit.native.prevent>
-            <FormItem :label="$L('计划时间')">
+            <FormItem :label="$L('計畫時間')">
                 <DatePicker
                     v-model="addData.times"
                     :options="timeOptions"
                     :editable="false"
-                    :placeholder="$L('选择计划范围')"
+                    :placeholder="$L('選擇計畫範圍')"
                     format="yyyy/MM/dd HH:mm"
                     type="datetimerange"
                     @on-change="taskTimeChange(addData.times)"/>
             </FormItem>
-            <FormItem :label="$L('任务负责人')">
+            <FormItem :label="$L('任務負責人')">
                 <UserInput
                     v-model="addData.owner"
                     :multiple-max="10"
-                    :placeholder="$L('选择任务负责人')"
+                    :placeholder="$L('選擇任務負責人')"
                     :project-id="addData.project_id"
                     :transfer="false"/>
                 <div v-if="showAddAssist" class="task-add-assist">
-                    <Checkbox v-model="addData.add_assist" :true-value="1" :false-value="0">{{$L('加入任务协助人员列表')}}</Checkbox>
-                    <ETooltip :content="$L('你不是任务负责人时建议加入任务协助人员列表')">
+                    <Checkbox v-model="addData.add_assist" :true-value="1" :false-value="0">{{$L('加入任務協助人員列表')}}</Checkbox>
+                    <ETooltip :content="$L('你不是任務負責人時建議加入任務協助人員列表')">
                         <Icon type="ios-alert-outline" />
                     </ETooltip>
                 </div>
@@ -94,9 +94,9 @@
             <div class="subtasks">
                 <div v-if="addData.subtasks.length > 0" class="sublist">
                     <Row>
-                        <Col span="12">{{$L('任务描述')}}</Col>
-                        <Col span="6">{{$L('计划时间')}}</Col>
-                        <Col span="6">{{$L('负责人')}}</Col>
+                        <Col span="12">{{$L('任務描述')}}</Col>
+                        <Col span="6">{{$L('計畫時間')}}</Col>
+                        <Col span="6">{{$L('負責人')}}</Col>
                     </Row>
                     <Row v-for="(item, key) in addData.subtasks" :key="key">
                         <Col span="12">
@@ -111,7 +111,7 @@
                                 v-model="item.times"
                                 :options="timeOptions"
                                 :editable="false"
-                                :placeholder="$L('选择时间')"
+                                :placeholder="$L('選擇時間')"
                                 format="yyyy/MM/dd HH:mm"
                                 type="datetimerange"
                                 @on-change="taskTimeChange(item.times)"/>
@@ -120,7 +120,7 @@
                             <UserInput
                                 v-model="item.owner"
                                 :multiple-max="1"
-                                :placeholder="$L('选择负责人')"
+                                :placeholder="$L('選擇負責人')"
                                 :project-id="addData.project_id"
                                 :transfer="false"/>
                         </Col>
@@ -131,7 +131,7 @@
                     v-model="subName"
                     :class="['enter-input', subName == '' ? 'empty' : '']"
                     @on-enter="addSubTask"
-                    :placeholder="$L('+ 输入子任务，回车添加子任务')"/>
+                    :placeholder="$L('+ 舒褥子任務，返回添加子任務')"/>
             </div>
         </Form>
 
@@ -145,7 +145,7 @@
                             <Icon type="ios-arrow-down"></Icon>
                         </Button>
                         <DropdownMenu slot="list">
-                            <DropdownItem :disabled="loadIng > 0">{{$L('提交继续添加')}}</DropdownItem>
+                            <DropdownItem :disabled="loadIng > 0">{{$L('提交繼續添加')}}</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </ButtonGroup>
@@ -385,7 +385,7 @@ export default {
         taskPriorityContent(item) {
             let days = $A.runNum(item.days);
             if (days <= 0) {
-                return item.name + ' (' + this.$L('无时间限制') + ')';
+                return item.name + ' (' + this.$L('無時間限制') + ')';
             }
             return item.name + ' (' + days + this.$L('天') + ')';
         },
@@ -469,7 +469,7 @@ export default {
 
         onAdd(again) {
             if (!this.addData.name) {
-                $A.messageError("任务描述不能为空");
+                $A.messageError("任務描述不能為空");
                 return;
             }
             this.loadIng++;

@@ -1,7 +1,7 @@
 <template>
     <div class="team-management">
         <div class="management-title">
-            {{$L('团队管理')}}
+            {{$L('團隊管理')}}
             <div class="title-icon">
                 <Loading v-if="loadIng > 0"/>
             </div>
@@ -10,10 +10,10 @@
             <ul>
                 <li>
                     <div class="search-label">
-                        {{$L("关键词")}}
+                        {{$L("關鍵詞")}}
                     </div>
                     <div class="search-content">
-                        <Input v-model="keys.key" :placeholder="$L('邮箱、昵称、职位')" clearable/>
+                        <Input v-model="keys.key" :placeholder="$L('信箱、暱稱、職位')" clearable/>
                     </div>
                 </li>
                 <li>
@@ -21,10 +21,10 @@
                         {{$L("身份")}}
                     </div>
                     <div class="search-content">
-                        <Select v-model="keys.identity" :placeholder="$L('请选择')">
+                        <Select v-model="keys.identity" :placeholder="$L('請選擇')">
                             <Option value="">{{$L('全部')}}</Option>
-                            <Option value="admin">{{$L('管理员')}}</Option>
-                            <Option value="noadmin">{{$L('非管理员')}}</Option>
+                            <Option value="admin">{{$L('管理員')}}</Option>
+                            <Option value="noadmin">{{$L('非管理員')}}</Option>
                             <Option value="disable">{{$L('禁用')}}</Option>
                             <Option value="nodisable">{{$L('非禁用')}}</Option>
                         </Select>
@@ -32,13 +32,13 @@
                 </li>
                 <li>
                     <div class="search-label">
-                        {{$L("邮箱认证")}}
+                        {{$L("信箱認證")}}
                     </div>
                     <div class="search-content">
-                        <Select v-model="keys.email_verity" :placeholder="$L('请选择')">
+                        <Select v-model="keys.email_verity" :placeholder="$L('請選擇')">
                             <Option value="">{{$L('全部')}}</Option>
-                            <Option value="yes">{{$L('已邮箱认证')}}</Option>
-                            <Option value="no">{{$L('未邮箱认证')}}</Option>
+                            <Option value="yes">{{$L('已認證信箱')}}</Option>
+                            <Option value="no">{{$L('未認證信箱')}}</Option>
                         </Select>
                     </div>
                 </li>
@@ -50,7 +50,7 @@
                         transfer>
                         <Button :loading="loadIng > 0" type="primary" icon="ios-search" @click="onSearch">{{$L('搜索')}}</Button>
                         <div slot="content">
-                            <Button v-if="keyIs" type="text" @click="keyIs=false">{{$L('取消筛选')}}</Button>
+                            <Button v-if="keyIs" type="text" @click="keyIs=false">{{$L('取消篩選')}}</Button>
                             <Button v-else :loading="loadIng > 0" type="text" @click="getLists">{{$L('刷新')}}</Button>
                         </div>
                     </Tooltip>
@@ -136,7 +136,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('邮箱'),
+                    title: this.$L('信箱'),
                     key: 'email',
                     minWidth: 100,
                     render: (h, {row}) => {
@@ -154,7 +154,7 @@ export default {
                                 props: {
                                     color: 'warning'
                                 }
-                            }, this.$L('管理员')))
+                            }, this.$L('管理員')))
                         }
                         if (identity.includes("disable")) {
                             arr.push(h('Tag', {
@@ -169,7 +169,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('昵称'),
+                    title: this.$L('暱稱'),
                     key: 'nickname',
                     minWidth: 80,
                     render: (h, {row}) => {
@@ -191,7 +191,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('职位/职称'),
+                    title: this.$L('職位/職稱'),
                     key: 'profession',
                     minWidth: 80,
                     render: (h, {row}) => {
@@ -213,7 +213,7 @@ export default {
                     },
                 },
                 {
-                    title: this.$L('最后在线'),
+                    title: this.$L('最後在線'),
                     key: 'line_at',
                     width: 168,
                 },
@@ -229,13 +229,13 @@ export default {
                                 props: {
                                     command: 'clearadmin',
                                 },
-                            }, [h('div', this.$L('取消管理员'))]));
+                            }, [h('div', this.$L('取消管理員'))]));
                         } else {
                             dropdownItems.push(h('EDropdownItem', {
                                 props: {
                                     command: 'setadmin',
                                 },
-                            }, [h('div', this.$L('设为管理员'))]));
+                            }, [h('div', this.$L('設為管理員'))]));
                         }
                         if (identity.includes('disable')) {
                             dropdownItems.push(h('EDropdownItem', {
@@ -248,14 +248,14 @@ export default {
                                 props: {
                                     command: 'setdisable',
                                 },
-                            }, [h('div', this.$L('设为禁用'))]));
+                            }, [h('div', this.$L('設為禁用'))]));
                         }
                         dropdownItems.push(...[
                             h('EDropdownItem', {
                                 props: {
                                     command: 'password',
                                 },
-                            }, [h('div', this.$L('修改密码'))]),
+                            }, [h('div', this.$L('修改密碼'))]),
                             h('EDropdownItem', {
                                 props: {
                                     command: 'delete',
@@ -319,10 +319,10 @@ export default {
                 this.page = data.current_page;
                 this.total = data.total;
                 this.list = data.data;
-                this.noText = '没有相关的数据';
+                this.noText = '没有相關的數據';
             }).catch(() => {
                 this.loadIng--;
-                this.noText = '数据加载失败';
+                this.noText = '數據加載失敗';
             })
         },
 
@@ -341,8 +341,8 @@ export default {
             switch (name) {
                 case 'password':
                     $A.modalInput({
-                        title: "修改密码",
-                        placeholder: "请输入新的密码",
+                        title: "修改密碼",
+                        placeholder: "請輸入新的密碼",
                         onOk: (value) => {
                             if (value) {
                                 this.operationUser({
@@ -357,7 +357,7 @@ export default {
 
                 case 'delete':
                     $A.modalConfirm({
-                        content: '你确定要删除此帐号吗？',
+                        content: '你確定要删除此帳號嗎？',
                         onOk: () => {
                             this.operationUser({
                                 userid: row.userid,

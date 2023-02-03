@@ -25,22 +25,22 @@ use Illuminate\Support\Facades\Route;
  * 接口
  */
 Route::prefix('api')->middleware(['webapi'])->group(function () {
-    // 会员
+    // 會員
     Route::any('users/{method}',                    UsersController::class);
     Route::any('users/{method}/{action}',           UsersController::class);
-    // 项目
+    // 項目
     Route::any('project/{method}',                  ProjectController::class);
     Route::any('project/{method}/{action}',         ProjectController::class);
-    // 系统
+    // 系統
     Route::any('system/{method}',                   SystemController::class);
     Route::any('system/{method}/{action}',          SystemController::class);
-    // 对话
+    // 對話
     Route::any('dialog/{method}',                   DialogController::class);
     Route::any('dialog/{method}/{action}',          DialogController::class);
     // 文件
     Route::any('file/{method}',                     FileController::class);
     Route::any('file/{method}/{action}',            FileController::class);
-    // 报告
+    // 報告
     Route::any('report/{method}',                     ReportController::class);
     Route::any('report/{method}/{action}',            ReportController::class);
 });

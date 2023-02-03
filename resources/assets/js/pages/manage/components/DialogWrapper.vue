@@ -23,14 +23,14 @@
                         </template>
                         <h2>{{dialogData.name}}</h2>
                         <em v-if="peopleNum > 0">({{peopleNum}})</em>
-                        <label v-if="dialogData.top_at" class="top-text">{{$L('置顶')}}</label>
+                        <label v-if="dialogData.top_at" class="top-text">{{$L('置頂')}}</label>
                     </div>
                     <template v-if="dialogData.type === 'group'">
                         <div v-if="dialogData.group_type === 'project'" class="sub-title pointer" @click="openProject">
-                            {{$L('项目聊天室')}} {{$L('打开项目管理')}}
+                            {{$L('項目聊天室')}} {{$L('打開項目管理')}}
                         </div>
                         <div v-else-if="dialogData.group_type === 'task'" class="sub-title pointer" @click="openTask">
-                            {{$L('任务聊天室')}} {{$L('查看任务详情')}}
+                            {{$L('任務聊天室')}} {{$L('查看任務詳情')}}
                         </div>
                     </template>
                 </div>
@@ -45,15 +45,15 @@
             static>
             <div ref="manageList" class="dialog-list">
                 <ul>
-                    <li v-if="dialogData.hasMorePages" class="history" @click="loadNextPage">{{$L('加载历史消息')}}</li>
+                    <li v-if="dialogData.hasMorePages" class="history" @click="loadNextPage">{{$L('加载歷史消息')}}</li>
                     <li v-else-if="dialogData.loading > 0 && dialogMsgList.length === 0" class="loading"><Loading/></li>
-                    <li v-else-if="dialogMsgList.length === 0" class="nothing">{{$L('暂无消息')}}</li>
+                    <li v-else-if="dialogMsgList.length === 0" class="nothing">{{$L('暫無消息')}}</li>
                     <li
                         v-for="item in dialogMsgList"
                         :id="'view_' + item.id"
                         :key="item.id"
                         :class="{self:item.userid == userId, 'history-tip': topId == item.id}">
-                        <em v-if="topId == item.id" class="history-text">{{$L('历史消息')}}</em>
+                        <em v-if="topId == item.id" class="history-text">{{$L('歷史消息')}}</em>
                         <div class="dialog-avatar">
                             <UserAvatar :userid="item.userid" :tooltipDisabled="item.userid == userId" :size="30"/>
                         </div>
@@ -73,7 +73,7 @@
             </div>
         </ScrollerY>
         <div :class="['dialog-footer', msgNew > 0 && dialogMsgList.length > 0 ? 'newmsg' : '']" @click="onActive">
-            <div class="dialog-newmsg" @click="onToBottom">{{$L('有' + msgNew + '条新消息')}}</div>
+            <div class="dialog-newmsg" @click="onToBottom">{{$L('有' + msgNew + '條新消息')}}</div>
             <slot name="inputBefore"/>
             <DragInput
                 ref="input"
@@ -87,7 +87,7 @@
                 @on-blur="onEventblur"
                 @on-keydown="chatKeydown"
                 @on-input-paste="pasteDrag"
-                :placeholder="$L('输入消息...')" />
+                :placeholder="$L('輸入消息...')" />
             <div v-if="msgText != ''" class="dialog-send" @click="sendMsg">
                 <Icon type="md-send" />
             </div>
@@ -100,7 +100,7 @@
                 @on-error="chatFile('error', $event)"/>
         </div>
         <div v-if="dialogDrag" class="drag-over" @click="dialogDrag=false">
-            <div class="drag-text">{{$L('拖动到这里发送')}}</div>
+            <div class="drag-text">{{$L('拖動到這裡發送')}}</div>
         </div>
 
         <!--拖动发送提示-->
@@ -108,7 +108,7 @@
             v-model="pasteShow"
             :title="$L(pasteTitle)"
             :cancel-text="$L('取消')"
-            :ok-text="$L('发送')"
+            :ok-text="$L('發送')"
             :enter-ok="true"
             @on-ok="pasteSend">
             <div class="dialog-wrapper-paste">
@@ -222,11 +222,11 @@ export default {
             let hasImage = pasteItem.find(({type}) => type == 'image')
             let hasFile = pasteItem.find(({type}) => type != 'image')
             if (hasImage && hasFile) {
-                return '发送文件/图片'
+                return '發送文件/圖片'
             } else if (hasImage) {
-                return '发送图片'
+                return '發送圖片'
             }
-            return '发送文件'
+            return '發送文件'
         }
     },
 

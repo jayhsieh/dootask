@@ -2,51 +2,51 @@
     <div class="setting-component-item">
         <Form ref="formData" :model="formData" :rules="ruleData" label-width="auto" @submit.native.prevent>
             <div class="email-setting-box">
-                <h3>{{ $L('邮箱服务器设置') }}</h3>
-                <FormItem :label="$L('SMTP服务器')" prop="smtp_server">
+                <h3>{{ $L('郵件服務器設置') }}</h3>
+                <FormItem :label="$L('SMTP服務器')" prop="smtp_server">
                     <Input v-model="formData.smtp_server"/>
                 </FormItem>
                 <FormItem :label="$L('端口')" prop="port">
                     <Input :maxlength="20" v-model="formData.port"/>
                 </FormItem>
-                <FormItem :label="$L('账号')" prop="account">
+                <FormItem :label="$L('帳號')" prop="account">
                     <Input :maxlength="128" v-model="formData.account"/>
                 </FormItem>
-                <FormItem :label="$L('密码')" prop="password">
+                <FormItem :label="$L('密碼')" prop="password">
                     <Input :maxlength="128" v-model="formData.password" type="password"/>
                 </FormItem>
                 <FormItem>
-                    <Button @click="checkEmailSend">{{ $L('邮件发送测试') }}</Button>
+                    <Button @click="checkEmailSend">{{ $L('郵件發送測試') }}</Button>
                 </FormItem>
             </div>
 
             <div class="email-setting-placeholder"></div>
 
             <div class="email-setting-box">
-                <h3>{{ $L('邮件通知设置') }}</h3>
-                <FormItem :label="$L('开启注册验证')" prop="reg_verify">
+                <h3>{{ $L('郵件通知設置') }}</h3>
+                <FormItem :label="$L('開啟註冊驗證')" prop="reg_verify">
                     <RadioGroup v-model="formData.reg_verify">
-                        <Radio label="open">{{ $L('开启') }}</Radio>
-                        <Radio label="close">{{ $L('关闭') }}</Radio>
+                        <Radio label="open">{{ $L('開啟') }}</Radio>
+                        <Radio label="close">{{ $L('關閉') }}</Radio>
                     </RadioGroup>
-                    <div v-if="formData.reg_verify == 'open'" class="form-tip">{{$L('开启后账号需验证通过才可登录')}}</div>
+                    <div v-if="formData.reg_verify == 'open'" class="form-tip">{{$L('開啟後帳號需驗證通過才可登錄')}}</div>
                 </FormItem>
-                <FormItem :label="$L('开启通知')" prop="notice">
+                <FormItem :label="$L('開啟通知')" prop="notice">
                     <RadioGroup v-model="formData.notice">
-                        <Radio label="open">{{ $L('开启') }}</Radio>
-                        <Radio label="close">{{ $L('关闭') }}</Radio>
+                        <Radio label="open">{{ $L('開啟') }}</Radio>
+                        <Radio label="close">{{ $L('關閉') }}</Radio>
                     </RadioGroup>
                 </FormItem>
                 <template v-if="formData.notice == 'open'">
-                    <FormItem :label="$L('任务提醒:')" prop="task_remind_hours">
+                    <FormItem :label="$L('任務提醒:')" prop="task_remind_hours">
                         <label>{{ $L('到期前') }}</label>
                         <InputNumber v-model="formData.task_remind_hours" :min="0.5" :step="0.5" @on-change="hoursChange"/>
-                        <label>{{ $L('小时') }}</label>
+                        <label>{{ $L('小時') }}</label>
                     </FormItem>
-                    <FormItem :label="$L('第二次任务提醒:')" prop="task_remind_hours2">
-                        <label>{{ $L('到期后') }}</label>
+                    <FormItem :label="$L('第二次任務提醒:')" prop="task_remind_hours2">
+                        <label>{{ $L('到期後') }}</label>
                         <InputNumber v-model="formData.task_remind_hours2" :min="0.5" :step="0.5" @on-change="hours2Change"/>
-                        <label>{{ $L('小时') }}</label>
+                        <label>{{ $L('小時') }}</label>
                     </FormItem>
                 </template>
             </div>
@@ -121,7 +121,7 @@ export default {
                 setTimeout(() => {
                     this.formData.task_remind_hours = 1;
                 })
-                $A.messageError('任务提醒只能是0.5的倍数');
+                $A.messageError('任務提醒只能是0.5的倍數');
             }
         },
 
@@ -131,21 +131,21 @@ export default {
                 setTimeout(() => {
                     this.formData.task_remind_hours2 = 1;
                 })
-                $A.messageError('第二次任务提醒只能是0.5的倍数');
+                $A.messageError('第二次任務提醒只能是0.5的倍數');
             }
         },
 
         checkEmailSend() {
             $A.modalInput({
-                title: "测试邮件",
-                placeholder: "请输入收件人地址",
+                title: "測試郵件",
+                placeholder: "請輸入收件人地址",
                 onOk: (value, cb) => {
                     if (!value) {
                         cb()
                         return
                     }
                     if (!$A.isEmail(value)) {
-                        $A.modalError("请输入正确的收件人地址", 301)
+                        $A.modalError("請輸入正確的收件人地址", 301)
                         cb()
                         return
                     }

@@ -218,43 +218,43 @@
                 case '本周':
                     time = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek);
                     break;
-                case '本周结束':
+                case '本周結束':
                     time = new Date(nowYear, nowMonth, nowDay + (6 - nowDayOfWeek));
                     break;
                 case '上周':
                     time = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek - 7);
                     break;
-                case '上周结束':
+                case '上周結束':
                     time = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek - 1);
                     break;
                 case '本周2':
                     time = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek + 1);
                     break;
-                case '本周结束2':
+                case '本周結束2':
                     time = new Date(nowYear, nowMonth, nowDay + (6 - nowDayOfWeek) + 1);
                     break;
                 case '上周2':
                     time = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek - 7 + 1);
                     break;
-                case '上周结束2':
+                case '上周結束2':
                     time = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek - 1 + 1);
                     break;
                 case '本月':
                     time = new Date(nowYear, nowMonth, 1);
                     break;
-                case '本月结束':
+                case '本月結束':
                     time = new Date(nowYear, nowMonth, getMonthDays(nowMonth));
                     break;
                 case '上个月':
                     time = new Date(nowYear, lastMonth, 1);
                     break;
-                case '上个月结束':
+                case '上个月結束':
                     time = new Date(nowYear, lastMonth, getMonthDays(lastMonth));
                     break;
                 case '本季度':
                     time = new Date(nowYear, getQuarterStartMonth(), 1);
                     break;
-                case '本季度结束':
+                case '本季度結束':
                     let quarterEndMonth = getQuarterStartMonth() + 2;
                     time = new Date(nowYear, quarterEndMonth, getMonthDays(quarterEndMonth));
                     break;
@@ -288,12 +288,12 @@
             }, {
                 text: $A.L('本周'),
                 value() {
-                    return [$A.getData('今天', true), lastSecond($A.getData('本周结束2', true))];
+                    return [$A.getData('今天', true), lastSecond($A.getData('本周結束2', true))];
                 }
             }, {
                 text: $A.L('本月'),
                 value() {
-                    return [$A.getData('今天', true), lastSecond($A.getData('本月结束', true))];
+                    return [$A.getData('今天', true), lastSecond($A.getData('本月結束', true))];
                 }
             }, {
                 text: $A.L('3天'),
@@ -342,7 +342,7 @@
                     } else if (dialog.group_info.archived_at) {
                         tags.push({
                             color: 'default',
-                            text: '已归档'
+                            text: '已歸檔'
                         })
                     }
                 }
@@ -406,7 +406,7 @@
             }
             config.title = $A.L(config.title || (typeof config.render === 'undefined' ? '温馨提示' : ''));
             config.content = $A.L(config.content || '');
-            config.okText = $A.L(config.okText || '确定');
+            config.okText = $A.L(config.okText || '確定');
             config.cancelText = $A.L(config.cancelText || '取消');
             return config;
         },
@@ -464,7 +464,7 @@
                 onOk,
                 onCancel,
                 loading: true,
-                okText: $A.L(config.okText || '确定'),
+                okText: $A.L(config.okText || '確定'),
                 cancelText: $A.L(config.cancelText || '取消'),
             });
             setTimeout(() => {

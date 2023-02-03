@@ -211,7 +211,7 @@ export default {
             return;
         }
         if (!$A.isChrome()) {
-            $A.modalWarning("仅客户端或Chrome浏览器支持主题功能");
+            $A.modalWarning("僅客户端或Chrome瀏覽器支持主題功能");
             return;
         }
         switch (mode) {
@@ -394,8 +394,8 @@ export default {
                 }
             }
             $A.modalInput({
-                title: "设置昵称",
-                placeholder: "请输入昵称",
+                title: "設置暱稱",
+                placeholder: "請輸入暱稱",
                 okText: "保存",
                 onOk: (value, cb) => {
                     if (value) {
@@ -1556,10 +1556,10 @@ export default {
             // 修改时间前置判断
             if (typeof post.times !== "undefined") {
                 if (data.times[0] === false) {
-                    content = "你确定要取消任务时间吗？"
+                    content = "你確定要取消任務時間嗎？"
                 }
                 const currentTask = state.cacheTasks.find(({id}) => id == post.task_id);
-                title = currentTask.parent_id > 0 ? "更新子任务" : "更新主任务"
+                title = currentTask.parent_id > 0 ? "更新子任務" : "更新主任務"
                 if (currentTask) {
                     if (currentTask.parent_id > 0) {
                         // 修改子任务，判断主任务
@@ -1569,7 +1569,7 @@ export default {
                                     return false;
                                 }
                                 if (!parentTask.end_at) {
-                                    content = "主任务没有设置时间，设置子任务将同步设置主任务"
+                                    content = "主任務没有設置時間，設置子任務將同步設置主任務"
                                     return true;
                                 }
                                 let n1 = $A.Date(post.times[0], true),
@@ -1577,11 +1577,11 @@ export default {
                                     o1 = $A.Date(parentTask.start_at, true),
                                     o2 = $A.Date(parentTask.end_at, true);
                                 if (n1 < o1) {
-                                    content = "新设置的子任务开始时间在主任务时间之外，修改后将同步修改主任务" // 子任务开始时间 < 主任务开始时间
+                                    content = "新設置的子任務開始時間在主任務時間之外，修改後將同步修改主任務" // 子任务开始时间 < 主任务开始时间
                                     return true;
                                 }
                                 if (n2 > o2) {
-                                    content = "新设置的子任务结束时间在主任务时间之外，修改后将同步修改主任务" // 子任务结束时间 > 主任务结束时间
+                                    content = "新設置的子任務结束時間在主任務時間之外，修改後將同步修改主任務" // 子任务结束时间 > 主任务结束时间
                                     return true;
                                 }
                             })
@@ -1605,15 +1605,15 @@ export default {
                                 return false;
                             }
                             if (!post.times[0]) {
-                                content = `子任务（${subTask.name}）已设置时间，清除主任务时间后将同步清除子任务的时间`
+                                content = `子任務（${subTask.name}）已設置時間，清除主任務時間後將同步清除子任務的時間`
                                 return true;
                             }
                             if (n1 > o1) {
-                                content = `新设置的开始时间在子任务（${subTask.name}）时间之内，修改后将同步修改子任务` // 主任务开始时间 > 子任务开始时间
+                                content = `新設置的開始時間在子任務（${subTask.name}）時間之内，修改後將同步修改子任務` // 主任务开始时间 > 子任务开始时间
                                 return true;
                             }
                             if (n2 < o2) {
-                                content = `新设置的结束时间在子任务（${subTask.name}）时间之内，修改后将同步修改子任务` // 主任务结束时间 < 子任务结束时间
+                                content = `新設置的結束時間在子任務（${subTask.name}）時間之内，修改後將同步修改子任務` // 主任务结束时间 < 子任务结束时间
                                 return true;
                             }
                         })

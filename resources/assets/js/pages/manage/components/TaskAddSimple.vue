@@ -9,7 +9,7 @@
                     :rows="1"
                     :autosize="{ minRows: 1, maxRows: 3 }"
                     :maxlength="255"
-                    :placeholder="$L(typeName + '描述，回车创建')"
+                    :placeholder="$L(typeName + '描述，返回創建')"
                     @on-focus="onFocus=true"
                     @on-blur="onFocus=false"
                     @on-keydown="onKeydown"/>
@@ -45,7 +45,7 @@
             :rows="2"
             :autosize="{ minRows: 2, maxRows: 3 }"
             :maxlength="255"
-            :placeholder="$L(typeName + '描述，回车创建')"
+            :placeholder="$L(typeName + '描述，返回創建')"
             @on-focus="onFocus=true"
             @on-blur="onFocus=false"
             @on-keydown="onKeydown"/>
@@ -129,7 +129,7 @@ export default {
         ...mapState(['userId', 'taskPriority']),
 
         typeName() {
-            return (this.parentId > 0 ? '子任务' : '任务');
+            return (this.parentId > 0 ? '子任務' : '任務');
         }
     },
 
@@ -197,7 +197,7 @@ export default {
 
         onAdd() {
             if (!this.addData.name) {
-                $A.messageWarning("请输入任务描述");
+                $A.messageWarning("請輸入任務描述");
                 return;
             }
             this.loadIng++;
@@ -225,7 +225,7 @@ export default {
         taskPriorityContent(item) {
             let days = $A.runNum(item.days);
             if (days <= 0) {
-                return item.name + ' (' + this.$L('无时间限制') + ')';
+                return item.name + ' (' + this.$L('無時間限制') + ')';
             }
             return item.name + ' (' + days + this.$L('天') + ')';
         },

@@ -73,7 +73,7 @@
                             </ul>
                         </li>
                         <li v-if="contactsLoad > 0" class="loading"><Loading/></li>
-                        <li v-else-if="!contactsHasMorePages" class="loaded">{{$L('共' + contactsList.length + '位联系人')}}</li>
+                        <li v-else-if="!contactsHasMorePages" class="loaded">{{$L('共' + contactsList.length + '位聯繫人')}}</li>
                     </ul>
                     <div class="top-operate" :style="topOperateStyles">
                         <Dropdown
@@ -84,13 +84,13 @@
                             transfer>
                             <DropdownMenu slot="list">
                                 <DropdownItem @click.native="handleTopClick">
-                                    {{ $L(topOperateItem.top_at ? '取消置顶' : '置顶该聊天') }}
+                                    {{ $L(topOperateItem.top_at ? '取消置頂' : '置頂該聊天') }}
                                 </DropdownItem>
                                 <DropdownItem @click.native="updateRead('read')" v-if="$A.getDialogUnread(topOperateItem) > 0">
-                                    {{ $L('标记已读') }}
+                                    {{ $L('標記已讀') }}
                                 </DropdownItem>
                                 <DropdownItem @click.native="updateRead('unread')" v-else>
-                                    {{ $L('标记未读') }}
+                                    {{ $L('標記未讀') }}
                                 </DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
@@ -110,7 +110,7 @@
             <div class="messenger-msg">
                 <div class="msg-dialog-bg">
                     <div class="msg-dialog-bg-icon"><Icon type="ios-chatbubbles" /></div>
-                    <div class="msg-dialog-bg-text">{{$L('选择一个会话开始聊天')}}</div>
+                    <div class="msg-dialog-bg-text">{{$L('選擇一個視窗開始聊天')}}</div>
                 </div>
                 <DialogWrapper v-if="dialogId > 0" :dialogId="dialogId" @on-active="scrollIntoActive">
                     <div slot="inputBefore" class="dialog-back" @click="closeDialog">
@@ -135,9 +135,9 @@ export default {
 
             dialogType: [
                 {type: '', name: '全部'},
-                {type: 'project', name: '项目'},
-                {type: 'task', name: '任务'},
-                {type: 'user', name: '个人'},
+                {type: 'project', name: '項目'},
+                {type: 'task', name: '任務'},
+                {type: 'user', name: '個人'},
             ],
             dialogActive: '',
             dialogKey: '',
@@ -410,7 +410,7 @@ export default {
                         return data.msg.text
                     case 'file':
                         if (data.msg.type == 'img') {
-                            return '[' + this.$L('图片') + ']'
+                            return '[' + this.$L('圖片') + ']'
                         }
                         return '[' + this.$L('文件') + '] ' + data.msg.name
                     default:

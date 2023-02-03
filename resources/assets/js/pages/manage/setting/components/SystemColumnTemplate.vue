@@ -2,15 +2,15 @@
     <div class="setting-component-item">
         <Form ref="formDatum" label-width="auto" @submit.native.prevent>
             <Row class="setting-template">
-                <Col span="8">{{$L('名称')}}</Col>
-                <Col span="16">{{$L('项目模板')}}</Col>
+                <Col span="8">{{$L('名稱')}}</Col>
+                <Col span="16">{{$L('項目模板')}}</Col>
             </Row>
             <Row v-for="(item, key) in formDatum" :key="key" class="setting-template">
                 <Col span="8">
                     <Input
                         v-model="item.name"
                         :maxlength="20"
-                        :placeholder="$L('请输入名称')"
+                        :placeholder="$L('請輸入名稱')"
                         clearable
                         @on-clear="delDatum(key)"/>
                 </Col>

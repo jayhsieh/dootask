@@ -9,7 +9,7 @@
                 <textarea ref="myTextarea" :id="id">{{ content }}</textarea>
                 <Spin fix v-if="spinShow">
                     <Icon type="ios-loading" :size="18" class="icon-loading"></Icon>
-                    <div>{{$L('加载组件中...')}}</div>
+                    <div>{{$L('機載組件中...')}}</div>
                 </Spin>
             </template>
             <ImgUpload
@@ -38,7 +38,7 @@
         </div>
         <Spin fix v-if="uploadIng > 0">
             <Icon type="ios-loading" class="icon-loading"></Icon>
-            <div>{{$L('正在上传文件...')}}</div>
+            <div>{{$L('正在上傳文件...')}}</div>
         </Spin>
         <Modal v-model="transfer" class="teditor-transfer" @on-visible-change="transferChange" footer-hide fullscreen transfer>
             <div slot="close">
@@ -49,7 +49,7 @@
             </div>
             <Spin fix v-if="uploadIng > 0">
                 <Icon type="ios-loading" class="icon-loading"></Icon>
-                <div>{{$L('正在上传文件...')}}</div>
+                <div>{{$L('正在上傳文件...')}}</div>
             </Spin>
         </Modal>
     </div>
@@ -257,18 +257,18 @@
                     content_css: this.themeIsDark ? 'dark' : 'default',
                     setup: (editor) => {
                         editor.ui.registry.addMenuButton('uploadImages', {
-                            text: this.$L('图片'),
-                            tooltip: this.$L('上传/浏览 图片'),
+                            text: this.$L('圖片'),
+                            tooltip: this.$L('上傳/瀏覽 圖片'),
                             fetch: (callback) => {
                                 let items = [{
                                     type: 'menuitem',
-                                    text: this.$L('上传本地图片'),
+                                    text: this.$L('上傳本地圖片'),
                                     onAction: () => {
                                         this.$refs.myUpload.handleClick();
                                     }
                                 }, {
                                     type: 'menuitem',
-                                    text: this.$L('浏览已上传图片'),
+                                    text: this.$L('瀏覽已上傳圖片'),
                                     onAction: () => {
                                         this.$refs.myUpload.browsePicture();
                                     }
@@ -278,17 +278,17 @@
                         });
                         editor.ui.registry.addNestedMenuItem('uploadImages', {
                             icon: 'image',
-                            text: this.$L('上传图片'),
+                            text: this.$L('上傳圖片'),
                             getSubmenuItems: () => {
                                 return [{
                                     type: 'menuitem',
-                                    text: this.$L('上传本地图片'),
+                                    text: this.$L('上傳本地圖片'),
                                     onAction: () => {
                                         this.$refs.myUpload.handleClick();
                                     }
                                 }, {
                                     type: 'menuitem',
-                                    text: this.$L('浏览已上传图片'),
+                                    text: this.$L('瀏覽已上傳圖片'),
                                     onAction: () => {
                                         this.$refs.myUpload.browsePicture();
                                     }
@@ -296,11 +296,11 @@
                             }
                         });
                         editor.ui.registry.addMenuItem('imagePreview', {
-                            text: this.$L('预览图片'),
+                            text: this.$L('預覽圖片'),
                             onAction: () => {
                                 const array = this.getValueImages();
                                 if (array.length === 0) {
-                                    $A.messageWarning("没有可预览的图片")
+                                    $A.messageWarning("没有可預覽的圖片")
                                     return;
                                 }
                                 this.$store.state.previewImageIndex = 0;
@@ -309,7 +309,7 @@
                         });
                         editor.ui.registry.addButton('uploadFiles', {
                             text: this.$L('文件'),
-                            tooltip: this.$L('上传文件'),
+                            tooltip: this.$L('上傳文件'),
                             onAction: () => {
                                 if (this.handleBeforeUpload()) {
                                     this.$refs.fileUpload.handleClick();
@@ -317,7 +317,7 @@
                             }
                         });
                         editor.ui.registry.addMenuItem('uploadFiles', {
-                            text: this.$L('上传文件'),
+                            text: this.$L('上傳文件'),
                             onAction: () => {
                                 if (this.handleBeforeUpload()) {
                                     this.$refs.fileUpload.handleClick();
@@ -327,13 +327,13 @@
                         if (isFull) {
                             editor.ui.registry.addButton('screenload', {
                                 icon: 'fullscreen',
-                                tooltip: this.$L('退出全屏'),
+                                tooltip: this.$L('退出全螢幕'),
                                 onAction: () => {
                                     this.closeFull();
                                 }
                             });
                             editor.ui.registry.addMenuItem('screenload', {
-                                text: this.$L('退出全屏'),
+                                text: this.$L('退出全螢幕'),
                                 onAction: () => {
                                     this.closeFull();
                                 }
@@ -350,7 +350,7 @@
                         }else{
                             editor.ui.registry.addButton('screenload', {
                                 icon: 'fullscreen',
-                                tooltip: this.$L('全屏'),
+                                tooltip: this.$L('全螢幕'),
                                 onAction: () => {
                                     this.content = editor.getContent();
                                     this.transfer = true;
@@ -358,7 +358,7 @@
                                 }
                             });
                             editor.ui.registry.addMenuItem('screenload', {
-                                text: this.$L('全屏'),
+                                text: this.$L('全螢幕'),
                                 onAction: () => {
                                     this.content = editor.getContent();
                                     this.transfer = true;
@@ -535,8 +535,8 @@
                     this.insertContent(`<a href="${res.data.url}" target="_blank">${res.data.name} (${$A.bytesToSize(res.data.size * 1024)})</a>`);
                 } else {
                     $A.noticeWarning({
-                        title: this.$L('上传失败'),
-                        desc: this.$L('文件 ' + file.name + ' 上传失败，' + res.msg)
+                        title: this.$L('上傳失敗'),
+                        desc: this.$L('文件 ' + file.name + ' 上傳失敗，' + res.msg)
                     });
                 }
             },
@@ -549,8 +549,8 @@
             handleFormatError(file) {
                 //上传类型错误
                 $A.noticeWarning({
-                    title: this.$L('文件格式不正确'),
-                    desc: this.$L('文件 ' + file.name + ' 格式不正确，仅支持上传：' + this.uploadFormat.join(','))
+                    title: this.$L('文件格式不正確'),
+                    desc: this.$L('文件 ' + file.name + ' 格式不正確，僅支持上傳：' + this.uploadFormat.join(','))
                 });
             },
 
@@ -558,7 +558,7 @@
                 //上传大小错误
                 $A.noticeWarning({
                     title: this.$L('超出文件大小限制'),
-                    desc: this.$L('文件 ' + file.name + ' 太大，不能超过：' + $A.bytesToSize(this.maxSize * 1024))
+                    desc: this.$L('文件 ' + file.name + ' 太大，不能超過：' + $A.bytesToSize(this.maxSize * 1024))
                 });
             },
 

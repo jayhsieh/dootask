@@ -26,7 +26,7 @@
                     <Loading/>
                 </div>
                 <!--未知-->
-                <div v-else class="content-unknown">{{$L("未知的消息类型")}}</div>
+                <div v-else class="content-unknown">{{$L("未知的消息類型")}}</div>
             </div>
 
             <!--菜单-->
@@ -35,7 +35,7 @@
                     <Icon v-if="msgData.userid == userId" @click="withdraw" type="md-undo" :title="$L('撤回')"/>
                     <template v-if="msgData.type === 'file'">
                         <Icon @click="viewFile" type="md-eye" :title="$L('查看')"/>
-                        <Icon @click="downFile" type="md-arrow-round-down" :title="$L('下载')"/>
+                        <Icon @click="downFile" type="md-arrow-round-down" :title="$L('下載')"/>
                     </template>
                 </div>
             </div>
@@ -54,13 +54,13 @@
                 :offset="-8">
                 <div class="dialog-wrapper-read-poptip-content">
                     <ul class="read overlay-y">
-                        <li class="read-title"><em>{{ readList.length }}</em>{{ $L('已读') }}</li>
+                        <li class="read-title"><em>{{ readList.length }}</em>{{ $L('已讀') }}</li>
                         <li v-for="item in readList">
                             <UserAvatar :userid="item.userid" :size="26" showName/>
                         </li>
                     </ul>
                     <ul class="unread overlay-y">
-                        <li class="read-title"><em>{{ unreadList.length }}</em>{{ $L('未读') }}</li>
+                        <li class="read-title"><em>{{ unreadList.length }}</em>{{ $L('未讀') }}</li>
                         <li v-for="item in unreadList">
                             <UserAvatar :userid="item.userid" :size="26" showName/>
                         </li>
@@ -198,7 +198,7 @@ export default {
 
         withdraw() {
             $A.modalConfirm({
-                content: `确定撤回此信息吗？`,
+                content: `確定撤回此訊息嗎？`,
                 okText: '撤回',
                 loading: true,
                 onOk: () => {
@@ -258,9 +258,9 @@ export default {
 
         downFile() {
             $A.modalConfirm({
-                title: '下载文件',
+                title: '下載文件',
                 content: `${this.msgData.msg.name} (${$A.bytesToSize(this.msgData.msg.size)})`,
-                okText: '立即下载',
+                okText: '立即下載',
                 onOk: () => {
                     this.$store.dispatch('downUrl', $A.apiUrl(`dialog/msg/download?msg_id=${this.msgData.id}`))
                 }

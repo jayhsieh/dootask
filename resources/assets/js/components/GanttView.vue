@@ -2,7 +2,7 @@
     <div class="common-gantt">
         <div class="gantt-left" :style="{width:menuWidth+'px'}">
             <div class="gantt-title">
-                <div class="gantt-title-text">{{$L('任务名称')}}</div>
+                <div class="gantt-title-text">{{$L('任務名稱')}}</div>
             </div>
             <ul ref="ganttItem"
                 class="gantt-item"

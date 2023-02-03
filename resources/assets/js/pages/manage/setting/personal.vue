@@ -1,17 +1,17 @@
 <template>
     <div class="setting-item submit">
         <Form ref="formData" :model="formData" :rules="ruleData" label-width="auto" @submit.native.prevent>
-            <FormItem :label="$L('头像')" prop="userimg">
+            <FormItem :label="$L('頭像')" prop="userimg">
                 <ImgUpload v-model="formData.userimg" :num="1"></ImgUpload>
                 <span class="form-tip">{{$L('建议尺寸：200x200')}}</span>
             </FormItem>
-            <FormItem :label="$L('邮箱')">
+            <FormItem :label="$L('郵件')">
                 <Input v-model="userInfo.email" disabled></Input>
             </FormItem>
-            <FormItem :label="$L('昵称')" prop="nickname">
+            <FormItem :label="$L('暱稱')" prop="nickname">
                 <Input v-model="formData.nickname" :maxlength="20"></Input>
             </FormItem>
-            <FormItem :label="$L('职位/职称')" prop="profession">
+            <FormItem :label="$L('職位/職稱')" prop="profession">
                 <Input v-model="formData.profession" :maxlength="20"></Input>
             </FormItem>
         </Form>
@@ -55,8 +55,8 @@ export default {
         initLanguage() {
             this.ruleData = {
                 nickname: [
-                    {required: true, message: this.$L('请输入昵称！'), trigger: 'change'},
-                    {type: 'string', min: 2, message: this.$L('昵称长度至少2位！'), trigger: 'change'}
+                    {required: true, message: this.$L('請輸入暱稱！'), trigger: 'change'},
+                    {type: 'string', min: 2, message: this.$L('暱稱長度至少2位！'), trigger: 'change'}
                 ]
             };
         },

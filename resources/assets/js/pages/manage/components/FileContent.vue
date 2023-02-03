@@ -6,9 +6,9 @@
                 <div class="header-title">
                     <EPopover v-if="!equalContent" v-model="unsaveTip" class="file-unsave-tip">
                         <div class="task-detail-delete-file-popover">
-                            <p>{{$L('未保存当前修改内容？')}}</p>
+                            <p>{{$L('未保存當前修改内容？')}}</p>
                             <div class="buttons">
-                                <Button size="small" type="text" @click="unSaveGive">{{$L('放弃')}}</Button>
+                                <Button size="small" type="text" @click="unSaveGive">{{$L('放棄')}}</Button>
                                 <Button size="small" type="primary" @click="onSaveSave">{{$L('保存')}}</Button>
                             </div>
                         </div>
@@ -26,21 +26,21 @@
                 </div>
                 <div v-if="file.type=='document' && contentDetail" class="header-hint">
                     <ButtonGroup size="small" shape="circle">
-                        <Button :type="`${contentDetail.type=='md'?'primary':'default'}`" @click="$set(contentDetail, 'type', 'md')">{{$L('MD编辑器')}}</Button>
-                        <Button :type="`${contentDetail.type!='md'?'primary':'default'}`" @click="$set(contentDetail, 'type', 'text')">{{$L('文本编辑器')}}</Button>
+                        <Button :type="`${contentDetail.type=='md'?'primary':'default'}`" @click="$set(contentDetail, 'type', 'md')">{{$L('MD編輯器')}}</Button>
+                        <Button :type="`${contentDetail.type!='md'?'primary':'default'}`" @click="$set(contentDetail, 'type', 'text')">{{$L('文本編輯器')}}</Button>
                     </ButtonGroup>
                 </div>
                 <div v-if="file.type=='mind'" class="header-hint">
-                    {{$L('选中节点，按enter键添加同级节点，tab键添加子节点')}}
+                    {{$L('選中節點，按enter鍵添加同級節點，tab鍵添加子節點')}}
                 </div>
                 <Dropdown v-if="file.type=='mind'"
                           trigger="click"
                           class="header-hint"
                           @on-click="exportMenu">
-                    <a href="javascript:void(0)">{{$L('导出')}}<Icon type="ios-arrow-down"></Icon></a>
+                    <a href="javascript:void(0)">{{$L('匯出')}}<Icon type="ios-arrow-down"></Icon></a>
                     <DropdownMenu slot="list">
-                        <DropdownItem name="png">{{$L('导出PNG图片')}}</DropdownItem>
-                        <DropdownItem name="pdf">{{$L('导出PDF文件')}}</DropdownItem>
+                        <DropdownItem name="png">{{$L('匯出PNG圖片')}}</DropdownItem>
+                        <DropdownItem name="pdf">{{$L('匯出PDF文件')}}</DropdownItem>
                     </DropdownMenu>
                 </Dropdown>
                 <Button v-if="!file.only_view" :disabled="equalContent" :loading="loadIng > 0" class="header-button" size="small" type="primary" @click="handleClick('save')">{{$L('保存')}}</Button>
@@ -116,9 +116,9 @@ export default {
             window.__onBeforeUnload = () => {
                 if (!this.equalContent) {
                     $A.modalConfirm({
-                        content: '修改的内容尚未保存，真的要放弃修改吗？',
+                        content: '修改的内容尚未保存，真的要放棄修改嗎？',
                         cancelText: '取消',
-                        okText: '放弃',
+                        okText: '放棄',
                         onOk: () => {
                             this.$Electron.sendMessage('windowDestroy');
                         }
@@ -175,7 +175,7 @@ export default {
                             if (this.value && data.id == this.fileId) {
                                 $A.modalConfirm({
                                     title: "更新提示",
-                                    content: '团队成员（' + info.nickname + '）更新了内容，<br/>更新时间：' + $A.formatDate("Y-m-d H:i:s", info.time) + '。<br/><br/>点击【确定】加载最新内容。',
+                                    content: '團隊成員（' + info.nickname + '）更新了内容，<br/>更新時間：' + $A.formatDate("Y-m-d H:i:s", info.time) + '。<br/><br/>點擊【確定】加載最新内容。',
                                     onOk: () => {
                                         this.getContent();
                                     }

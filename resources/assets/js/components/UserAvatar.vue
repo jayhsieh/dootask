@@ -7,8 +7,8 @@
         :placement="tooltipPlacement">
         <div slot="content" class="common-avatar-transfer">
             <slot/>
-            <p>{{$L('昵称')}}: {{user.nickname}}</p>
-            <p>{{$L('职位/职称')}}: {{user.profession || '-'}}</p>
+            <p>{{$L('暱稱')}}: {{user.nickname}}</p>
+            <p>{{$L('職位/職稱')}}: {{user.profession || '-'}}</p>
             <div v-if="userId != userid && showIconMenu" class="avatar-icons">
                 <Icon type="ios-chatbubbles" @click="openDialog"/>
             </div>

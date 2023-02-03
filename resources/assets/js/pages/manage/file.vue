@@ -33,21 +33,21 @@
                 </ul>
                 <Button v-if="shearFirst" :disabled="shearFirst.pid == pid" size="small" type="primary" @click="shearTo">
                     <div class="file-shear">
-                        <span>{{$L('粘贴')}}</span>
+                        <span>{{$L('貼上')}}</span>
                         "<em>{{shearFirst.name}}</em>"
-                        <span v-if="shearIds.length > 1">{{$L('等')}}{{shearIds.length}}{{$L('个文件')}}</span>
+                        <span v-if="shearIds.length > 1">{{$L('等')}}{{shearIds.length}}{{$L('個文件')}}</span>
                     </div>
                 </Button>
                 <template v-else-if="selectIds.length > 0">
                     <Button size="small" type="info" @click="handleContextClick('shearSelect')">
                         <Icon type="ios-cut" />
-                        {{$L('剪切')}}
+                        {{$L('剪下')}}
                     </Button>
                     <Button size="small" type="error" @click="deleteFile(selectIds)">
                         <Icon type="ios-trash" />
-                        {{$L('删除')}}
+                        {{$L('刪除')}}
                     </Button>
-                    <Button type="primary" size="small" @click="clearSelect">{{$L('取消选择')}}</Button>
+                    <Button type="primary" size="small" @click="clearSelect">{{$L('取消選擇')}}</Button>
                 </template>
                 <div v-if="loadIng > 0" class="nav-load"><Loading/></div>
                 <div class="flex-full"></div>
@@ -86,7 +86,7 @@
                                 <div :class="`no-dark-mode-before file-icon ${item.type}`">
                                     <template v-if="item.share">
                                         <UserAvatar v-if="item.userid != userId" :userid="item.userid" class="share-avatar" :size="20">
-                                            <p>{{$L('共享权限')}}: {{$L(item.permission == 1 ? '读/写' : '只读')}}</p>
+                                            <p>{{$L('共享權線')}}: {{$L(item.permission == 1 ? '讀/寫' : '只讀')}}</p>
                                         </UserAvatar>
                                         <div v-else class="share-icon no-dark-mode">
                                             <i class="taskfont">&#xe757;</i>
@@ -94,8 +94,8 @@
                                     </template>
                                     <template v-else-if="isParentShare">
                                         <UserAvatar :userid="item.created_id" class="share-avatar" :size="20">
-                                            <p v-if="item.created_id != item.userid"><strong>{{$L('成员创建于')}}: {{item.created_at}}</strong></p>
-                                            <p v-else>{{$L('所有者创建于')}}: {{item.created_at}}</p>
+                                            <p v-if="item.created_id != item.userid"><strong>{{$L('成員創建於')}}: {{item.created_at}}</strong></p>
+                                            <p v-else>{{$L('所有者創建於')}}: {{item.created_at}}</p>
                                         </UserAvatar>
                                     </template>
                                 </div>
@@ -130,7 +130,7 @@
                         stripe/>
                 </div>
                 <div v-if="dialogDrag" class="drag-over" @click="dialogDrag=false">
-                    <div class="drag-text">{{$L('拖动到这里发送')}}</div>
+                    <div class="drag-text">{{$L('拖動到這裡發送')}}</div>
                 </div>
             </div>
 
@@ -144,8 +144,8 @@
                     transfer>
                     <DropdownMenu slot="list">
                         <template v-if="contextMenuItem.id">
-                            <DropdownItem @click.native="handleContextClick('open')">{{$L('打开')}}</DropdownItem>
-                            <DropdownItem @click.native="handleContextClick('select')">{{$L(selectIds.includes(contextMenuItem.id) ? '取消选择' : '选择')}}</DropdownItem>
+                            <DropdownItem @click.native="handleContextClick('open')">{{$L('打開')}}</DropdownItem>
+                            <DropdownItem @click.native="handleContextClick('select')">{{$L(selectIds.includes(contextMenuItem.id) ? '取消選擇' : '選擇')}}</DropdownItem>
 
                             <Dropdown placement="right-start" transfer>
                                 <DropdownItem divided>
@@ -164,13 +164,13 @@
                             </Dropdown>
 
                             <DropdownItem @click.native="handleContextClick('rename')" divided>{{$L('重命名')}}</DropdownItem>
-                            <DropdownItem @click.native="handleContextClick('copy')" :disabled="contextMenuItem.type == 'folder'">{{$L('复制')}}</DropdownItem>
-                            <DropdownItem @click.native="handleContextClick('shear')" :disabled="contextMenuItem.userid != userId">{{$L('剪切')}}</DropdownItem>
+                            <DropdownItem @click.native="handleContextClick('copy')" :disabled="contextMenuItem.type == 'folder'">{{$L('複製')}}</DropdownItem>
+                            <DropdownItem @click.native="handleContextClick('shear')" :disabled="contextMenuItem.userid != userId">{{$L('剪下')}}</DropdownItem>
 
                             <DropdownItem v-if="contextMenuItem.userid == userId" @click.native="handleContextClick('share')" divided>{{$L('共享')}}</DropdownItem>
                             <DropdownItem v-else-if="contextMenuItem.share" @click.native="handleContextClick('outshare')" divided>{{$L('退出共享')}}</DropdownItem>
                             <DropdownItem @click.native="handleContextClick('link')" :divided="contextMenuItem.userid != userId && !contextMenuItem.share" :disabled="contextMenuItem.type == 'folder'">{{$L('链接')}}</DropdownItem>
-                            <DropdownItem @click.native="handleContextClick('download')" :disabled="contextMenuItem.ext == ''">{{$L('下载')}}</DropdownItem>
+                            <DropdownItem @click.native="handleContextClick('download')" :disabled="contextMenuItem.ext == ''">{{$L('下載')}}</DropdownItem>
 
                             <DropdownItem @click.native="handleContextClick('delete')" divided style="color:red">{{$L('删除')}}</DropdownItem>
                         </template>
@@ -192,7 +192,7 @@
         <div v-if="uploadShow && uploadList.length > 0" class="file-upload-list">
             <div class="upload-wrap">
                 <div class="title">
-                    {{$L('上传列表')}} ({{uploadList.length}})
+                    {{$L('上傳列表')}} ({{uploadList.length}})
                     <em v-if="uploadList.find(({status}) => status === 'finished')" @click="uploadClear">{{$L('清空已完成')}}</em>
                 </div>
                 <ul class="content">
@@ -250,7 +250,7 @@
         <!--共享设置-->
         <Modal
             v-model="shareShow"
-            :title="$L('共享设置')"
+            :title="$L('共享設置')"
             :mask-closable="false"
             footer-hide>
             <Form class="page-file-share-form" :model="shareInfo" @submit.native.prevent inline>
@@ -259,7 +259,7 @@
                         v-model="shareInfo.userids"
                         :disabledChoice="shareAlready"
                         :multiple-max="100"
-                        :placeholder="$L('选择共享成员')">
+                        :placeholder="$L('選擇共享成員')">
                         <Option slot="option-prepend" :value="0" :label="$L('所有人')" :disabled="shareAlready.includes(0)">
                             <div class="user-input-option">
                                 <div class="user-input-avatar"><EAvatar class="avatar" icon="el-icon-s-custom"/></div>
@@ -270,9 +270,9 @@
                     </UserInput>
                 </FormItem>
                 <FormItem>
-                    <Select v-model="shareInfo.permission" :placeholder="$L('权限')">
-                        <Option :value="1">{{$L('读/写')}}</Option>
-                        <Option :value="0">{{$L('只读')}}</Option>
+                    <Select v-model="shareInfo.permission" :placeholder="$L('權限')">
+                        <Option :value="1">{{$L('讀/寫')}}</Option>
+                        <Option :value="0">{{$L('只讀')}}</Option>
                     </Select>
                 </FormItem>
                 <FormItem>
@@ -280,7 +280,7 @@
                 </FormItem>
             </Form>
             <div v-if="shareList.length > 0">
-                <div class="page-file-share-title">{{ $L('已共享成员') }}:</div>
+                <div class="page-file-share-title">{{ $L('已共享成員') }}:</div>
                 <ul class="page-file-share-list">
                     <li v-for="item in shareList">
                         <div v-if="item.userid == 0" class="all-avatar">
@@ -288,9 +288,9 @@
                             <span class="avatar-name">{{$L('所有人')}}</span>
                         </div>
                         <UserAvatar v-else :size="32" :userid="item.userid" showName tooltipDisabled/>
-                        <Select v-model="item.permission" :placeholder="$L('权限')" @on-change="upShare(item)">
-                            <Option :value="1">{{ $L('读/写') }}</Option>
-                            <Option :value="0">{{ $L('只读') }}</Option>
+                        <Select v-model="item.permission" :placeholder="$L('權限')" @on-change="upShare(item)">
+                            <Option :value="1">{{ $L('讀/寫') }}</Option>
+                            <Option :value="0">{{ $L('只讀') }}</Option>
                             <Option :value="-1" class="delete">{{ $L('删除') }}</Option>
                         </Select>
                     </li>
@@ -301,11 +301,11 @@
         <!--文件链接-->
         <Modal
             v-model="linkShow"
-            :title="$L('文件链接')"
+            :title="$L('文件連結')"
             :mask-closable="false">
             <div>
                 <Input ref="linkInput" v-model="linkData.url" type="textarea" :rows="3" @on-focus="linkFocus" readonly/>
-                <div class="form-tip" style="padding-top:6px">{{$L('可通过此链接浏览文件。')}}</div>
+                <div class="form-tip" style="padding-top:6px">{{$L('可通過此連結瀏覽文件。')}}</div>
             </div>
             <div slot="footer" class="adaption">
                 <Button type="default" @click="linkShow=false">{{$L('取消')}}</Button>
@@ -316,7 +316,7 @@
                     @on-ok="linkGet(true)"
                     transfer>
                     <div slot="title">
-                        <p><strong>{{$L('注意：刷新将导致原来的链接失效！')}}</strong></p>
+                        <p><strong>{{$L('注意：刷新將導致原來的連結失效！')}}</strong></p>
                     </div>
                     <Button type="primary" :loading="linkLoad > 0">{{$L('刷新')}}</Button>
                 </Poptip>
@@ -337,7 +337,7 @@
             v-model="pasteShow"
             :title="$L(pasteTitle)"
             :cancel-text="$L('取消')"
-            :ok-text="$L('立即上传')"
+            :ok-text="$L('立即上傳')"
             :enter-ok="true"
             @on-ok="pasteSend">
             <div class="dialog-wrapper-paste">
@@ -377,18 +377,18 @@ export default {
             types: [
                 {
                     "value": "folder",
-                    "label": "新建文件夹",
-                    "name": "文件夹",
+                    "label": "新建文件夾",
+                    "name": "文件夾",
                 },
                 {
                     "value": "upload",
-                    "label": "上传文件",
+                    "label": "上傳文件",
                     "name": null,
                     "divided": true
                 },
                 {
                     "value": "updir",
-                    "label": "上传文件夹",
+                    "label": "上傳文件夾",
                     "name": null,
                 },
                 {
@@ -399,17 +399,17 @@ export default {
                 },
                 {
                     "value": "drawio",
-                    "label": "图表",
-                    "name": "图表",
+                    "label": "圖表",
+                    "name": "圖表",
                 },
                 {
                     "value": "mind",
-                    "label": "思维导图",
-                    "name": "导图",
+                    "label": "思維導圖",
+                    "name": "導圖",
                 },
                 {
                     "value": "word",
-                    "label": "Word 文档",
+                    "label": "Word 文檔",
                     "name": "Word",
                     "divided": true
                 },
@@ -572,11 +572,11 @@ export default {
             let hasImage = pasteItem.find(({type}) => type == 'image')
             let hasFile = pasteItem.find(({type}) => type != 'image')
             if (hasImage && hasFile) {
-                return '上传文件/图片'
+                return '上傳文件/圖片'
             } else if (hasImage) {
-                return '上传图片'
+                return '上傳圖片'
             }
-            return '上传文件'
+            return '上傳文件'
         }
     },
 
@@ -737,7 +737,7 @@ export default {
                                         size: 20
                                     },
                                 }, [
-                                    row.created_id != row.userid ? h('p', [h('strong', this.$L('成员创建于') + ": " + row.created_at)]) : h('p', this.$L('所有者创建') + ": " + row.created_at)
+                                    row.created_id != row.userid ? h('p', [h('strong', this.$L('成員創建於') + ": " + row.created_at)]) : h('p', this.$L('所有者創建') + ": " + row.created_at)
                                 ]))
                             }
                             return h('div', {
@@ -765,7 +765,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('类型'),
+                    title: this.$L('類型'),
                     key: 'type',
                     width: 110,
                     resizable: true,
@@ -797,7 +797,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('最后修改'),
+                    title: this.$L('最後修改'),
                     key: 'updated_at',
                     width: 168,
                     resizable: true,
@@ -1014,7 +1014,7 @@ export default {
 
                 case 'outshare':
                     $A.modalConfirm({
-                        content: '你确定要退出【' + item.name + '】共享成员吗？',
+                        content: '你確定要退出【' + item.name + '】共享成員嗎？',
                         loading: true,
                         onOk: () => {
                             this.$store.dispatch("call", {
@@ -1047,9 +1047,9 @@ export default {
                         return;
                     }
                     $A.modalConfirm({
-                        title: '下载文件',
+                        title: '下載文件',
                         content: `${item.name}.${item.ext} (${$A.bytesToSize(item.size)})`,
-                        okText: '立即下载',
+                        okText: '立即下載',
                         onOk: () => {
                             this.$store.dispatch('downUrl', $A.apiUrl(`file/content?id=${item.id}&down=yes`))
                         }
@@ -1088,9 +1088,9 @@ export default {
                 return;
             }
             this.$copyText(this.linkData.url).then(() => {
-                $A.messageSuccess(this.$L('复制成功！'));
+                $A.messageSuccess(this.$L('複製成功！'));
             }, () => {
-                $A.messageError(this.$L('复制失败！'));
+                $A.messageError(this.$L('複製失敗！'));
             });
         },
 
@@ -1125,14 +1125,14 @@ export default {
             const allFolder = !ids.find(id => {
                 return this.files.find(item => item.type != 'folder' && item.id == id)
             });
-            let typeName = allFolder ? "文件夹" : "文件"
+            let typeName = allFolder ? "文件夾" : "文件"
             let fileName = `【${firstFile.name}】等${ids.length}个${typeName}`
             if (ids.length === 1) {
                 fileName = `【${firstFile.name}】${typeName}`
             }
             $A.modalConfirm({
                 title: '删除' + typeName,
-                content: '你确定要删除' + fileName + '吗？',
+                content: '你確定要删除' + fileName + '嗎？',
                 loading: true,
                 onOk: () => {
                     this.$store.dispatch("call", {
@@ -1290,7 +1290,7 @@ export default {
 
         onShare(force = false) {
             if (this.shareInfo.userids.length == 0) {
-                $A.messageWarning("请选择共享成员")
+                $A.messageWarning("請選擇共享成員")
                 return;
             }
             this.shareLoad++;
@@ -1309,7 +1309,7 @@ export default {
                 this.shareLoad--;
                 if (ret === -3001) {
                     $A.modalConfirm({
-                        content: '此文件夹内已有共享文件夹，子文件的共享状态将被取消，是否继续？',
+                        content: '此文件夾内已有共享文件夾，子文件的共享狀態將被取消，是否繼續？',
                         onOk: () => {
                             this.onShare(true)
                         }
@@ -1349,7 +1349,7 @@ export default {
                 item.loading = false;
                 if (ret === -3001) {
                     $A.modalConfirm({
-                        content: '此文件夹内已有共享文件夹，子文件的共享状态将被取消，是否继续？',
+                        content: '此文件夾内已有共享文件夾，子文件的共享狀態將被取消，是否繼續？',
                         onOk: () => {
                             this.upShare(item, true)
                         },

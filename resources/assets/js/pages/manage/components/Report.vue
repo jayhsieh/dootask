@@ -1,7 +1,7 @@
 <template>
     <div class="report">
         <Tabs v-model="reportTabs">
-            <TabPane :label="$L('我的汇报')" name="my">
+            <TabPane :label="$L('我的匯報')" name="my">
                 <ReportMy ref="report" v-if="reportTabs === 'my'" @on-view="onView" @on-edit="onEditReport"/>
             </TabPane>
             <TabPane :label="tabRebder(reportUnreadNumber)" name="receive">
@@ -72,7 +72,7 @@ export default {
             return h => {
                 if (num > 0) {
                     return h('div', [
-                        h('span', {class: 'navbar-item-content'}, this.$L('收到的汇报')),
+                        h('span', {class: 'navbar-item-content'}, this.$L('收到的匯報')),
                         h('Badge', {
                             class: 'manage-box-report',
                             props: {
@@ -82,7 +82,7 @@ export default {
                     ])
                 } else {
                     return h('div', [
-                        h('span', {class: 'navbar-item-content'}, this.$L('收到的汇报')),
+                        h('span', {class: 'navbar-item-content'}, this.$L('收到的匯報')),
                     ])
                 }
             }
@@ -113,7 +113,7 @@ export default {
         onEditReport(id) {
             if (this.$Electron) {
                 let config = {
-                    title: this.$L(id > 0 ? '修改报告' : '新增报告'),
+                    title: this.$L(id > 0 ? '修改報告' : '新增報告'),
                     parent: null,
                     width: Math.min(window.screen.availWidth, 1440),
                     height: Math.min(window.screen.availHeight, 900),

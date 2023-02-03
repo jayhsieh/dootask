@@ -65,7 +65,7 @@ const router = new VueRouter({
     routes
 });
 
-// 进度条配置
+// 進度條配置
 ViewUI.LoadingBar.config({
     color: '#3fcc25',
     failedColor: '#ff0000'
@@ -78,7 +78,7 @@ router.afterEach(() => {
     ViewUI.LoadingBar.finish();
 });
 
-// 加载函数
+// 加載函數
 Vue.prototype.goForward = function(location, isReplace) {
     if (typeof location === 'string') location = {name: location};
     if (isReplace === true) {
@@ -88,7 +88,7 @@ Vue.prototype.goForward = function(location, isReplace) {
     }
 };
 
-// 返回函数
+// 返回函數
 Vue.prototype.goBack = function (number) {
     let history = $A.jsonParse(window.sessionStorage['__history__'] || '{}');
     if ($A.runNum(history['::count']) > 2) {

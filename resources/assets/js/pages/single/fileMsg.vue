@@ -10,7 +10,7 @@
             <AceEditor v-else-if="isType('code')" v-model="msgDetail.content" :ext="msgDetail.msg.ext" class="view-editor" readOnly/>
             <OnlyOffice v-else-if="isType('office')" v-model="officeContent" :code="officeCode" :documentKey="documentKey" readOnly/>
             <iframe v-else-if="isType('preview')" class="preview-iframe" :src="previewUrl"/>
-            <div v-else class="no-support">{{$L('不支持单独查看此消息')}}</div>
+            <div v-else class="no-support">{{$L('不支持單獨查看此消息')}}</div>
         </template>
     </div>
 </template>

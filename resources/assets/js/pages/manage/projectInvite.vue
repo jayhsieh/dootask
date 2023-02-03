@@ -1,6 +1,6 @@
 <template>
     <div class="page-invite">
-        <PageTitle :title="$L('加入项目')"/>
+        <PageTitle :title="$L('加入項目')"/>
         <div v-if="loadIng > 0" class="invite-load">
             <Loading/>
         </div>
@@ -8,14 +8,14 @@
             <Card v-if="project.id > 0">
                 <p slot="title">{{project.name}}</p>
                 <div v-if="project.desc" class="invite-desc">{{project.desc}}</div>
-                <div v-else>{{$L('暂无介绍')}}</div>
+                <div v-else>{{$L('暫無介紹')}}</div>
                 <div class="invite-footer">
                     <Button v-if="already" type="success" icon="ios-checkmark-circle-outline" @click="goProject">{{$L('已加入')}}</Button>
-                    <Button v-else type="primary" :loading="joinLoad > 0" @click="joinProject">{{$L('加入项目')}}</Button>
+                    <Button v-else type="primary" :loading="joinLoad > 0" @click="joinProject">{{$L('加入項目')}}</Button>
                 </div>
             </Card>
             <Card v-else>
-                <p>{{$L('邀请地址不存在或已被删除！')}}</p>
+                <p>{{$L('邀請地址不存在或已被删除！')}}</p>
             </Card>
         </div>
     </div>

@@ -1,16 +1,16 @@
 <template>
     <div class="setting-item submit">
         <Tabs v-model="tabAction">
-            <TabPane :label="$L('系统设置')" name="setting">
+            <TabPane :label="$L('系統設置')" name="setting">
                 <SystemSetting/>
             </TabPane>
-            <TabPane :label="$L('任务优先级')" name="taskPriority">
+            <TabPane :label="$L('任務優先級')" name="taskPriority">
                 <SystemTaskPriority/>
             </TabPane>
-            <TabPane :label="$L('项目模板')" name="columnTemplate">
+            <TabPane :label="$L('項目模板')" name="columnTemplate">
                 <SystemColumnTemplate/>
             </TabPane>
-            <TabPane :label="$L('邮件设置')" name="emailSetting">
+            <TabPane :label="$L('郵件設置')" name="emailSetting">
                 <SystemEmailSetting/>
             </TabPane>
         </Tabs>

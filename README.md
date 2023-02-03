@@ -1,13 +1,6 @@
 # Install (Docker)
 
-English | **[中文文档](./README_CN.md)**
-
-- [Screenshot Preview](README_PREVIEW.md)
-- [Demo site](http://www.dootask.com/)
-
-**QQ Group**
-
-Group No.: `546574618`
+English | **[中文文檔](./README_CN.md)**
 
 ## Setup
 
@@ -18,17 +11,15 @@ Group No.: `546574618`
 ### Deployment project
 
 ```bash
-# 1、Clone the repository
+# 1. Clone the repository
 
 # Clone projects on github
 git clone --depth=1 https://github.com/kuaifan/dootask.git
-# Or you can use gitee
-git clone --depth=1 https://gitee.com/aipaw/dootask.git
 
-# 2、Enter directory
+# 2. Enter directory
 cd dootask
 
-# 3、Installation（Custom port installation: ./cmd install --port 2222）
+# 3. Installation（Custom port installation: ./cmd install --port 2222）
 ./cmd install
 ```
 
@@ -50,7 +41,7 @@ cd dootask
 ```bash
 ./cmd stop
 
-# P.S: Once application is set up, whenever you want to start the server (if it is stopped) run below command
+# P.S.: Once application is set up, whenever you want to start the server (if it is stopped) run below command
 ./cmd start
 ```
 
@@ -81,12 +72,12 @@ cd dootask
 ### NGINX PROXY SSL
 
 ```bash 
-# 1、Nginx config add
+# 1. Nginx config add
 proxy_set_header X-Forwarded-Host $http_host;
 proxy_set_header X-Forwarded-Proto $scheme;
 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
-# 2、Running commands in a project
+# 2. Running commands in a project
 ./cmd https
 ```
 

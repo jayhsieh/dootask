@@ -1,105 +1,95 @@
 # Install (Docker)
 
-**[English](./README.md)** | 中文文档
+**[English](./README.md)** | 中文文檔
 
-- [截图预览](README_PREVIEW.md)
-- [演示站点](http://www.dootask.com/)
+## 安裝程序
 
-**QQ交流群**
+- 必需安裝：`Docker` 和 `Docker Compose v2.0+`
+- 支持環境：`Centos/Debian/Ubuntu/macOS`
+- 硬體建議：2核4G以上
 
-- QQ群号: `546574618`
-
-## 安装程序
-
-- 必须安装：`Docker` 和 `Docker Compose v2.0+`
-- 支持环境：`Centos/Debian/Ubuntu/macOS`
-- 硬件建议：2核4G以上
-
-### 部署项目
+### 部署項目
 
 ```bash
-# 1、克隆项目到您的本地或服务器
+# 1. clone項目到您的本地端或伺服器端
 
-# 通过github克隆项目
+# 通過github clone項目
 git clone --depth=1 https://github.com/kuaifan/dootask.git
-# 或者你也可以使用gitee
-git clone --depth=1 https://gitee.com/aipaw/dootask.git
 
-# 2、进入目录
+# 2. 進入目錄
 cd dootask
 
-# 3、一键安装项目（自定义端口安装 ./cmd install --port 2222）
+# 3. 一鑑安裝項目（自定義端口安裝 ./cmd install --port 2222）
 ./cmd install
 ```
 
-### 重置密码
+### 重置密碼
 
 ```bash
-# 重置默认管理员密码
+# 重置默認管理員密碼
 ./cmd repassword
 ```
 
-### 更换端口
+### 更換端口
 
 ```bash
 ./cmd port 2222
 ```
 
-### 停止服务
+### 停止服務
 
 ```bash
 ./cmd stop
 
-# 一旦应用程序被设置，无论何时你想要启动服务器(如果它被停止)运行以下命令
+# 一旦應用程序被設置，無論何時你想要啟動服務器(如果它被停止)運行以下命令
 ./cmd start
 ```
 
-### 开发编译
+### 開發編譯
 
 ```bash
-# 开发模式，仅限macOS
+# 開發模式，僅限 macOS
 ./cmd dev
    
-# 编译项目，仅限macOS
+# 編譯項目，僅限 macOS
 ./cmd prod  
 ```
 
-
-### 运行命令的快捷方式
+### 運行命令的快捷方式
 
 ```bash
-# 你可以使用以下命令来执行
-./cmd artisan "your command"          # 运行 artisan 命令
-./cmd php "your command"              # 运行 php 命令
-./cmd nginx "your command"            # 运行 nginx 命令
-./cmd redis "your command"            # 运行 redis 命令
-./cmd composer "your command"         # 运行 composer 命令
-./cmd supervisorctl "your command"    # 运行 supervisorctl 命令
-./cmd test "your command"             # 运行 phpunit 命令
-./cmd mysql "your command"            # 运行 mysql 命令 (backup: 备份数据库，recovery: 还原数据库)
+# 你可以使用以下命令來執行
+./cmd artisan "your command"          # 運行 artisan 命令
+./cmd php "your command"              # 運行 php 命令
+./cmd nginx "your command"            # 運行 nginx 命令
+./cmd redis "your command"            # 運行 redis 命令
+./cmd composer "your command"         # 運行 composer 命令
+./cmd supervisorctl "your command"    # 運行 supervisorctl 命令
+./cmd test "your command"             # 運行 phpunit 命令
+./cmd mysql "your command"            # 運行 mysql 命令 (backup: 備份數據庫，recovery: 還原數據庫)
 ```
 
 ### NGINX 代理 SSL
 
 ```bash 
-# 1、Nginx 代理配置添加
+# 1. Nginx 代理配置添加
 proxy_set_header X-Forwarded-Host $http_host;
 proxy_set_header X-Forwarded-Proto $scheme;
 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
-# 2、在项目下运行命令
+# 2. 在項目下運行命令
 ./cmd https
 ```
 
-## 升级更新
+## 升級更新
 
-**注意：在升级之前请备份好你的数据！**
+**注意：在升級之前請備份好你的數據！**
 
 ```bash
-# 方法1：在项目下运行命令
+# 方法1：在項目下運行命令
 ./cmd update
 
-# （或者）方法2：如果方法1失败请使用此方法
+# （或者）方法2：如果方法1失敗請使用此方法
 git pull
 ./cmd mysql backup
 ./cmd uninstall
@@ -107,30 +97,30 @@ git pull
 ./cmd mysql recovery
 ```
 
-如果升级后出现502请运行 `./cmd restart` 重启服务即可。
+如果升級後出現502請運行 `./cmd restart` 重啟服務即可。
 
-## 迁移项目
+## 遷移項目
 
-在新项目安装好之后按照以下步骤完成项目迁移：
+在新項目安裝好之後按照以下步驟完成項目遷移：
 
-1、备份原数据库
+1. 備份原數據庫
 
 ```bash
-# 在旧的项目下运行命令
+# 在舊的項目下運行命令
 ./cmd mysql backup
 ```
 
-2、将`数据库备份文件`及`public/uploads`目录拷贝至新项目
+2. 將`數據庫備份文件`及`public/uploads`目錄拷貝至新項目
 
-3、还原数据库至新项目
+3. 還原數據庫至新項目
 ```bash
-# 在新的项目下运行命令
+# 在新的項目下運行命令
 ./cmd mysql recovery
 ```
 
-## 卸载项目
+## 卸載項目
 
 ```bash
-# 在项目下运行命令
+# 在項目下運行命令
 ./cmd uninstall
 ```

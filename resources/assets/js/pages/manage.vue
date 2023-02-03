@@ -42,7 +42,7 @@
                                     :name="item.name">{{ item.name }}</DropdownItem>
                             </DropdownMenu>
                             <DropdownMenu v-else slot="list">
-                                <DropdownItem style="color:darkgrey">{{ $L('暂无打开记录') }}</DropdownItem>
+                                <DropdownItem style="color:darkgrey">{{ $L('暫無打開紀錄') }}</DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
                         <!-- 团队管理 -->
@@ -59,14 +59,14 @@
                                 </div>
                             </DropdownItem>
                             <DropdownMenu slot="list">
-                                <DropdownItem name="allUser">{{$L('团队管理')}}</DropdownItem>
+                                <DropdownItem name="allUser">{{$L('團隊管理')}}</DropdownItem>
                                 <DropdownItem name="workReport">
                                     <div class="manage-menu-flex">
-                                        {{$L('工作报告')}}
+                                        {{$L('工作報告')}}
                                         <Badge v-if="reportUnreadNumber > 0" class="manage-menu-report-badge" :count="reportUnreadNumber"/>
                                     </div>
                                 </DropdownItem>
-                                <DropdownItem name="exportTask">{{$L('导出任务统计')}}</DropdownItem>
+                                <DropdownItem name="exportTask">{{$L('匯出任務統計')}}</DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
                         <!-- 主题皮肤 -->
@@ -135,14 +135,14 @@
             <ul :class="overlayClass" @scroll="handleClickTopOperateOutside">
                 <li @click="toggleRoute('dashboard')" :class="classNameRoute('dashboard')">
                     <i class="taskfont">&#xe6fb;</i>
-                    <div class="menu-title">{{$L('仪表盘')}}</div>
+                    <div class="menu-title">{{$L('儀表板')}}</div>
                     <Badge v-if="dashboardTask.overdue.length > 0" class="menu-badge" type="error" :count="dashboardTask.overdue.length"/>
                     <Badge v-else-if="dashboardTask.today.length > 0" class="menu-badge" type="info" :count="dashboardTask.today.length"/>
                     <Badge v-else-if="dashboardTask.all.length > 0" class="menu-badge" type="primary" :count="dashboardTask.all.length"/>
                 </li>
                 <li @click="toggleRoute('calendar')" :class="classNameRoute('calendar')">
                     <i class="taskfont">&#xe6f5;</i>
-                    <div class="menu-title">{{$L('日历')}}</div>
+                    <div class="menu-title">{{$L('日曆')}}</div>
                 </li>
                 <li @click="toggleRoute('messenger')" :class="classNameRoute('messenger')">
                     <i class="taskfont">&#xe6eb;</i>
@@ -191,7 +191,7 @@
                             transfer>
                             <DropdownMenu slot="list">
                                 <DropdownItem @click.native="handleTopClick">
-                                    {{ $L(topOperateItem.top_at ? '取消置顶' : '置顶该项目') }}
+                                    {{ $L(topOperateItem.top_at ? '取消置頂' : '置頂該項目') }}
                                 </DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
@@ -202,16 +202,16 @@
                 v-if="projectTotal > 20"
                 class="manage-project-search"
                 :class="{loading:projectKeyLoading > 0}">
-                <Input prefix="ios-search" v-model="projectKeyValue" :placeholder="$L('共' + projectTotal + '个项目，搜索...')" clearable />
+                <Input prefix="ios-search" v-model="projectKeyValue" :placeholder="$L('共' + projectTotal + '個項目，搜索...')" clearable />
             </div>
             <ButtonGroup class="manage-box-new-group">
-                <Button class="manage-box-new" type="primary" icon="md-add" @click="onAddShow">{{$L('新建项目')}}</Button>
+                <Button class="manage-box-new" type="primary" icon="md-add" @click="onAddShow">{{$L('新建項目')}}</Button>
                 <Dropdown @on-click="onAddTask(0)">
                     <Button type="primary">
                         <Icon type="ios-arrow-down"></Icon>
                     </Button>
                     <DropdownMenu slot="list">
-                        <DropdownItem>{{$L('新建任务')}} ({{mateName}}+K)</DropdownItem>
+                        <DropdownItem>{{$L('新建任務')}} ({{mateName}}+K)</DropdownItem>
                     </DropdownMenu>
                 </Dropdown>
             </ButtonGroup>
@@ -226,24 +226,24 @@
         <!--新建项目-->
         <Modal
             v-model="addShow"
-            :title="$L('新建项目')"
+            :title="$L('新建項目')"
             :mask-closable="false">
             <Form ref="addProject" :model="addData" :rules="addRule" label-width="auto" @submit.native.prevent>
-                <FormItem prop="name" :label="$L('项目名称')">
+                <FormItem prop="name" :label="$L('項目名稱')">
                     <Input ref="projectName" type="text" v-model="addData.name"></Input>
                 </FormItem>
-                <FormItem v-if="addData.columns" :label="$L('任务列表')">
+                <FormItem v-if="addData.columns" :label="$L('任務列表')">
                     <TagInput v-model="addData.columns"/>
                 </FormItem>
-                <FormItem v-else :label="$L('项目模板')">
-                    <Select :value="0" @on-change="selectChange" :placeholder="$L('请选择模板')">
+                <FormItem v-else :label="$L('項目模板')">
+                    <Select :value="0" @on-change="selectChange" :placeholder="$L('請選擇模板')">
                         <Option v-for="(item, index) in columns" :value="index" :key="index">{{ item.name }}</Option>
                     </Select>
                 </FormItem>
-                <FormItem prop="flow" :label="$L('开启工作流')">
+                <FormItem prop="flow" :label="$L('開啟工作流')">
                     <RadioGroup v-model="addData.flow">
-                        <Radio label="open">{{$L('开启')}}</Radio>
-                        <Radio label="close">{{$L('关闭')}}</Radio>
+                        <Radio label="open">{{$L('開啟')}}</Radio>
+                        <Radio label="close">{{$L('關閉')}}</Radio>
                     </RadioGroup>
                 </FormItem>
             </Form>
@@ -268,30 +268,30 @@
         <!--导出任务统计-->
         <Modal
             v-model="exportTaskShow"
-            :title="$L('导出任务统计')"
+            :title="$L('匯出任務統計')"
             :mask-closable="false">
             <Form ref="exportTask" :model="exportData" label-width="auto" @submit.native.prevent>
-                <FormItem :label="$L('导出会员')">
-                    <UserInput v-model="exportData.userid" :multiple-max="20" :placeholder="$L('请选择会员')"/>
+                <FormItem :label="$L('匯出會員')">
+                    <UserInput v-model="exportData.userid" :multiple-max="20" :placeholder="$L('請選擇會員')"/>
                 </FormItem>
-                <FormItem :label="$L('时间范围')">
+                <FormItem :label="$L('時間範圍')">
                     <DatePicker
                         v-model="exportData.time"
                         type="daterange"
                         format="yyyy/MM/dd"
                         style="width:100%"
-                        :placeholder="$L('请选择时间')"/>
+                        :placeholder="$L('請選擇時間')"/>
                 </FormItem>
-                <FormItem prop="type" :label="$L('导出时间类型')">
+                <FormItem prop="type" :label="$L('匯出時間類型')">
                     <RadioGroup v-model="exportData.type">
-                        <Radio label="taskTime">{{$L('任务时间')}}</Radio>
-                        <Radio label="createdTime">{{$L('创建时间')}}</Radio>
+                        <Radio label="taskTime">{{$L('任務時間')}}</Radio>
+                        <Radio label="createdTime">{{$L('創建時間')}}</Radio>
                     </RadioGroup>
                 </FormItem>
             </Form>
             <div slot="footer" class="adaption">
                 <Button type="default" @click="exportTaskShow=false">{{$L('取消')}}</Button>
-                <Button type="primary" :loading="exportLoadIng > 0" @click="onExportTask">{{$L('导出')}}</Button>
+                <Button type="primary" :loading="exportLoadIng > 0" @click="onExportTask">{{$L('匯出')}}</Button>
             </div>
         </Modal>
 
@@ -525,44 +525,44 @@ export default {
             const {userIsAdmin} = this;
             if (userIsAdmin) {
                 return [
-                    {path: 'taskBrowse', name: '最近打开的任务'},
+                    {path: 'taskBrowse', name: '最近打開的任務'},
 
-                    {path: 'personal', name: '个人设置', divided: true},
-                    {path: 'password', name: '密码设置'},
-                    {path: 'clearCache', name: '清除缓存'},
+                    {path: 'personal', name: '個人設置', divided: true},
+                    {path: 'password', name: '密碼設置'},
+                    {path: 'clearCache', name: '清除緩存'},
 
-                    {path: 'system', name: '系统设置', divided: true},
+                    {path: 'system', name: '系統設置', divided: true},
                     {path: 'version', name: '更新版本', visible: !!this.clientNewVersion},
 
-                    {path: 'allProject', name: '所有项目', divided: true},
-                    {path: 'archivedProject', name: '已归档的项目'},
+                    {path: 'allProject', name: '所有項目', divided: true},
+                    {path: 'archivedProject', name: '已歸檔的項目'},
 
-                    {path: 'team', name: '团队管理', divided: true},
+                    {path: 'team', name: '團隊管理', divided: true},
 
-                    {path: 'theme', name: '主题皮肤', divided: true},
+                    {path: 'theme', name: '背景主題', divided: true},
 
                     {path: 'language', name: this.currentLanguage, divided: true},
 
-                    {path: 'logout', name: '退出登录', style: {color: '#f40'}, divided: true},
+                    {path: 'logout', name: '登出', style: {color: '#f40'}, divided: true},
                 ]
             } else {
                 return [
-                    {path: 'taskBrowse', name: '最近打开的任务'},
+                    {path: 'taskBrowse', name: '最近打開的任務'},
 
-                    {path: 'personal', name: '个人设置', divided: true},
-                    {path: 'password', name: '密码设置'},
-                    {path: 'clearCache', name: '清除缓存'},
+                    {path: 'personal', name: '個人設置', divided: true},
+                    {path: 'password', name: '密碼設置'},
+                    {path: 'clearCache', name: '清除緩存'},
 
                     {path: 'version', name: '更新版本', divided: true, visible: !!this.clientNewVersion},
 
-                    {path: 'workReport', name: '工作报告', divided: true},
-                    {path: 'archivedProject', name: '已归档的项目'},
+                    {path: 'workReport', name: '工作報告', divided: true},
+                    {path: 'archivedProject', name: '已歸檔的項目'},
 
-                    {path: 'theme', name: '主题皮肤', divided: true},
+                    {path: 'theme', name: '背景主題', divided: true},
 
                     {path: 'language', name: this.currentLanguage, divided: true},
 
-                    {path: 'logout', name: '退出登录', style: {color: '#f40'}, divided: true},
+                    {path: 'logout', name: '登出', style: {color: '#f40'}, divided: true},
                 ]
             }
         },
@@ -698,8 +698,8 @@ export default {
         initLanguage() {
             this.addRule = {
                 name: [
-                    { required: true, message: this.$L('请填写项目名称！'), trigger: 'change' },
-                    { type: 'string', min: 2, message: this.$L('项目名称至少2个字！'), trigger: 'change' }
+                    { required: true, message: this.$L('請填寫項目名稱！'), trigger: 'change' },
+                    { type: 'string', min: 2, message: this.$L('項目名稱至少2个字！'), trigger: 'change' }
                 ]
             };
         },
@@ -760,8 +760,8 @@ export default {
                     return;
                 case 'logout':
                     $A.modalConfirm({
-                        title: '退出登录',
-                        content: '你确定要登出系统？',
+                        title: '登出',
+                        content: '你確定要登出系统？',
                         onOk: () => {
                             this.$store.dispatch("logout", false)
                         }
@@ -889,7 +889,7 @@ export default {
                     body = msg.text;
                     break;
                 case 'file':
-                    body = '[' + this.$L(msg.type == 'img' ? '图片信息' : '文件信息') + ']'
+                    body = '[' + this.$L(msg.type == 'img' ? '圖片信息' : '文件信息') + ']'
                     break;
                 default:
                     return;
@@ -994,7 +994,7 @@ export default {
         },
 
         notificationInit() {
-            this.notificationClass = new notificationKoro(this.$L("打开通知成功"));
+            this.notificationClass = new notificationKoro(this.$L("打開通知成功"));
             if (this.notificationClass.support) {
                 this.notificationClass.notificationEvent({
                     onclick: ({target}) => {
@@ -1035,9 +1035,9 @@ export default {
                     case 'denied':
                     case 'already denied':
                         if (msg === "denied") {
-                            console.log("您刚刚拒绝显示通知 请在设置中更改设置");
+                            console.log("您剛剛拒絕顯示通知 請在設置中更改設置");
                         } else {
-                            console.log("您曾级拒绝显示通知 请在设置中更改设置");
+                            console.log("您曾經拒絕顯示通知 請在設置中更改設置");
                         }
                         break;
                 }

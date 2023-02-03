@@ -5,7 +5,7 @@
             <div class="project-titbox">
                 <div class="project-title">
                     <h1>{{projectData.name}}</h1>
-                    <label v-if="projectData.top_at" class="top-text">{{$L('置顶')}}</label>
+                    <label v-if="projectData.top_at" class="top-text">{{$L('置頂')}}</label>
                     <div v-if="loading" class="project-load"><Loading/></div>
                 </div>
                 <ul class="project-icons">
@@ -13,13 +13,13 @@
                         <ul>
                             <li>
                                 <UserAvatar :userid="projectData.owner_userid" :size="36" :borderWitdh="2" :openDelay="0">
-                                    <p>{{$L('项目负责人')}}</p>
+                                    <p>{{$L('項目負責人')}}</p>
                                 </UserAvatar>
                                 <Badge v-if="(windowWidth <= 980 || projectParameter('chat')) && projectUser.length > 0" type="normal" :count="projectData.project_user.length"/>
                             </li>
                             <template v-if="!(windowWidth <= 980 || projectParameter('chat')) && projectUser.length > 0" v-for="item in projectUser">
                                 <li v-if="item.userid === -1" class="more">
-                                    <ETooltip :content="$L('共' + (projectData.project_user.length) + '个成员')">
+                                    <ETooltip :content="$L('共' + (projectData.project_user.length) + '個成員')">
                                         <Icon type="ios-more"/>
                                     </ETooltip>
                                 </li>
@@ -30,7 +30,7 @@
                         </ul>
                     </li>
                     <li class="project-icon" @click="addTaskOpen(0)">
-                        <ETooltip :content="$L('添加任务')">
+                        <ETooltip :content="$L('添加任務')">
                             <Icon class="menu-icon" type="md-add" />
                         </ETooltip>
                     </li>
@@ -38,7 +38,7 @@
                         <Tooltip :always="searchText!=''" @on-popper-show="searchFocus" theme="light" :rawIndex="10">
                             <Icon class="menu-icon" type="ios-search" @click="searchFocus" />
                             <div slot="content">
-                                <Input v-model="searchText" ref="searchInput" :placeholder="$L('名称、描述...')" class="search-input" clearable/>
+                                <Input v-model="searchText" ref="searchInput" :placeholder="$L('名稱、描述...')" class="search-input" clearable/>
                             </div>
                         </Tooltip>
                     </li>
@@ -50,22 +50,22 @@
                         <EDropdown @command="projectDropdown" trigger="click" transfer>
                             <Icon class="menu-icon" type="ios-more" />
                             <EDropdownMenu v-if="projectData.owner_userid === userId" slot="dropdown">
-                                <EDropdownItem command="setting">{{$L('项目设置')}}</EDropdownItem>
-                                <EDropdownItem command="workflow">{{$L('工作流设置')}}</EDropdownItem>
-                                <EDropdownItem command="user" divided>{{$L('成员管理')}}</EDropdownItem>
-                                <EDropdownItem command="invite">{{$L('邀请链接')}}</EDropdownItem>
-                                <EDropdownItem command="log" divided>{{$L('项目动态')}}</EDropdownItem>
-                                <EDropdownItem command="archived_task">{{$L('已归档任务')}}</EDropdownItem>
-                                <EDropdownItem command="deleted_task">{{$L('已删除任务')}}</EDropdownItem>
-                                <EDropdownItem command="transfer" divided>{{$L('移交项目')}}</EDropdownItem>
-                                <EDropdownItem command="archived">{{$L('归档项目')}}</EDropdownItem>
-                                <EDropdownItem command="delete" style="color:#f40">{{$L('删除项目')}}</EDropdownItem>
+                                <EDropdownItem command="setting">{{$L('項目設置')}}</EDropdownItem>
+                                <EDropdownItem command="workflow">{{$L('工作流設置')}}</EDropdownItem>
+                                <EDropdownItem command="user" divided>{{$L('成員管理')}}</EDropdownItem>
+                                <EDropdownItem command="invite">{{$L('邀請連結')}}</EDropdownItem>
+                                <EDropdownItem command="log" divided>{{$L('項目動態')}}</EDropdownItem>
+                                <EDropdownItem command="archived_task">{{$L('已歸檔任務')}}</EDropdownItem>
+                                <EDropdownItem command="deleted_task">{{$L('已删除任務')}}</EDropdownItem>
+                                <EDropdownItem command="transfer" divided>{{$L('移交項目')}}</EDropdownItem>
+                                <EDropdownItem command="archived">{{$L('歸檔項目')}}</EDropdownItem>
+                                <EDropdownItem command="delete" style="color:#f40">{{$L('删除項目')}}</EDropdownItem>
                             </EDropdownMenu>
                             <EDropdownMenu v-else slot="dropdown">
-                                <EDropdownItem command="log">{{$L('项目动态')}}</EDropdownItem>
-                                <EDropdownItem command="archived_task">{{$L('已归档任务')}}</EDropdownItem>
-                                <EDropdownItem command="deleted_task">{{$L('已删除任务')}}</EDropdownItem>
-                                <EDropdownItem command="exit" divided style="color:#f40">{{$L('退出项目')}}</EDropdownItem>
+                                <EDropdownItem command="log">{{$L('項目動態')}}</EDropdownItem>
+                                <EDropdownItem command="archived_task">{{$L('已歸檔任務')}}</EDropdownItem>
+                                <EDropdownItem command="deleted_task">{{$L('已删除任務')}}</EDropdownItem>
+                                <EDropdownItem command="exit" divided style="color:#f40">{{$L('退出項目')}}</EDropdownItem>
                             </EDropdownMenu>
                         </EDropdown>
                     </li>
@@ -75,7 +75,7 @@
                 <div class="project-subtitle">{{projectData.desc}}</div>
                 <div class="project-switch">
                     <div v-if="completedCount > 0" class="project-checkbox">
-                        <Checkbox :value="projectParameter('completedTask')" @on-change="toggleCompleted">{{$L('显示已完成')}}</Checkbox>
+                        <Checkbox :value="projectParameter('completedTask')" @on-change="toggleCompleted">{{$L('顯示已完成')}}</Checkbox>
                     </div>
                     <div v-if="flowList.length > 0" class="project-select">
                         <Cascader :data="flowData" @on-change="flowChange" transfer-class-name="project-list-flow-cascader" transfer>
@@ -183,7 +183,7 @@
                                             <UserAvatar :userid="user.userid" size="32" :borderWitdh="2" :borderColor="item.color"/>
                                         </li>
                                         <li v-if="ownerUser(item.task_user).length === 0" class="no-owner">
-                                            <Button type="primary" size="small" ghost @click.stop="openTask(item, true)">{{$L('领取任务')}}</Button>
+                                            <Button type="primary" size="small" ghost @click.stop="openTask(item, true)">{{$L('領取任務')}}</Button>
                                         </li>
                                     </ul>
                                     <div v-if="item.file_num > 0" class="task-icon">{{item.file_num}}<Icon type="ios-link-outline" /></div>
@@ -222,7 +222,7 @@
                             @on-blur="addColumnBlur"
                             @on-enter="addColumnSubmit"
                             @on-clear="addColumnShow=false"
-                            :placeholder="$L('列表名称，回车创建')"
+                            :placeholder="$L('列表名稱，返回創建')"
                             clearable/>
                     </div>
                 </li>
@@ -231,21 +231,21 @@
         <div v-else-if="tabTypeActive === 'table'" class="project-table overlay-y">
             <div class="project-table-head">
                 <Row class="task-row">
-                    <Col span="12"># {{$L('任务名称')}}</Col>
+                    <Col span="12"># {{$L('任務名稱')}}</Col>
                     <Col span="3">{{$L('列表')}}</Col>
                     <Col span="3">
                         <div class="sort" @click="onSort('level')">
-                            {{$L('优先级')}}
+                            {{$L('優先級')}}
                             <div class="task-sort">
                                 <Icon :class="{on:sortField=='level' && sortType=='asc'}" type="md-arrow-dropup" />
                                 <Icon :class="{on:sortField=='level' && sortType=='desc'}" type="md-arrow-dropdown" />
                             </div>
                         </div>
                     </Col>
-                    <Col span="3">{{$L('负责人')}}</Col>
+                    <Col span="3">{{$L('負責人')}}</Col>
                     <Col span="3">
                         <div class="sort" @click="onSort('end_at')">
-                            {{$L('到期时间')}}
+                            {{$L('到期時間')}}
                             <div class="task-sort">
                                 <Icon :class="{on:sortField=='end_at' && sortType=='asc'}" type="md-arrow-dropup" />
                                 <Icon :class="{on:sortField=='end_at' && sortType=='desc'}" type="md-arrow-dropdown" />
@@ -259,7 +259,7 @@
                 <Row class="task-row">
                     <Col span="12" class="row-title">
                         <i class="taskfont" @click="$store.dispatch('toggleProjectParameter', 'showMy')">&#xe689;</i>
-                        <div class="row-h1">{{$L('我的任务')}}</div>
+                        <div class="row-h1">{{$L('我的任務')}}</div>
                         <div class="row-num">({{myList.length}})</div>
                     </Col>
                     <Col span="3"></Col>
@@ -274,7 +274,7 @@
                 <Row class="task-row">
                     <Col span="12" class="row-title">
                         <i class="taskfont" @click="$store.dispatch('toggleProjectParameter', 'showHelp')">&#xe689;</i>
-                        <div class="row-h1">{{$L('协助的任务')}}</div>
+                        <div class="row-h1">{{$L('協助的任務')}}</div>
                         <div class="row-num">({{helpList.length}})</div>
                     </Col>
                     <Col span="3"></Col>
@@ -289,7 +289,7 @@
                 <Row class="task-row">
                     <Col span="12" class="row-title">
                         <i class="taskfont" @click="$store.dispatch('toggleProjectParameter', 'showUndone')">&#xe689;</i>
-                        <div class="row-h1">{{$L('未完成任务')}}</div>
+                        <div class="row-h1">{{$L('未完成任務')}}</div>
                         <div class="row-num">({{unList.length}})</div>
                     </Col>
                     <Col span="3"></Col>
@@ -304,13 +304,13 @@
                 <Row class="task-row">
                     <Col span="12" class="row-title">
                         <i class="taskfont" @click="$store.dispatch('toggleProjectParameter', 'showCompleted')">&#xe689;</i>
-                        <div class="row-h1">{{$L('已完成任务')}}</div>
+                        <div class="row-h1">{{$L('已完成任務')}}</div>
                         <div class="row-num">({{completedList.length}})</div>
                     </Col>
                     <Col span="3"></Col>
                     <Col span="3"></Col>
                     <Col span="3"></Col>
-                    <Col span="3">{{projectData.task_num > 0 && projectParameter('showCompleted') ? $L('完成时间') : ''}}</Col>
+                    <Col span="3">{{projectData.task_num > 0 && projectParameter('showCompleted') ? $L('完成時間') : ''}}</Col>
                 </Row>
                 <TaskRow v-if="projectParameter('showCompleted')" :list="completedList" open-key="completed" @on-priority="addTaskOpen" showCompleteAt/>
             </div>
@@ -322,14 +322,14 @@
         <!--项目设置-->
         <Modal
             v-model="settingShow"
-            :title="$L('项目设置')"
+            :title="$L('項目設置')"
             :mask-closable="false">
             <Form :model="settingData" label-width="auto" @submit.native.prevent>
-                <FormItem prop="name" :label="$L('项目名称')">
+                <FormItem prop="name" :label="$L('項目名稱')">
                     <Input ref="projectName" type="text" v-model="settingData.name" :maxlength="32" :placeholder="$L('必填')"></Input>
                 </FormItem>
-                <FormItem prop="desc" :label="$L('项目介绍')">
-                    <Input ref="projectDesc" type="textarea" :autosize="{ minRows: 3, maxRows: 5 }" v-model="settingData.desc" :maxlength="255" :placeholder="$L('选填')"></Input>
+                <FormItem prop="desc" :label="$L('項目介紹')">
+                    <Input ref="projectDesc" type="textarea" :autosize="{ minRows: 3, maxRows: 5 }" v-model="settingData.desc" :maxlength="255" :placeholder="$L('選填')"></Input>
                 </FormItem>
             </Form>
             <div slot="footer" class="adaption">
@@ -341,11 +341,11 @@
         <!--成员管理-->
         <Modal
             v-model="userShow"
-            :title="$L('成员管理')"
+            :title="$L('成員管理')"
             :mask-closable="false">
             <Form :model="userData" label-width="auto" @submit.native.prevent>
-                <FormItem prop="userids" :label="$L('项目成员')">
-                    <UserInput v-model="userData.userids" :uncancelable="userData.uncancelable" :multiple-max="100" :placeholder="$L('选择项目成员')"/>
+                <FormItem prop="userids" :label="$L('項目成員')">
+                    <UserInput v-model="userData.userids" :uncancelable="userData.uncancelable" :multiple-max="100" :placeholder="$L('選擇項目成員')"/>
                 </FormItem>
             </Form>
             <div slot="footer" class="adaption">
@@ -358,10 +358,10 @@
                     @on-ok="onUser"
                     transfer>
                     <div slot="title">
-                        <p><strong>{{$L('移除成员负责的任务将变成无负责人，')}}</strong></p>
+                        <p><strong>{{$L('移除成員負責的任務將變成無負責人，')}}</strong></p>
                         <p>{{$L('注意此操作不可逆！')}}</p>
                         <ul class="project-list-wait-remove">
-                            <li>{{$L('即将移除')}}：</li>
+                            <li>{{$L('即將移除')}}：</li>
                             <li v-for="id in userWaitRemove" :key="id">
                                 <UserAvatar :userid="id" :size="20" showName tooltipDisabled/>
                             </li>
@@ -376,12 +376,12 @@
         <!--邀请链接-->
         <Modal
             v-model="inviteShow"
-            :title="$L('邀请链接')"
+            :title="$L('邀請連結')"
             :mask-closable="false">
             <Form :model="inviteData" label-width="auto" @submit.native.prevent>
-                <FormItem :label="$L('链接地址')">
+                <FormItem :label="$L('邀請地址')">
                     <Input ref="inviteInput" v-model="inviteData.url" type="textarea" :rows="3" @on-focus="inviteFocus" readonly/>
-                    <div class="form-tip">{{$L('可通过此链接直接加入项目。')}}</div>
+                    <div class="form-tip">{{$L('可通過此連結直接加入項目。')}}</div>
                 </FormItem>
             </Form>
             <div slot="footer" class="adaption">
@@ -393,7 +393,7 @@
                     @on-ok="inviteGet(true)"
                     transfer>
                     <div slot="title">
-                        <p><strong>{{$L('注意：刷新将导致原来的邀请链接失效！')}}</strong></p>
+                        <p><strong>{{$L('注意：刷新將導致原來的邀請連結失效！')}}</strong></p>
                     </div>
                     <Button type="primary" :loading="inviteLoad > 0">{{$L('刷新')}}</Button>
                 </Poptip>
@@ -403,11 +403,11 @@
         <!--移交项目-->
         <Modal
             v-model="transferShow"
-            :title="$L('移交项目')"
+            :title="$L('移交項目')"
             :mask-closable="false">
             <Form :model="transferData" label-width="auto" @submit.native.prevent>
-                <FormItem prop="owner_userid" :label="$L('项目负责人')">
-                    <UserInput v-model="transferData.owner_userid" :multiple-max="1" :placeholder="$L('选择项目负责人')"/>
+                <FormItem prop="owner_userid" :label="$L('項目負責人')">
+                    <UserInput v-model="transferData.owner_userid" :multiple-max="1" :placeholder="$L('選擇項目負責人')"/>
                 </FormItem>
             </Form>
             <div slot="footer" class="adaption">
@@ -1004,7 +1004,7 @@ export default {
             $A.modalInput({
                 value: column.name,
                 title: "修改列表",
-                placeholder: "输入列表名称",
+                placeholder: "輸入列表名稱",
                 onOk: (value) => {
                     if (value) {
                         this.updateColumn(column, {
@@ -1042,7 +1042,7 @@ export default {
         removeColumn(column) {
             $A.modalConfirm({
                 title: '删除列表',
-                content: '你确定要删除列表【' + column.name + '】及列表内的任务吗？',
+                content: '你確定要删除列表【' + column.name + '】及列表内的任務嗎？',
                 loading: true,
                 onOk: () => {
                     if (this.columnLoad[column.id] === true) {
@@ -1128,8 +1128,8 @@ export default {
 
         onArchived() {
             $A.modalConfirm({
-                title: '归档项目',
-                content: '你确定要归档项目【' + this.projectData.name + '】吗？',
+                title: '歸檔項目',
+                content: '你確定要歸檔項目【' + this.projectData.name + '】嗎？',
                 loading: true,
                 onOk: () => {
                     this.$store.dispatch("archivedProject", this.projectId).then(({msg}) => {
@@ -1145,8 +1145,8 @@ export default {
 
         onDelete() {
             $A.modalConfirm({
-                title: '删除项目',
-                content: '你确定要删除项目【' + this.projectData.name + '】吗？',
+                title: '删除項目',
+                content: '你確定要删除項目【' + this.projectData.name + '】嗎？',
                 loading: true,
                 onOk: () => {
                     this.$store.dispatch("removeProject", this.projectId).then(({msg}) => {
@@ -1162,8 +1162,8 @@ export default {
 
         onExit() {
             $A.modalConfirm({
-                title: '退出项目',
-                content: '你确定要退出项目【' + this.projectData.name + '】吗？',
+                title: '退出項目',
+                content: '你確定要退出項目【' + this.projectData.name + '】嗎？',
                 loading: true,
                 onOk: () => {
                     this.$store.dispatch("exitProject", this.projectId).then(({msg}) => {
@@ -1324,9 +1324,9 @@ export default {
                 return;
             }
             this.$copyText(this.inviteData.url).then(() => {
-                $A.messageSuccess(this.$L('复制成功！'));
+                $A.messageSuccess(this.$L('複製成功！'));
             }, () => {
-                $A.messageError(this.$L('复制失败！'));
+                $A.messageError(this.$L('複製失敗！'));
             });
         },
 
@@ -1346,9 +1346,9 @@ export default {
                     return
                 }
                 $A.modalConfirm({
-                    content: '设置尚未保存，是否放弃修改？',
+                    content: '設置尚未保存，是否放棄修改？',
                     cancelText: '取消',
-                    okText: '放弃',
+                    okText: '放棄',
                     onOk: () => {
                         resolve()
                     }

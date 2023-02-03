@@ -27,7 +27,7 @@ export default {
             return $A.runNum(this.detail.id || this.$route.params.id)
         },
         title() {
-            return this.$L(this.id > 0 ? '修改报告' : '新增报告');
+            return this.$L(this.id > 0 ? '修改報告' : '新增報告');
         }
     },
     methods: {

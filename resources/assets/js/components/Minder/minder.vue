@@ -2,13 +2,13 @@
     <div class="minder-editor-container">
         <div class="quickbar">
             <ETooltip placement="top" effect="light">
-                <div><i class="ft icon" :title="$L('缩放')">&#xE7B3;</i></div>
+                <div><i class="ft icon" :title="$L('縮放')">&#xE7B3;</i></div>
                 <div slot="content" class="minder-editor-slider">
                     <Slider v-model="zoom" :min="10" :max="300"></Slider>
                 </div>
             </ETooltip>
             <ETooltip v-if="readOnly!==true" placement="top" effect="light">
-                <div><i class="ft icon" :title="$L('图形')">&#xE621;</i></div>
+                <div><i class="ft icon" :title="$L('圖形')">&#xE621;</i></div>
                 <div slot="content">
                     <ul class="minder-editor-quickul mold">
                         <li @click="execCommand('template', 'default')"><span class="default"></span></li>
@@ -21,38 +21,38 @@
                 </div>
             </ETooltip>
             <ETooltip v-if="readOnly!==true" placement="top" effect="light">
-                <div><i class="ft icon" :title="$L('样式')">&#xE678;</i></div>
+                <div><i class="ft icon" :title="$L('樣式')">&#xE678;</i></div>
                 <div slot="content">
                     <ul class="minder-editor-quickul">
-                        <li @click="execCommand('theme', 'fresh-blue')">{{$L('天空蓝')}}</li>
-                        <li @click="execCommand('theme', 'wire')">{{$L('线框')}}</li>
-                        <li @click="execCommand('theme', 'fish')">{{$L('鱼骨图')}}</li>
-                        <li @click="execCommand('theme', 'classic')">{{$L('脑图经典')}}</li>
-                        <li @click="execCommand('theme', 'classic-compact')">{{$L('紧凑经典')}}</li>
+                        <li @click="execCommand('theme', 'fresh-blue')">{{$L('天空藍')}}</li>
+                        <li @click="execCommand('theme', 'wire')">{{$L('線框')}}</li>
+                        <li @click="execCommand('theme', 'fish')">{{$L('魚骨圖')}}</li>
+                        <li @click="execCommand('theme', 'classic')">{{$L('腦圖經典')}}</li>
+                        <li @click="execCommand('theme', 'classic-compact')">{{$L('緊湊經典')}}</li>
                         <li @click="execCommand('theme', 'snow')">{{$L('温柔冷光')}}</li>
-                        <li @click="execCommand('theme', 'snow-compact')">{{$L('紧凑冷光')}}</li>
-                        <li @click="execCommand('theme', 'tianpan')">{{$L('经典天盘')}}</li>
-                        <li @click="execCommand('theme', 'tianpan-compact')">{{$L('紧凑天盘')}}</li>
+                        <li @click="execCommand('theme', 'snow-compact')">{{$L('緊湊冷光')}}</li>
+                        <li @click="execCommand('theme', 'tianpan')">{{$L('經典天盤')}}</li>
+                        <li @click="execCommand('theme', 'tianpan-compact')">{{$L('緊湊天盤')}}</li>
                     </ul>
                 </div>
             </ETooltip>
             <ETooltip placement="top" effect="light">
-                <div><i class="ft icon" :title="$L('折叠')">&#xE779;</i></div>
+                <div><i class="ft icon" :title="$L('折疊')">&#xE779;</i></div>
                 <div slot="content">
                     <ul class="minder-editor-quickul">
-                        <li @click="execCommand('ExpandToLevel', 1)">{{$L('展开到一级节点')}}</li>
-                        <li @click="execCommand('ExpandToLevel', 2)">{{$L('展开到二级节点')}}</li>
-                        <li @click="execCommand('ExpandToLevel', 3)">{{$L('展开到三级节点')}}</li>
-                        <li @click="execCommand('ExpandToLevel', 4)">{{$L('展开到四级节点')}}</li>
-                        <li @click="execCommand('ExpandToLevel', 5)">{{$L('展开到五级节点')}}</li>
-                        <li @click="execCommand('ExpandToLevel', 99)">{{$L('展开全部节点')}}</li>
+                        <li @click="execCommand('ExpandToLevel', 1)">{{$L('展開到一級節點')}}</li>
+                        <li @click="execCommand('ExpandToLevel', 2)">{{$L('展開到二級節點')}}</li>
+                        <li @click="execCommand('ExpandToLevel', 3)">{{$L('展開到三級節點')}}</li>
+                        <li @click="execCommand('ExpandToLevel', 4)">{{$L('展開到四級節點')}}</li>
+                        <li @click="execCommand('ExpandToLevel', 5)">{{$L('展開到五級節點')}}</li>
+                        <li @click="execCommand('ExpandToLevel', 99)">{{$L('展開全部節點')}}</li>
                     </ul>
                 </div>
             </ETooltip>
             <ETooltip placement="top" :content="$L('居中')">
                 <div @click="minder.execCommand('camera', minder.getRoot(), 600)"><i class="ft icon">&#xE61F;</i></div>
             </ETooltip>
-            <ETooltip placement="top" :content="$L('移动')">
+            <ETooltip placement="top" :content="$L('移動')">
                 <div @click="[minder.execCommand('Hand'),isHand=!isHand]"><i class="ft icon" :class="{active:isHand}">&#xE6CF;</i></div>
             </ETooltip>
         </div>
@@ -308,7 +308,7 @@
                         newObj.root = {
                             data: {
                                 id: generateMixed(12),
-                                text: this.$L('默认节点'),
+                                text: this.$L('默認節點'),
                             },
                             children: []
                         }

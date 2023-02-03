@@ -4,7 +4,7 @@
             <div slot="head">
                 <div class="dialog-user">
                     <div class="member-head">
-                        <div class="member-title">{{$L('项目成员')}}<span @click="memberShowAll=!memberShowAll">({{projectData.project_user.length}})</span></div>
+                        <div class="member-title">{{$L('項目成員')}}<span @click="memberShowAll=!memberShowAll">({{projectData.project_user.length}})</span></div>
                         <div class="member-close" @click="onClose">
                             <Icon type="ios-close"/>
                         </div>

@@ -6,7 +6,7 @@
                 v-model="content"
                 :height="height"
                 :toolbars="toolbars"
-                :copyBtnText="$L('复制代码')"
+                :copyBtnText="$L('複製代碼')"
                 :is-custom-fullscreen="transfer"
                 @on-custom="customClick"
                 @on-upload-image="handleUploadImageUpload"/>
@@ -36,7 +36,7 @@
         </div>
         <Spin fix v-if="uploadIng > 0">
             <Icon type="ios-loading" class="icon-loading"></Icon>
-            <div>{{$L('正在上传文件...')}}</div>
+            <div>{{$L('正在上傳文件...')}}</div>
         </Spin>
         <Modal v-model="transfer" class="mdeditor-transfer" footer-hide fullscreen transfer :closable="false">
             <div class="mdeditor-transfer-body">
@@ -45,7 +45,7 @@
                     v-if="transfer"
                     v-model="content"
                     :toolbars="toolbars"
-                    :copyBtnText="$L('复制代码')"
+                    :copyBtnText="$L('複製代碼')"
                     :is-custom-fullscreen="transfer"
                     height="100%"
                     @on-custom="customClick"
@@ -53,11 +53,11 @@
             </div>
             <Spin fix v-if="uploadIng > 0">
                 <Icon type="ios-loading" class="icon-loading"></Icon>
-                <div>{{$L('正在上传文件...')}}</div>
+                <div>{{$L('正在上傳文件...')}}</div>
             </Spin>
         </Modal>
-        <Modal v-model="html2md" title="html转markdown" okText="转换成markdown" width="680" class-name="simple-modal" @on-ok="htmlOk" transfer>
-            <Input type="textarea" v-model="htmlValue" :rows="14" placeholder="请输入html代码..." />
+        <Modal v-model="html2md" title="html轉markdown" okText="轉換成markdown" width="680" class-name="simple-modal" @on-ok="htmlOk" transfer>
+            <Input type="textarea" v-model="htmlValue" :rows="14" placeholder="請輸入html代碼..." />
         </Modal>
     </div>
 </template>
@@ -229,7 +229,7 @@
             htmlOk() {
                 $A.loadScript('js/html2md.js', (e) => {
                     if (e !== null || typeof toMarkdown !== 'function') {
-                        $A.modalAlert("组件加载失败！");
+                        $A.modalAlert("組件加載失敗！");
                         return;
                     }
                     if (this.transfer) {
@@ -268,8 +268,8 @@
                     }
                 } else {
                     $A.modalWarning({
-                        title: '上传失败',
-                        content: '文件 ' + file.name + ' 上传失败，' + res.msg
+                        title: '上傳失敗',
+                        content: '文件 ' + file.name + ' 上傳失敗，' + res.msg
                     });
                 }
             },
@@ -282,8 +282,8 @@
             handleFormatError(file) {
                 //上传类型错误
                 $A.modalWarning({
-                    title: '文件格式不正确',
-                    content: '文件 ' + file.name + ' 格式不正确，仅支持上传：' + this.uploadFormat.join(',')
+                    title: '文件格式不正確',
+                    content: '文件 ' + file.name + ' 格式不正確，僅支持上傳：' + this.uploadFormat.join(',')
                 });
             },
 
@@ -291,7 +291,7 @@
                 //上传大小错误
                 $A.modalWarning({
                     title: '超出文件大小限制',
-                    content: '文件 ' + file.name + ' 太大，不能超过：' + $A.bytesToSize(this.maxSize * 1024) + '。'
+                    content: '文件 ' + file.name + ' 太大，不能超過：' + $A.bytesToSize(this.maxSize * 1024) + '。'
                 });
             },
 

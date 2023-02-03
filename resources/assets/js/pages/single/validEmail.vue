@@ -1,17 +1,17 @@
 <template>
     <div class="valid-wrap">
         <div class="valid-box">
-            <div class="valid-title">{{$L('验证邮箱')}}</div>
+            <div class="valid-title">{{$L('驗證email')}}</div>
             <Spin size="large" v-if="!success && !error"></Spin>
             <div class="validation-text" v-if="success">
-                <p>{{$L('您的邮箱已通过验证')}}</p>
-                <p>{{$L('今后您可以通过此邮箱重置您的账号密码')}}</p>
+                <p>{{$L('您的email已通過驗證')}}</p>
+                <p>{{$L('今後您可以通過此email重置您的帳號密碼')}}</p>
             </div>
             <div class="validation-text" v-if="error">
                 <div>{{errorText}}</div>
             </div>
             <div slot="footer" v-if="success">
-                <Button type="primary" @click="userLogout" long>{{$L('返回首页')}}</Button>
+                <Button type="primary" @click="userLogout" long>{{$L('返回首頁')}}</Button>
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@ export default {
         return {
             success: false,
             error: false,
-            errorText: this.$L('链接已过期，已重新发送'),
+            errorText: this.$L('連接已過期，已重新發送'),
         }
     },
     mounted() {

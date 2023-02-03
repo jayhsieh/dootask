@@ -1,1 +1,1 @@
-## public文件夹所有资源将拷贝到public下
+## public文件夾所有資源將拷貝到public下

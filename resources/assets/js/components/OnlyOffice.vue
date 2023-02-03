@@ -104,7 +104,7 @@ export default {
                 $A.loadScript($A.apiUrl("../office/web-apps/apps/api/documents/api.js"), (e) => {
                     this.loadIng--;
                     if (e !== null) {
-                        $A.modalAlert("组件加载失败！");
+                        $A.modalAlert("組件加載失敗！");
                         return;
                     }
                     if (!this.documentKey) {

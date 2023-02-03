@@ -7,7 +7,7 @@
             :placeholder="placeholder"
             :size="size"
             :loading="loadIng > 0"
-            :loading-text="$L('加载中...')"
+            :loading-text="$L('加載中...')"
             :default-label="value"
             :default-event-object="true"
             :multiple-max="multipleMax"
@@ -18,7 +18,7 @@
             multiple
             filterable
             transfer-class-name="common-user-transfer">
-            <div v-if="multipleMax" slot="drop-prepend" class="user-drop-prepend">{{$L('最多只能选择' + multipleMax + '个')}}</div>
+            <div v-if="multipleMax" slot="drop-prepend" class="user-drop-prepend">{{$L('最多只能選擇' + multipleMax + '个')}}</div>
             <slot name="option-prepend"></slot>
             <Option
                 v-for="(item, key) in list"

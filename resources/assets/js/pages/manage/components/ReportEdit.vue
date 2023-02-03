@@ -1,6 +1,6 @@
 <template>
     <Form class="report-edit" label-width="auto" @submit.native.prevent>
-        <FormItem :label="$L('汇报类型')">
+        <FormItem :label="$L('匯報類型')">
             <RadioGroup
                 type="button"
                 button-style="solid"
@@ -8,8 +8,8 @@
                 @on-change="typeChange"
                 class="report-radiogroup"
                 :readonly="id > 0">
-                <Radio label="weekly" :disabled="id > 0 && reportData.type =='daily'">{{ $L("周报") }}</Radio>
-                <Radio label="daily" :disabled="id > 0 && reportData.type =='weekly'">{{ $L("日报") }}</Radio>
+                <Radio label="weekly" :disabled="id > 0 && reportData.type =='daily'">{{ $L("周報") }}</Radio>
+                <Radio label="daily" :disabled="id > 0 && reportData.type =='weekly'">{{ $L("日報") }}</Radio>
             </RadioGroup>
             <ButtonGroup v-if="id === 0" class="report-buttongroup">
                 <ETooltip :content="prevCycleText" placement="bottom">
@@ -25,22 +25,22 @@
                 </ETooltip>
             </ButtonGroup>
         </FormItem>
-        <FormItem :label="$L('汇报名称')">
+        <FormItem :label="$L('匯報名稱')">
             <Input v-model="reportData.title" disabled/>
         </FormItem>
-        <FormItem :label="$L('汇报对象')">
+        <FormItem :label="$L('匯報對象')">
             <div class="report-users">
                 <UserInput
                     v-model="reportData.receive"
                     :disabledChoice="[userId]"
-                    :placeholder="$L('选择接收人')"
+                    :placeholder="$L('選擇接收人')"
                     :transfer="false"/>
                 <a class="report-user-link" href="javascript:void(0);" @click="getLastSubmitter">
-                    <Icon type="ios-share-outline" />{{ $L("使用我上次的汇报对象") }}
+                    <Icon type="ios-share-outline" />{{ $L("使用我上次的匯報對象") }}
                 </a>
             </div>
         </FormItem>
-        <FormItem :label="$L('汇报内容')" class="report-content-editor">
+        <FormItem :label="$L('匯報内容')" class="report-content-editor">
             <TEditor v-model="reportData.content" height="100%"/>
         </FormItem>
         <FormItem class="report-foot">
@@ -102,13 +102,13 @@ export default {
     methods: {
         handleSubmit() {
             if (this.reportData.receive.length === 0) {
-                $A.messageError(this.$L("请选择接收人"));
+                $A.messageError(this.$L("請選擇接收人"));
                 return false;
             }
             if (this.id === 0 && this.reportData.id > 0) {
                 $A.modalConfirm({
-                    title: '覆盖提交',
-                    content: '你已提交过此日期的报告，是否覆盖提交？',
+                    title: '覆蓋提交',
+                    content: '你已提交過此日期的報告，是否覆蓋提交？',
                     loading: true,
                     onOk: () => {
                         this.doSubmit(true);

@@ -5,7 +5,7 @@
                 <ul>
                     <li>
                         <div class="search-label">
-                            {{ $L("汇报类型") }}
+                            {{ $L("匯報類型") }}
                         </div>
                         <div class="search-content">
                             <Select
@@ -17,14 +17,14 @@
                     </li>
                     <li>
                         <div class="search-label">
-                            {{ $L("汇报时间") }}
+                            {{ $L("匯報時間") }}
                         </div>
                         <div class="search-content">
                             <DatePicker
                                 v-model="keys.created_at"
                                 type="daterange"
                                 split-panels
-                                :placeholder="$L('请选择时间')"/>
+                                :placeholder="$L('請選擇時間')"/>
                         </div>
                     </li>
                     <li class="search-button">
@@ -35,7 +35,7 @@
                             transfer>
                             <Button :loading="loadIng > 0" type="primary" icon="ios-search" @click="onSearch">{{$L('搜索')}}</Button>
                             <div slot="content">
-                                <Button v-if="keyIs" type="text" @click="keyIs=false">{{$L('取消筛选')}}</Button>
+                                <Button v-if="keyIs" type="text" @click="keyIs=false">{{$L('取消篩選')}}</Button>
                                 <Button v-else :loading="loadIng > 0" type="text" @click="getLists">{{$L('刷新')}}</Button>
                             </div>
                         </Tooltip>
@@ -43,7 +43,7 @@
                 </ul>
             </div>
             <div class="expand-button-group">
-                <Button type="primary" icon="md-add" @click="addReport">{{ $L("新增报告") }}</Button>
+                <Button type="primary" icon="md-add" @click="addReport">{{ $L("新增報告") }}</Button>
             </div>
         </div>
 
@@ -83,15 +83,15 @@ export default {
             listPage: 1,
             listTotal: 0,
             listPageSize: 20,
-            noDataText: "数据加载中.....",
+            noDataText: "數據加載中.....",
 
             keys: {},
             keyIs: false,
 
             reportTypeList: [
                 {value: "", label: this.$L('全部')},
-                {value: "weekly", label: this.$L('周报')},
-                {value: "daily", label: this.$L('日报')},
+                {value: "weekly", label: this.$L('周報')},
+                {value: "daily", label: this.$L('日報')},
             ],
         }
     },
@@ -112,18 +112,18 @@ export default {
     methods: {
         initLanguage() {
             this.columns = [{
-                title: this.$L("名称"),
+                title: this.$L("名稱"),
                 key: 'title',
                 sortable: true,
                 minWidth: 120,
             }, {
-                title: this.$L("类型"),
+                title: this.$L("類型"),
                 key: 'type',
                 align: 'center',
                 sortable: true,
                 width: 90,
             }, {
-                title: this.$L("汇报时间"),
+                title: this.$L("匯報時間"),
                 key: 'created_at',
                 align: 'center',
                 sortable: true,
@@ -184,12 +184,12 @@ export default {
                 // data 结果数据
                 this.lists = data.data;
                 this.listTotal = data.total;
-                this.noDataText = "没有相关的数据";
+                this.noDataText = "没有相關的數據";
                 // msg 结果描述
             }).catch(({msg}) => {
                 // msg 错误原因
                 $A.messageError(msg);
-                this.noDataText = '数据加载失败';
+                this.noDataText = '數據加载失敗';
             }).finally(() => {
                 this.loadIng--;
             });

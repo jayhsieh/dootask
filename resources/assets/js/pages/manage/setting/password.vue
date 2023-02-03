@@ -1,14 +1,14 @@
 <template>
     <div class="setting-item submit">
         <Form ref="formDatum" :model="formDatum" :rules="ruleDatum" label-width="auto" @submit.native.prevent>
-            <Alert v-if="userInfo.changepass" type="warning" showIcon style="margin-bottom:32px">{{$L('请先修改登录密码！')}}</Alert>
-            <FormItem :label="$L('旧密码')" prop="oldpass">
+            <Alert v-if="userInfo.changepass" type="warning" showIcon style="margin-bottom:32px">{{$L('請先修改登錄密碼！')}}</Alert>
+            <FormItem :label="$L('舊密碼')" prop="oldpass">
                 <Input v-model="formDatum.oldpass" type="password"></Input>
             </FormItem>
-            <FormItem :label="$L('新密码')" prop="newpass">
+            <FormItem :label="$L('新密碼')" prop="newpass">
                 <Input v-model="formDatum.newpass" type="password"></Input>
             </FormItem>
-            <FormItem :label="$L('确认新密码')" prop="checkpass">
+            <FormItem :label="$L('確認新密碼')" prop="checkpass">
                 <Input v-model="formDatum.checkpass" type="password"></Input>
             </FormItem>
         </Form>
@@ -43,14 +43,14 @@ export default {
         initLanguage() {
             this.ruleDatum = {
                 oldpass: [
-                    { required: true, message: this.$L('请输入旧密码！'), trigger: 'change' },
-                    { type: 'string', min: 6, message: this.$L('密码长度至少6位！'), trigger: 'change' }
+                    { required: true, message: this.$L('請輸入舊密碼！'), trigger: 'change' },
+                    { type: 'string', min: 6, message: this.$L('密碼長度至少6位！'), trigger: 'change' }
                 ],
                 newpass: [
                     {
                         validator: (rule, value, callback) => {
                             if (value === '') {
-                                callback(new Error(this.$L('请输入新密码！')));
+                                callback(new Error(this.$L('請輸入新密碼！')));
                             } else {
                                 if (this.formDatum.checkpass !== '') {
                                     this.$refs.formDatum.validateField('checkpass');
@@ -61,15 +61,15 @@ export default {
                         required: true,
                         trigger: 'change'
                     },
-                    { type: 'string', min: 6, message: this.$L('密码长度至少6位！'), trigger: 'change' }
+                    { type: 'string', min: 6, message: this.$L('密碼長度至少6位！'), trigger: 'change' }
                 ],
                 checkpass: [
                     {
                         validator: (rule, value, callback) => {
                             if (value === '') {
-                                callback(new Error(this.$L('请重新输入新密码！')));
+                                callback(new Error(this.$L('請重新輸入新密碼！')));
                             } else if (value !== this.formDatum.newpass) {
-                                callback(new Error(this.$L('两次密码输入不一致！')));
+                                callback(new Error(this.$L('兩次密碼輸入不一致！')));
                             } else {
                                 callback();
                             }

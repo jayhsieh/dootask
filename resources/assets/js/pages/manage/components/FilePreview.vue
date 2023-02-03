@@ -15,10 +15,10 @@
                           trigger="click"
                           class="header-hint"
                           @on-click="exportMenu">
-                    <a href="javascript:void(0)">{{$L('导出')}}<Icon type="ios-arrow-down"></Icon></a>
+                    <a href="javascript:void(0)">{{$L('匯出')}}<Icon type="ios-arrow-down"></Icon></a>
                     <DropdownMenu slot="list">
-                        <DropdownItem name="png">{{$L('导出PNG图片')}}</DropdownItem>
-                        <DropdownItem name="pdf">{{$L('导出PDF文件')}}</DropdownItem>
+                        <DropdownItem name="png">{{$L('匯出PNG圖片')}}</DropdownItem>
+                        <DropdownItem name="pdf">{{$L('匯出PDF文件')}}</DropdownItem>
                     </DropdownMenu>
                 </Dropdown>
             </div>

@@ -9,7 +9,7 @@ Font="\033[0m"
 
 #notification information
 OK="${Green}[OK]${Font}"
-Error="${Red}[错误]${Font}"
+Error="${Red}[Error]${Font}"
 
 cur_path="$(pwd)"
 cur_arg=$@
@@ -17,10 +17,10 @@ COMPOSE="docker-compose"
 
 judge() {
     if [[ 0 -eq $? ]]; then
-        echo -e "${OK} ${GreenBG} $1 完成 ${Font}"
+        echo -e "${OK} ${GreenBG} $1 Finished ${Font}"
         sleep 1
     else
-        echo -e "${Error} ${RedBG} $1 失败${Font}"
+        echo -e "${Error} ${RedBG} $1 Failed ${Font}"
         exit 1
     fi
 }
@@ -53,21 +53,21 @@ supervisorctl_restart() {
 check_docker() {
     docker --version &> /dev/null
     if [ $? -ne  0 ]; then
-        echo -e "${Error} ${RedBG} 未安装 Docker！${Font}"
+        echo -e "${Error} ${RedBG} 未安裝 Docker！${Font}"
         exit 1
     fi
     docker-compose version &> /dev/null
     if [ $? -ne  0 ]; then
         docker compose version &> /dev/null
         if [ $? -ne  0 ]; then
-            echo -e "${Error} ${RedBG} 未安装 Docker-compose！${Font}"
+            echo -e "${Error} ${RedBG} 未安裝 Docker-compose！${Font}"
             exit 1
         fi
         COMPOSE="docker compose"
     fi
     if [[ -n `$COMPOSE version | grep -E "\sv*1"` ]]; then
         $COMPOSE version
-        echo -e "${Error} ${RedBG} Docker-compose 版本过低，请升级至v2+！${Font}"
+        echo -e "${Error} ${RedBG} Docker-compose 版本過低，請升級至v2+！${Font}"
         exit 1
     fi
 }
@@ -75,7 +75,7 @@ check_docker() {
 check_node() {
     npm --version &> /dev/null
     if [ $? -ne  0 ]; then
-        echo -e "${Error} ${RedBG} 未安装nodejs！${Font}"
+        echo -e "${Error} ${RedBG} 未安裝 nodejs！${Font}"
         exit 1
     fi
 }
@@ -149,8 +149,8 @@ run_mysql() {
         mkdir -p ${cur_path}/docker/mysql/backup
         filename="${cur_path}/docker/mysql/backup/${database}_$(date "+%Y%m%d%H%M%S").sql.gz"
         run_exec mariadb "exec mysqldump --databases $database -u$username -p$password" | gzip > $filename
-        judge "备份数据库"
-        [ -f "$filename" ] && echo -e "备份文件：$filename"
+        judge "備份數據庫"
+        [ -f "$filename" ] && echo -e "備份文件：$filename"
     elif [ "$1" = "recovery" ]; then
         # 还原数据库
         database=$(env_get DB_DATABASE)
@@ -159,11 +159,11 @@ run_mysql() {
         mkdir -p ${cur_path}/docker/mysql/backup
         list=`ls -1 "${cur_path}/docker/mysql/backup" | grep ".sql.gz"`
         if [ -z "$list" ]; then
-            echo -e "${Error} ${RedBG} 没有备份文件！${Font}"
+            echo -e "${Error} ${RedBG} 没有備份文件！${Font}"
             exit 1
         fi
         echo "$list"
-        read -rp "请输入备份文件名称还原：" inputname
+        read -rp "請輸入備份文件名稱還原：" inputname
         filename="${cur_path}/docker/mysql/backup/${inputname}"
         if [ ! -f "$filename" ]; then
             echo -e "${Error} ${RedBG} 备份文件：${inputname} 不存在！ ${Font}"
@@ -177,7 +177,7 @@ run_mysql() {
         docker cp $filename $container_name:/
         run_exec mariadb "gunzip < /$inputname | mysql -u$username -p$password $database"
         run_exec php "php artisan migrate"
-        judge "还原数据库"
+        judge "還原數據庫"
     fi
 }
 
@@ -200,7 +200,7 @@ env_set() {
             docker run -it --rm -v ${cur_path}:/www alpine sh -c "sed -i "/^${key}=/c\\${key}=${val}" /www/.env"
         fi
         if [ $? -ne  0 ]; then
-            echo -e "${Error} ${RedBG} 设置env参数失败！${Font}"
+            echo -e "${Error} ${RedBG} 設置env參數失敗！${Font}"
             exit 1
         fi
     fi
@@ -260,9 +260,9 @@ fi
 if [ $# -gt 0 ]; then
     if [[ "$1" == "init" ]] || [[ "$1" == "install" ]]; then
         shift 1
-        # 判断架构
+        # 判斷架構
         if [[ "$(is_arm)" == "yes" ]] && [[ -z "$(arg_get force)" ]]; then
-            echo -e "${Error} ${RedBG}暂不支持arm架构，强制安装请使用：./cmd install --force${Font}"
+            echo -e "${Error} ${RedBG}暫不支持arm架構，強制安裝請使用：./cmd install --force${Font}"
             exit 1
         fi
         # 初始化文件
@@ -276,10 +276,10 @@ if [ $# -gt 0 ]; then
         mkdir -p "${cur_path}/docker/mysql/data"
         chmod -R 775 "${cur_path}/docker/log/supervisor"
         chmod -R 775 "${cur_path}/docker/mysql/data"
-        # 启动容器
+        # 啟動容器
         [[ "$(arg_get port)" -gt 0 ]] && env_set APP_PORT "$(arg_get port)"
         $COMPOSE up php -d
-        # 安装composer依赖
+        # 安裝composer依賴
         run_exec php "composer install"
         if [ ! -f "${cur_path}/vendor/autoload.php" ]; then
             run_exec php "composer config repo.packagist composer https://packagist.phpcomposer.com"
@@ -287,17 +287,17 @@ if [ $# -gt 0 ]; then
             run_exec php "composer config --unset repos.packagist"
         fi
         if [ ! -f "${cur_path}/vendor/autoload.php" ]; then
-            echo -e "${Error} ${RedBG}composer install 失败，请重试！ ${Font}"
+            echo -e "${Error} ${RedBG}composer install 失敗，請重試！ ${Font}"
             exit 1
         fi
         [[ -z "$(env_get APP_KEY)" ]] && run_exec php "php artisan key:generate"
         run_exec php "php bin/run --mode=prod"
-        # 检查数据库
+        # 檢查數據庫
         remaining=10
         while [ ! -f "${cur_path}/docker/mysql/data/$(env_get DB_DATABASE)/db.opt" ]; do
             ((remaining=$remaining-1))
             if [ $remaining -lt 0 ]; then
-                echo -e "${Error} ${RedBG} 数据库初始化失败! ${Font}"
+                echo -e "${Error} ${RedBG} 數據庫初始化失敗! ${Font}"
                 exit 1
             fi
             chmod -R 775 "${cur_path}/docker/mysql/data"
@@ -305,14 +305,14 @@ if [ $# -gt 0 ]; then
         done
         run_exec php "php artisan migrate --seed"
         if [ ! -f "${cur_path}/docker/mysql/data/$(env_get DB_DATABASE)/$(env_get DB_PREFIX)migrations.ibd" ]; then
-            echo -e "${Error} ${RedBG} 数据库安装失败! ${Font}"
+            echo -e "${Error} ${RedBG} 數據庫安裝失敗! ${Font}"
             exit 1
         fi
-        # 设置初始化密码
+        # 設置初始化密碼
         res=`run_exec mariadb "sh /etc/mysql/repassword.sh"`
         $COMPOSE up -d
         supervisorctl_restart php
-        echo -e "${OK} ${GreenBG} 安装完成 ${Font}"
+        echo -e "${OK} ${GreenBG} 安裝完成 ${Font}"
         echo -e "地址: http://${GreenBG}127.0.0.1:$(env_get APP_PORT)${Font}"
         echo -e "$res"
     elif [[ "$1" == "update" ]]; then
@@ -327,14 +327,14 @@ if [ $# -gt 0 ]; then
         $COMPOSE up -d
     elif [[ "$1" == "uninstall" ]]; then
         shift 1
-        read -rp "确定要卸载（含：删除容器、数据库、日志）吗？(y/n): " uninstall
+        read -rp "確定要卸載（含：刪除容器、數據庫、日誌）嗎？(y/n): " uninstall
         [[ -z ${uninstall} ]] && uninstall="N"
         case $uninstall in
         [yY][eE][sS] | [yY])
-            echo -e "${RedBG} 开始卸载... ${Font}"
+            echo -e "${RedBG} 開始卸載... ${Font}"
             ;;
         *)
-            echo -e "${GreenBG} 终止卸载。 ${Font}"
+            echo -e "${GreenBG} 終止卸載。 ${Font}"
             exit 2
             ;;
         esac
@@ -342,7 +342,7 @@ if [ $# -gt 0 ]; then
         rm -rf "./docker/mysql/data"
         rm -rf "./docker/log/supervisor"
         find "./storage/logs" -name "*.log" | xargs rm -rf
-        echo -e "${OK} ${GreenBG} 卸载完成 ${Font}"
+        echo -e "${OK} ${GreenBG} 卸載完成 ${Font}"
     elif [[ "$1" == "reinstall" ]]; then
         shift 1
         ./cmd uninstall $@

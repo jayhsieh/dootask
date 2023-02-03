@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="project-gstc-edit-small">
-                <div class="project-gstc-edit-text" @click="editShowInfo=true">{{$L('未保存计划时间')}}: <span v-if="editData">{{editData.length}}</span></div>
+                <div class="project-gstc-edit-text" @click="editShowInfo=true">{{$L('未保存計畫時間')}}: <span v-if="editData">{{editData.length}}</span></div>
                 <Button :loading="editLoad > 0" size="small" type="text" @click="editSubmit(false)">{{$L('取消')}}</Button>
                 <Button :loading="editLoad > 0" size="small" type="primary" @click="editSubmit(true)">{{$L('保存')}}</Button>
             </div>
@@ -62,12 +62,12 @@ export default {
 
             editColumns: [
                 {
-                    title: this.$L('任务名称'),
+                    title: this.$L('任務名稱'),
                     key: 'label',
                     minWidth: 150,
                     ellipsis: true,
                 }, {
-                    title: this.$L('原计划时间'),
+                    title: this.$L('原計畫時間'),
                     minWidth: 135,
                     align: 'center',
                     render: (h, {row}) => {
@@ -82,7 +82,7 @@ export default {
                         ]);
                     }
                 }, {
-                    title: this.$L('新计划时间'),
+                    title: this.$L('新計畫時間'),
                     minWidth: 135,
                     align: 'center',
                     render: (h, {row}) => {

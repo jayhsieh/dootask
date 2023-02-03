@@ -25,7 +25,7 @@
                         <div class="header-right-four">
                             <Dropdown trigger="click" @on-click="setTheme">
                                 <a href="javascript:void(0)" class="header-right-one-dropdown">
-                                    {{$L('主题皮肤')}}
+                                    {{$L('主題皮膚')}}
                                     <Icon type="ios-arrow-down"></Icon>
                                 </a>
                                 <DropdownMenu slot="list">
@@ -37,8 +37,8 @@
                                 </DropdownMenu>
                             </Dropdown>
                         </div>
-                        <div class="header-right-two" @click="register">{{ $L("注册账号") }}</div>
-                        <div class="header-right-three no-dark-mode" @click="login">{{ $L("登录") }}</div>
+                        <div class="header-right-two" @click="register">{{ $L("註冊帳號") }}</div>
+                        <div class="header-right-three no-dark-mode" @click="login">{{ $L("登錄") }}</div>
                     </div>
                     <div class="header-nav-box header-nav-boxs" v-else>
                         <Dropdown trigger="click">
@@ -46,8 +46,8 @@
                                 <Icon type="md-menu" class="header-nav-more"/>
                             </a>
                             <DropdownMenu slot="list">
-                                <DropdownItem @click.native="login">{{ $L("登录") }}</DropdownItem>
-                                <DropdownItem @click.native="register">{{ $L("注册账号") }}</DropdownItem>
+                                <DropdownItem @click.native="login">{{ $L("登錄") }}</DropdownItem>
+                                <DropdownItem @click.native="register">{{ $L("註冊帳號") }}</DropdownItem>
                                 <Dropdown placement="right-start" @on-click="setLanguage">
                                     <DropdownItem>
                                         <Icon class="header-right-one-language no-dark-mode" type="md-globe"/>
@@ -64,7 +64,7 @@
                                 <Dropdown trigger="click" placement="right-end" @on-click="setTheme">
                                     <DropdownItem>
                                         <div class="login-setting-item">
-                                            {{$L('主题皮肤')}}
+                                            {{$L('主題皮膚')}}
                                             <Icon type="ios-arrow-forward"></Icon>
                                         </div>
                                     </DropdownItem>
@@ -83,13 +83,13 @@
                 <div class="header-content">
                     <div class="header-title header-title-one">{{appTitle}}</div>
                     <div class="header-title">
-                        {{ $L("轻量级任务管理工具") }}
+                        {{ $L("輕量級任務管理工具") }}
                     </div>
                     <div class="header-tips">
-                        {{ $L(`${appTitle}是一款轻量级的开源在线项目任务管理工具，提供各类文档协作工具、在线思维导图、在线流程图、项目管理、任务分发、即时IM，文件管理等工具。`) }}
+                        {{ $L(`${appTitle}是一款輕量級的開源在線項目任務管理工具，提供各類文檔協作工具、在線思維導圖、在線流程圖、項目管理、任務分發、即時IM，文件管理等工具。`) }}
                     </div>
                     <div class="login-buttom no-dark-mode" @click="login">
-                        {{ $L("登录") }}
+                        {{ $L("登錄") }}
                     </div>
                 </div>
             </div>
@@ -137,36 +137,36 @@
                     <Col class="page-main-text" :xs="24" :sm="24" :xl="12" v-if="windowWidth > 1200">
                         <ImgView src="images/index/square.png"/>
                         <h3>{{$L('便捷易用的项目管理模板')}}</h3>
-                        <p>{{$L('模版满足多种团队协作场景，同时支持自定义模版，满足团队个性化场景管理需求，可直观的查看项目的进展情况，团队协作更方便。')}}</p>
+                        <p>{{$L('模版滿足多種團隊協作場景，同時支持自定義模版，滿足團隊個性化場景管理需求，可直觀的查看項目的進展情况，團隊協作更方便。')}}</p>
                     </Col>
                     <Col class="page-main-text page-main-texts" :xs="24" :sm="24" :xl="12" v-else>
-                        <h3><ImgView src="images/index/square.png"/>{{$L('便捷易用的项目管理模板')}}</h3>
-                        <p>{{$L('模版满足多种团队协作场景，同时支持自定义模版，满足团队个性化场景管理需求，可直观的查看项目的进展情况，团队协作更方便。')}}</p>
+                        <h3><ImgView src="images/index/square.png"/>{{$L('便捷易用的項目管理模板')}}</h3>
+                        <p>{{$L('模版滿足多種團隊協作場景，同時支持自定義模版，滿足團隊個性化場景管理需求，可直觀的查看項目的進展情况，團隊協作更方便。')}}</p>
                     </Col>
                 </Row>
 
                 <Row :class="windowWidth > 1200 ? 'page-main-row':'page-main-rows'">
                     <Col class="page-main-text" :xs="24" :sm="24" :xl="12" v-if="windowWidth > 1200">
                         <ImgView src="images/index/square.png"/>
-                        <h3>{{$L('清晰直观的任务日历')}}</h3>
-                        <p>{{$L('通过灵活的任务日历，轻松安排每一天的日程，把任务拆解到每天，让工作目标更清晰，时间分配更合理。')}}</p>
+                        <h3>{{$L('清晰直觀的任務日曆')}}</h3>
+                        <p>{{$L('通過靈活的任務日曆，輕鬆安排每一天的日程，把任務拆解到每天，讓工作目標更清晰，時間分配更合理。')}}</p>
                     </Col>
 
                     <Col :class="windowWidth > 1200 ? 'page-main-img':'page-main-imgs'" :xs="24" :sm="24" :xl="12">
                         <ImgView :src="themeIsDark ? 'images/index/dark/5.png':'images/index/light/5.png'"/>
                     </Col>
                     <Col class="page-main-text page-main-texts" :xs="24" :sm="24" :xl="12" v-if="windowWidth <= 1200">
-                        <h3><ImgView src="images/index/square.png"/>{{$L('清晰直观的任务日历')}}</h3>
-                        <p>{{$L('通过灵活的任务日历，轻松安排每一天的日程，把任务拆解到每天，让工作目标更清晰，时间分配更合理。')}}</p>
+                        <h3><ImgView src="images/index/square.png"/>{{$L('清晰直觀的任務日曆'')}}</h3>
+                        <p>{{$L('通過靈活的任務日曆，輕鬆安排每一天的日程，把任務拆解到每天，讓工作目標更清晰，時間分配更合理。')}}</p>
                     </Col>
                 </Row>
             </div>
             <div class="page-footer">
                 <div class="footer-service no-dark-mode">
                     <div class="footer-bg-box">
-                        <div class="box-title">{{ $L(`开启您的 ${appTitle} 团队协作`) }}</div>
+                        <div class="box-title">{{ $L(`開啟您的 ${appTitle} 團隊協作`) }}</div>
                         <div class="buttom-box">
-                            <div class="login-btn" @click="login">{{ $L("立即登录") }}</div>
+                            <div class="login-btn" @click="login">{{ $L("立即登錄") }}</div>
                             <div class="reg-btn" @click="register">{{ $L("注册") }}</div>
                         </div>
                     </div>

@@ -56,7 +56,7 @@ if(strstr($uarowser, 'MSIE 6') || strstr($uarowser, 'MSIE 7') || strstr($uarowse
 <div id="browser_ie">
     <div class="brower_info">
         <div class="notice_info">
-            <p>你的浏览器版本过低，可能导致网站不能正常访问！<br>为了你能正常使用网站功能，请使用这些浏览器。</p></div>
+            <p>你的瀏覽器版本過低，可能導致網站不能正常訪問！<br>為了你能正常使用網站功能，請使用這些瀏覽器。</p></div>
         <div class="browser_list">
             <span>
                 <a href="http://www.google.cn/chrome/browser/desktop/" target="_blank">
@@ -66,21 +66,6 @@ if(strstr($uarowser, 'MSIE 6') || strstr($uarowser, 'MSIE 7') || strstr($uarowse
             <span>
                 <a href="http://www.firefox.com.cn/download/" target="_blank">
                     <img src="{{ asset('images/browser/firefox.png') }}"><br>firefox
-                </a>
-            </span>
-            <span>
-                <a href="https://www.apple.com/cn/safari/" target="_blank">
-                    <img src="{{ asset('images/browser/safari.png') }}"><br>safari
-                </a>
-            </span>
-            <span>
-                <a href="http://chrome.360.cn/" target="_blank">
-                    <img src="{{ asset('images/browser/360.png') }}"><br>360浏览器
-                </a>
-            </span>
-            <span>
-                <a href="http://ie.microsoft.com/" target="_blank">
-                    <img src="{{ asset('images/browser/ie.png') }}"><br>ie9及以上
                 </a>
             </span>
         </div>

@@ -1,7 +1,7 @@
 <template>
     <div class="project-management">
         <div class="management-title">
-            {{$L('所有项目')}}
+            {{$L('所有項目')}}
             <div class="title-icon">
                 <Loading v-if="loadIng > 0"/>
             </div>
@@ -10,7 +10,7 @@
             <ul>
                 <li>
                     <div class="search-label">
-                        {{$L("项目名")}}
+                        {{$L("項目名")}}
                     </div>
                     <div class="search-content">
                         <Input v-model="keys.name" clearable/>
@@ -18,13 +18,13 @@
                 </li>
                 <li>
                     <div class="search-label">
-                        {{$L("项目状态")}}
+                        {{$L("項目狀態")}}
                     </div>
                     <div class="search-content">
-                        <Select v-model="keys.status" :placeholder="$L('请选择')">
+                        <Select v-model="keys.status" :placeholder="$L('請選擇')">
                             <Option value="">{{$L('全部')}}</Option>
-                            <Option value="unarchived">{{$L('未归档')}}</Option>
-                            <Option value="archived">{{$L('已归档')}}</Option>
+                            <Option value="unarchived">{{$L('未歸檔')}}</Option>
+                            <Option value="archived">{{$L('已歸檔')}}</Option>
                         </Select>
                     </div>
                 </li>
@@ -36,7 +36,7 @@
                         transfer>
                         <Button :loading="loadIng > 0" type="primary" icon="ios-search" @click="onSearch">{{$L('搜索')}}</Button>
                         <div slot="content">
-                            <Button v-if="keyIs" type="text" @click="keyIs=false">{{$L('取消筛选')}}</Button>
+                            <Button v-if="keyIs" type="text" @click="keyIs=false">{{$L('取消篩選')}}</Button>
                             <Button v-else :loading="loadIng > 0" type="text" @click="getLists">{{$L('刷新')}}</Button>
                         </div>
                     </Tooltip>
@@ -120,7 +120,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('项目名称'),
+                    title: this.$L('項目名稱'),
                     key: 'name',
                     minWidth: 100,
                     render: (h, {row}) => {
@@ -130,7 +130,7 @@ export default {
                                 props: {
                                     color: 'error'
                                 }
-                            }, this.$L('已归档')))
+                            }, this.$L('已歸檔')))
                         }
                         return h('div', {
                             class: 'project-name'
@@ -138,7 +138,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('项目进度'),
+                    title: this.$L('項目進度'),
                     minWidth: 100,
                     render: (h, {row}) => {
                         const arr = [
@@ -156,7 +156,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('负责人'),
+                    title: this.$L('負責人'),
                     minWidth: 80,
                     render: (h, {row}) => {
                         return h('UserAvatar', {
@@ -169,7 +169,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('创建人'),
+                    title: this.$L('創建人'),
                     minWidth: 80,
                     render: (h, {row}) => {
                         return h('UserAvatar', {
@@ -182,7 +182,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('创建时间'),
+                    title: this.$L('創建時間'),
                     key: 'created_at',
                     width: 168,
                 },
@@ -217,10 +217,10 @@ export default {
                 this.page = data.current_page;
                 this.total = data.total;
                 this.list = data.data;
-                this.noText = '没有相关的数据';
+                this.noText = '没有相關的數據';
             }).catch(() => {
                 this.loadIng--;
-                this.noText = '数据加载失败';
+                this.noText = '數據加载失敗';
             })
         },
 

@@ -2,8 +2,8 @@
     <div class="page-dashboard">
         <PageTitle :title="$L('仪表盘')"/>
         <div class="dashboard-wrapper">
-            <div class="dashboard-hello">{{$L('欢迎您，' + userInfo.nickname)}}</div>
-            <div class="dashboard-desc">{{$L('以下是你当前的任务统计数据')}}</div>
+            <div class="dashboard-hello">{{$L('歡迎您，' + userInfo.nickname)}}</div>
+            <div class="dashboard-desc">{{$L('以下是你當前的任務統計數據')}}</div>
             <ul class="dashboard-block">
                 <li @click="scrollTo('today')">
                     <div class="block-title">{{getTitle('today')}}</div>
@@ -53,7 +53,7 @@
                                 <!--工作流状态-->
                                 <span v-if="item.flow_item_name" :class="item.flow_item_status" @click.stop="openMenu(column.type, item)">{{item.flow_item_name}}</span>
                                 <!--是否子任务-->
-                                <span v-if="item.sub_top === true">{{$L('子任务')}}</span>
+                                <span v-if="item.sub_top === true">{{$L('子任務')}}</span>
                                 <!--有多少个子任务-->
                                 <span v-if="item.sub_my && item.sub_my.length > 0">+{{item.sub_my.length}}</span>
                                 <!--任务描述-->
@@ -144,11 +144,11 @@ export default {
         getTitle(type) {
             switch (type) {
                 case 'today':
-                    return this.$L('今日任务');
+                    return this.$L('今日任務');
                 case 'overdue':
-                    return this.$L('超期任务');
+                    return this.$L('過期任務');
                 case 'all':
-                    return this.$L('待完成任务');
+                    return this.$L('待完成任務');
                 default:
                     return '';
             }

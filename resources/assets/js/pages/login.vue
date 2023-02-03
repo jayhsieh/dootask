@@ -6,41 +6,41 @@
             <div class="login-box">
                 <div class="login-title">{{welcomeTitle}}</div>
 
-                <div v-if="loginType=='reg'" class="login-subtitle">{{$L('输入您的信息以创建帐户。')}}</div>
-                <div v-else class="login-subtitle">{{$L('输入您的凭证以访问您的帐户。')}}</div>
+                <div v-if="loginType=='reg'" class="login-subtitle">{{$L('輸入您的信息以創建帳戶。')}}</div>
+                <div v-else class="login-subtitle">{{$L('輸入您的憑證以訪問您的帳戶。')}}</div>
 
                 <div class="login-input">
                     <Input v-if="$Electron && cacheServerUrl" :value="$A.getDomain(cacheServerUrl)" prefix="ios-globe-outline" size="large" readonly clearable @on-clear="clearServerUrl"/>
 
-                    <Input v-model="email" prefix="ios-mail-outline" :placeholder="$L('输入您的电子邮件')" size="large" @on-enter="onLogin" @on-blur="onBlur" />
+                    <Input v-model="email" prefix="ios-mail-outline" :placeholder="$L('輸入您的電子郵件')" size="large" @on-enter="onLogin" @on-blur="onBlur" />
 
-                    <Input v-model="password" prefix="ios-lock-outline" :placeholder="$L('输入您的密码')" type="password" size="large" @on-enter="onLogin" />
+                    <Input v-model="password" prefix="ios-lock-outline" :placeholder="$L('輸入您的密碼')" type="password" size="large" @on-enter="onLogin" />
 
-                    <Input v-if="loginType=='reg'" v-model="password2" prefix="ios-lock-outline" :placeholder="$L('输入确认密码')" type="password" size="large" @on-enter="onLogin" />
-                    <Input v-if="loginType=='reg' && needInvite" v-model="invite" class="login-code" :placeholder="$L('请输入注册邀请码')" type="text" size="large" @on-enter="onLogin"><span slot="prepend">&nbsp;{{$L('邀请码')}}&nbsp;</span></Input>
+                    <Input v-if="loginType=='reg'" v-model="password2" prefix="ios-lock-outline" :placeholder="$L('輸入確認密碼')" type="password" size="large" @on-enter="onLogin" />
+                    <Input v-if="loginType=='reg' && needInvite" v-model="invite" class="login-code" :placeholder="$L('請輸入註冊邀請碼')" type="text" size="large" @on-enter="onLogin"><span slot="prepend">&nbsp;{{$L('邀请码')}}&nbsp;</span></Input>
 
-                    <Input v-if="loginType=='login' && codeNeed" v-model="code" class="login-code" :placeholder="$L('输入图形验证码')" size="large" @on-enter="onLogin">
+                    <Input v-if="loginType=='login' && codeNeed" v-model="code" class="login-code" :placeholder="$L('輸入圖形驗證碼')" size="large" @on-enter="onLogin">
                         <Icon type="ios-checkmark-circle-outline" class="login-icon" slot="prepend"></Icon>
                         <div slot="append" class="login-code-end" @click="reCode"><img :src="codeUrl"/></div>
                     </Input>
 
                     <Button type="primary" :loading="loadIng > 0 || loginJump" size="large" long @click="onLogin">{{$L(loginText)}}</Button>
 
-                    <div v-if="loginType=='reg'" class="login-switch">{{$L('已经有帐号？')}}<a href="javascript:void(0)" @click="loginType='login'">{{$L('登录帐号')}}</a></div>
-                    <div v-else class="login-switch">{{$L('还没有帐号？')}}<a href="javascript:void(0)" @click="loginType='reg'">{{$L('注册帐号')}}</a></div>
+                    <div v-if="loginType=='reg'" class="login-switch">{{$L('已經有帳號？')}}<a href="javascript:void(0)" @click="loginType='login'">{{$L('登入帳號')}}</a></div>
+                    <div v-else class="login-switch">{{$L('還没有帳號？')}}<a href="javascript:void(0)" @click="loginType='reg'">{{$L('註冊帳號')}}</a></div>
                 </div>
             </div>
             <div class="login-bottom">
                 <Dropdown trigger="click" placement="bottom-start">
                     <div class="login-setting">
-                        {{$L('设置')}}
+                        {{$L('設置')}}
                         <i class="taskfont">&#xe689;</i>
                     </div>
                     <DropdownMenu slot="list" class="login-setting-menu">
                         <Dropdown placement="right-start" transfer @on-click="setTheme">
                             <DropdownItem>
                                 <div class="login-setting-item">
-                                    {{$L('主题皮肤')}}
+                                    {{$L('主題皮膚')}}
                                     <Icon type="ios-arrow-forward"></Icon>
                                 </div>
                             </DropdownItem>
@@ -69,7 +69,7 @@
                         </Dropdown>
                     </DropdownMenu>
                 </Dropdown>
-                <div class="login-forgot">{{$L('忘记密码了？')}}<a href="javascript:void(0)" @click="forgotPassword">{{$L('重置密码')}}</a></div>
+                <div class="login-forgot">{{$L('忘記密碼了？')}}<a href="javascript:void(0)" @click="forgotPassword">{{$L('重置密碼')}}</a></div>
             </div>
         </div>
     </div>
@@ -159,7 +159,7 @@ export default {
         },
 
         loginText() {
-            let text = this.loginType == 'login' ? '登录' : '注册';
+            let text = this.loginType == 'login' ? '登錄' : '註冊';
             if (this.loginJump) {
                 text += "成功..."
             }
@@ -231,7 +231,7 @@ export default {
         },
 
         forgotPassword() {
-            $A.modalWarning("请联系管理员！");
+            $A.modalWarning("請聯繫管理員！");
         },
 
         reCode() {
@@ -240,9 +240,9 @@ export default {
 
         inputServerUrl() {
             $A.modalInput({
-                title: "使用 SSO 登录",
+                title: "使用 SSO 登錄",
                 value: this.cacheServerUrl,
-                placeholder: "请输入服务器地址",
+                placeholder: "請輸入服務器地址",
                 onOk: (value, cb) => {
                     if (value) {
                         if (!$A.leftExists(value, "http://") && !$A.leftExists(value, "https://")) {
@@ -257,7 +257,7 @@ export default {
                             this.setServerUrl(value)
                             cb()
                         }).catch(({msg}) => {
-                            $A.modalError(msg || "服务器地址无效", 301);
+                            $A.modalError(msg || "服務器地址無效", 301);
                             cb()
                         });
                         return;
@@ -271,7 +271,7 @@ export default {
             return new Promise((resolve, reject) => {
                 if (this.isNotServer()) {
                     if (tip === true) {
-                        $A.messageWarning("请设置服务器")
+                        $A.messageWarning("請設置服務器")
                     }
                     this.inputServerUrl()
                     reject()
@@ -327,16 +327,16 @@ export default {
                 this.invite = $A.trim(this.invite)
                 //
                 if (!$A.isEmail(this.email)) {
-                    $A.messageWarning("请输入正确的邮箱地址");
+                    $A.messageWarning("請輸入正確的油箱地址");
                     return;
                 }
                 if (!this.password) {
-                    $A.messageWarning("请输入密码");
+                    $A.messageWarning("請輸入密碼");
                     return;
                 }
                 if (this.loginType == 'reg') {
                     if (this.password != this.password2) {
-                        $A.messageWarning("确认密码输入不一致");
+                        $A.messageWarning("確認密碼輸入不一致");
                         return;
                     }
                 }
@@ -383,8 +383,8 @@ export default {
                 this.$store.dispatch("call", {
                     url: 'project/add',
                     data: {
-                        name: this.$L('个人项目'),
-                        desc: this.$L('注册时系统自动创建项目，你可以自由删除。')
+                        name: this.$L('個人項目'),
+                        desc: this.$L('註冊時系統自動創建項目，你可以自由删除。')
                     },
                 }).then(() => {
                     this.goNext2();

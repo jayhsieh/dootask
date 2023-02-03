@@ -33,8 +33,8 @@ export default {
         handleFormatError(file) {
             //上传类型错误
             $A.modalWarning({
-                title: '文件格式不正确',
-                content: '文件 ' + file.name + ' 格式不正确，仅支持发送：' + this.uploadFormat.join(',')
+                title: '文件格式不正確',
+                content: '文件 ' + file.name + ' 格式不正確，僅支持發送：' + this.uploadFormat.join(',')
             });
         },
 
@@ -42,7 +42,7 @@ export default {
             //上传大小错误
             $A.modalWarning({
                 title: '超出文件大小限制',
-                content: '文件 ' + file.name + ' 太大，不能发送超过' + $A.bytesToSize(this.maxSize * 1024) + '。'
+                content: '文件 ' + file.name + ' 太大，不能發送超過' + $A.bytesToSize(this.maxSize * 1024) + '。'
             });
         },
 

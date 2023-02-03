@@ -2,12 +2,12 @@
     <div class="common-right-bottom">
         <div v-if="showSSO" class="common-right-bottom-link" @click="useSSOLogin">
             <Icon type="ios-globe-outline"/>
-            {{ $L('使用 SSO 登录') }}
+            {{ $L('使用 SSO 登錄') }}
         </div>
         <template v-if="showDown">
             <a v-if="downloadUrl" class="common-right-bottom-link" :href="downloadUrl" target="_blank">
                 <Icon type="md-download"/>
-                {{ $L('客户端下载') }}
+                {{ $L('客户端下載') }}
             </a>
             <div v-else-if="updateVersion && $Electron" class="common-right-bottom-link" @click="updateShow=true">
                 <Icon type="md-download"/>
@@ -21,15 +21,15 @@
             class-name="common-right-bottom-notification">
             <div slot="header">
                 <div class="notification-head">
-                    <div class="notification-title">{{$L('发现新版本')}}</div>
+                    <div class="notification-title">{{$L('發現新版本')}}</div>
                     <Tag color="volcano">v{{systemVersion}} -&gt; v{{updateVersion}}</Tag>
                 </div>
-                <div v-if="$Platform === 'mac'" class="notification-tip">{{$L('离最新版本只有一步之遥了！重新启动应用即可完成更新。')}}</div>
+                <div v-if="$Platform === 'mac'" class="notification-tip">{{$L('離最新版本只有一步之遙了！重新啟動軟體即可完成更新。')}}</div>
             </div>
             <MarkdownPreview class="notification-body overlay-y" :initialValue="updateNote"/>
             <div slot="footer" class="adaption">
-                <Button type="default" @click="updateShow=false">{{$L('稍后')}}</Button>
-                <Button type="primary" :loading="updateIng" @click="updateQuitAndInstall">{{$L($Platform === 'mac' ? '重新启动' : '立即升级')}}</Button>
+                <Button type="default" @click="updateShow=false">{{$L('稍後')}}</Button>
+                <Button type="primary" :loading="updateIng" @click="updateQuitAndInstall">{{$L($Platform === 'mac' ? '重新啟動' : '立即升級')}}</Button>
             </div>
         </Modal>
     </div>

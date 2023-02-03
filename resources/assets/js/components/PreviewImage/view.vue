@@ -286,7 +286,7 @@ export default {
         },
         handleImgError(e) {
             this.loading = false;
-            e.target.alt = '加载失败';
+            e.target.alt = '加載失敗';
         },
         handleMouseDown(e) {
             if (this.loading || e.button !== 0) return;

@@ -1,7 +1,7 @@
 <template>
     <div class="task-deleted">
         <div class="deleted-title">
-            {{$L('删除的任务')}}
+            {{$L('删除的任務')}}
             <div class="title-icon">
                 <Loading v-if="loadIng > 0"/>
             </div>
@@ -10,7 +10,7 @@
             <ul>
                 <li>
                     <div class="search-label">
-                        {{$L("任务名")}}
+                        {{$L("任務名")}}
                     </div>
                     <div class="search-content">
                         <Input v-model="keys.name" clearable/>
@@ -24,7 +24,7 @@
                         transfer>
                         <Button :loading="loadIng > 0" type="primary" icon="ios-search" @click="onSearch">{{$L('搜索')}}</Button>
                         <div slot="content">
-                            <Button v-if="keyIs" type="text" @click="keyIs=false">{{$L('取消筛选')}}</Button>
+                            <Button v-if="keyIs" type="text" @click="keyIs=false">{{$L('取消篩選')}}</Button>
                             <Button v-else :loading="loadIng > 0" type="text" @click="getLists">{{$L('刷新')}}</Button>
                         </div>
                     </Tooltip>
@@ -120,7 +120,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('任务名称'),
+                    title: this.$L('任務名稱'),
                     key: 'name',
                     minWidth: 200,
                     render: (h, {row}) => {
@@ -128,17 +128,17 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('创建时间'),
+                    title: this.$L('創建時間'),
                     key: 'created_at',
                     width: 168,
                 },
                 {
-                    title: this.$L('删除时间'),
+                    title: this.$L('删除時間'),
                     key: 'deleted_at',
                     width: 168,
                 },
                 {
-                    title: this.$L('删除人员'),
+                    title: this.$L('删除人員'),
                     key: 'deleted_userid',
                     minWidth: 100,
                     render: (h, {row}) => {
@@ -162,7 +162,7 @@ export default {
                         const vNodes = [
                             h('Poptip', {
                                 props: {
-                                    title: this.$L('你确定要还原删除吗？'),
+                                    title: this.$L('你確定要還原删除嗎？'),
                                     confirm: true,
                                     transfer: true,
                                     placement: 'left',
@@ -177,7 +177,7 @@ export default {
                                         this.recovery(params.row);
                                     }
                                 },
-                            }, this.$L('还原')),
+                            }, this.$L('還原')),
                         ];
                         return h('TableAction', {
                             props: {
@@ -218,10 +218,10 @@ export default {
                 this.page = data.current_page;
                 this.total = data.total;
                 this.list = data.data;
-                this.noText = '没有相关的数据';
+                this.noText = '没有相關的數據';
             }).catch(() => {
                 this.loadIng--;
-                this.noText = '数据加载失败';
+                this.noText = '數據加载失敗';
             })
         },
 

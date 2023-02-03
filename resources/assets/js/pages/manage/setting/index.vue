@@ -4,7 +4,7 @@
         <div class="setting-head">
             <div class="setting-titbox">
                 <div class="setting-title">
-                    <h1>{{$L('设置')}}</h1>
+                    <h1>{{$L('設置')}}</h1>
                     <div class="setting-more" @click="show768Menu=!show768Menu">
                         <Icon :type="show768Menu ? 'md-close' : 'md-more'" />
                     </div>

@@ -1,7 +1,7 @@
 <template>
     <div class="project-archived">
         <div class="archived-title">
-            {{$L('归档的项目')}}
+            {{$L('歸檔的項目')}}
             <div class="title-icon">
                 <Loading v-if="loadIng > 0"/>
             </div>
@@ -10,7 +10,7 @@
             <ul>
                 <li>
                     <div class="search-label">
-                        {{$L("项目名")}}
+                        {{$L("項目名")}}
                     </div>
                     <div class="search-content">
                         <Input v-model="keys.name" clearable/>
@@ -24,7 +24,7 @@
                         transfer>
                         <Button :loading="loadIng > 0" type="primary" icon="ios-search" @click="onSearch">{{$L('搜索')}}</Button>
                         <div slot="content">
-                            <Button v-if="keyIs" type="text" @click="keyIs=false">{{$L('取消筛选')}}</Button>
+                            <Button v-if="keyIs" type="text" @click="keyIs=false">{{$L('取消篩選')}}</Button>
                             <Button v-else :loading="loadIng > 0" type="text" @click="getLists">{{$L('刷新')}}</Button>
                         </div>
                     </Tooltip>
@@ -108,7 +108,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('项目名称'),
+                    title: this.$L('項目名稱'),
                     key: 'name',
                     minWidth: 200,
                     render: (h, {row}) => {
@@ -116,17 +116,17 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('归档时间'),
+                    title: this.$L('歸檔時間'),
                     key: 'archived_at',
                     width: 168,
                 },
                 {
-                    title: this.$L('归档会员'),
+                    title: this.$L('歸檔會員'),
                     key: 'archived_userid',
                     minWidth: 80,
                     render: (h, {row}) => {
                         if (!row.archived_userid) {
-                            return h('Tag', this.$L('系统自动'));
+                            return h('Tag', this.$L('系统自動'));
                         }
                         return h('UserAvatar', {
                             props: {
@@ -138,7 +138,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('负责人'),
+                    title: this.$L('負責人'),
                     minWidth: 80,
                     render: (h, {row}) => {
                         return h('UserAvatar', {
@@ -158,7 +158,7 @@ export default {
                         const vNode = [
                             h('Poptip', {
                                 props: {
-                                    title: this.$L('你确定要还原归档吗？'),
+                                    title: this.$L('你去訂要還原歸檔嗎？'),
                                     confirm: true,
                                     transfer: true,
                                     placement: 'left',
@@ -173,10 +173,10 @@ export default {
                                         this.recovery(params.row);
                                     }
                                 },
-                            }, this.$L('还原')),
+                            }, this.$L('還原')),
                             h('Poptip', {
                                 props: {
-                                    title: this.$L('你确定要删除项目吗？'),
+                                    title: this.$L('你確定要删除項目嗎？'),
                                     confirm: true,
                                     transfer: true,
                                     placement: 'left',
@@ -225,10 +225,10 @@ export default {
                 this.page = data.current_page;
                 this.total = data.total;
                 this.list = data.data;
-                this.noText = '没有相关的数据';
+                this.noText = '没有相關的數據';
             }).catch(() => {
                 this.loadIng--;
-                this.noText = '数据加载失败';
+                this.noText = '數據加载失敗';
             })
         },
 

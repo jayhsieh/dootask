@@ -2,25 +2,25 @@
     <div class="setting-component-item">
         <Form ref="formDatum" label-width="auto" @submit.native.prevent>
             <Row class="setting-color">
-                <Col span="12">{{$L('名称')}}</Col>
+                <Col span="12">{{$L('名稱')}}</Col>
                 <Col span="4">
-                    <ETooltip :content="$L('数值越小级别越高')" max-width="auto" placement="top" transfer>
-                        <div><Icon class="information" type="ios-information-circle-outline" /> {{$L('级别')}}</div>
+                    <ETooltip :content="$L('數值越小級别越高')" max-width="auto" placement="top" transfer>
+                        <div><Icon class="information" type="ios-information-circle-outline" /> {{$L('級别')}}</div>
                     </ETooltip>
                 </Col>
                 <Col span="4">
-                    <ETooltip :content="$L('任务完成时间')" max-width="auto" placement="top" transfer>
-                        <div><Icon class="information" type="ios-information-circle-outline" /> {{$L('天数')}}</div>
+                    <ETooltip :content="$L('任務完成時間')" max-width="auto" placement="top" transfer>
+                        <div><Icon class="information" type="ios-information-circle-outline" /> {{$L('天數')}}</div>
                     </ETooltip>
                 </Col>
-                <Col span="4">{{$L('颜色')}}</Col>
+                <Col span="4">{{$L('顏色')}}</Col>
             </Row>
             <Row v-for="(item, key) in formDatum" :key="key" class="setting-color">
                 <Col span="12">
                     <Input
                         v-model="item.name"
                         :maxlength="20"
-                        :placeholder="$L('请输入名称')"
+                        :placeholder="$L('請輸入名稱')"
                         clearable
                         @on-clear="delDatum(key)"/>
                 </Col>
@@ -34,7 +34,7 @@
                     <ColorPicker v-model="item.color" recommend transfer/>
                 </Col>
             </Row>
-            <Button type="default" icon="md-add" @click="addDatum">{{$L('添加优先级')}}</Button>
+            <Button type="default" icon="md-add" @click="addDatum">{{$L('添加優先級')}}</Button>
         </Form>
         <div class="setting-footer">
             <Button :loading="loadIng > 0" type="primary" @click="submitForm">{{$L('提交')}}</Button>

@@ -1,6 +1,6 @@
 <template>
     <div class="electron-report">
-        <PageTitle :title="$L('报告详情')"/>
+        <PageTitle :title="$L('報告詳情')"/>
         <ReportDetail :data="detailData"/>
     </div>
 </template>

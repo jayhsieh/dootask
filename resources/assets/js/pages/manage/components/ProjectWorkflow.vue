@@ -1,7 +1,7 @@
 <template>
     <div class="project-workflow">
         <div class="workflow-title">
-            {{$L('工作流设置')}}
+            {{$L('工作流設置')}}
             <div class="title-icon">
                 <Loading v-if="loadIng > 0"/>
                 <Icon v-else type="ios-refresh" @click="getData"/>
@@ -18,7 +18,7 @@
                         <div class="workflow-save" @click.stop="">
                             <template v-if="contrast(data.project_flow_item, data.project_flow_bak)">
                                 <Button :loading="loadIng > 0" type="primary" @click="onSave(data)">{{$L('保存')}}</Button>
-                                <Button v-if="data.id > 0" :disabled="loadIng > 0" type="primary" ghost @click="onReduction(data, $event)">{{$L('还原')}}</Button>
+                                <Button v-if="data.id > 0" :disabled="loadIng > 0" type="primary" ghost @click="onReduction(data, $event)">{{$L('還原')}}</Button>
                             </template>
                             <Button :disabled="loadIng > 0" type="error" ghost @click="onDelete(data)">{{$L('删除')}}</Button>
                         </div>
@@ -26,37 +26,37 @@
                     <div slot="content" class="taskflow-config">
                         <div class="taskflow-config-table">
                             <div class="taskflow-config-table-left-container">
-                                <div class="taskflow-config-table-column-header left-header">{{$L('配置项')}}</div>
+                                <div class="taskflow-config-table-column-header left-header">{{$L('配置項')}}</div>
                                 <div :ref="`overlay_${data.id}`" class="taskflow-config-table-column-body overlay-y">
                                     <div class="taskflow-config-table-block">
-                                        <div class="taskflow-config-table-block-title">{{$L('设置状态为')}}</div>
+                                        <div class="taskflow-config-table-block-title">{{$L('設置狀態為')}}</div>
                                         <div class="taskflow-config-table-block-item">
                                             <div>
-                                                <div class="title">{{$L('开始状态')}}</div>
-                                                <div class="subtitle">{{$L('新建任务默认状态')}}</div>
+                                                <div class="title">{{$L('開始狀態')}}</div>
+                                                <div class="subtitle">{{$L('新建任務默認狀態')}}</div>
                                             </div>
                                         </div>
                                         <div class="taskflow-config-table-block-item">
                                             <div>
-                                                <div class="title">{{$L('进行中')}}</div>
-                                                <div class="subtitle">{{$L('可设置多个状态为进行中')}}</div>
+                                                <div class="title">{{$L('進行中')}}</div>
+                                                <div class="subtitle">{{$L('可設置多個狀態為進行中')}}</div>
                                             </div>
                                         </div>
                                         <div class="taskflow-config-table-block-item">
                                             <div>
-                                                <div class="title">{{$L('验收/测试')}}</div>
-                                                <div class="subtitle">{{$L('只能设置单个状态为验收/测试')}}</div>
+                                                <div class="title">{{$L('驗收/測試')}}</div>
+                                                <div class="subtitle">{{$L('只能設置單個狀態為驗收/測試')}}</div>
                                             </div>
                                         </div>
                                         <div class="taskflow-config-table-block-item">
                                             <div>
-                                                <div class="title">{{$L('结束状态')}}</div>
-                                                <div class="subtitle">{{$L('该状态下任务自动标记完成')}}</div>
+                                                <div class="title">{{$L('結束狀態')}}</div>
+                                                <div class="subtitle">{{$L('該狀態下任務自動標記完成')}}</div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="taskflow-config-table-block hr">
-                                        <div class="taskflow-config-table-block-title">{{$L('可流转到')}}</div>
+                                        <div class="taskflow-config-table-block-title">{{$L('可流轉到')}}</div>
                                         <div v-for="item in data.project_flow_item" class="taskflow-config-table-block-item">
                                             <span class="transform-status-name">{{item.name}}</span>
                                         </div>
@@ -96,12 +96,12 @@
                                                         <EDropdownItem command="user">
                                                             <div class="item">
                                                                 <Icon type="md-person" />
-                                                                {{$L('状态负责人')}}
+                                                                {{$L('狀態負責人')}}
                                                             </div>
                                                         </EDropdownItem>
                                                         <EDropdownItem command="name">
                                                             <div class="item">
-                                                                <Icon type="md-create" />{{$L('修改名称')}}
+                                                                <Icon type="md-create" />{{$L('修改名稱')}}
                                                             </div>
                                                         </EDropdownItem>
                                                         <EDropdownItem command="remove">
@@ -131,7 +131,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="taskflow-config-table-status-column addnew" @click="onAdd(data)">{{$L('添加状态')}}</div>
+                                    <div class="taskflow-config-table-status-column addnew" @click="onAdd(data)">{{$L('添加狀態')}}</div>
                                 </Draggable>
                             </div>
                         </div>
@@ -140,33 +140,33 @@
             </Collapse>
         </div>
         <div v-else-if="loadIng == 0" class="workflow-no">
-            {{$L('当前项目还没有创建工作流')}}
-            <Button type="primary" @click="onCreate">{{$L('创建工作流')}}</Button>
+            {{$L('當前項目還没有創建工作流')}}
+            <Button type="primary" @click="onCreate">{{$L('創建工作流')}}</Button>
         </div>
 
         <!--状态负责人-->
         <Modal
             v-model="userShow"
-            :title="`${$L('状态负责人')} (${userData.name})`"
+            :title="`${$L('狀態負責人')} (${userData.name})`"
             :mask-closable="false">
             <Form :model="userData" label-width="auto" @submit.native.prevent>
-                <FormItem prop="userids" :label="$L('状态负责人')">
-                    <UserInput v-model="userData.userids" :project-id="projectId" :multiple-max="5" :placeholder="$L('选择状态负责人')"/>
+                <FormItem prop="userids" :label="$L('狀態負責人')">
+                    <UserInput v-model="userData.userids" :project-id="projectId" :multiple-max="5" :placeholder="$L('選擇狀態負責人')"/>
                 </FormItem>
-                <FormItem prop="usertype" :label="$L('流转模式')">
+                <FormItem prop="usertype" :label="$L('流轉模式')">
                     <RadioGroup v-model="userData.usertype">
                         <Radio label="add">{{$L('添加模式')}}</Radio>
-                        <Radio label="replace">{{$L('流转模式')}}</Radio>
+                        <Radio label="replace">{{$L('流轉模式')}}</Radio>
                         <Radio label="merge">{{$L('剔除模式')}}</Radio>
                     </RadioGroup>
-                    <div v-if="userData.usertype=='replace'" class="form-tip">{{$L('流转到此状态时改变任务负责人为状态负责人，原本的任务负责人移至协助人员。')}}</div>
-                    <div v-else-if="userData.usertype=='merge'" class="form-tip">{{$L('流转到此状态时改变任务负责人为状态负责人（并保留操作状态的人员），原本的任务负责人移至协助人员。')}}</div>
-                    <div v-else class="form-tip">{{$L('流转到此状态时添加状态负责人至任务负责人。')}}</div>
+                    <div v-if="userData.usertype=='replace'" class="form-tip">{{$L('流轉到此狀態時改變任務負責人為狀態負責人，原本的任務負責人移至協助人員。')}}</div>
+                    <div v-else-if="userData.usertype=='merge'" class="form-tip">{{$L('流轉到此狀態時改變任務負責人為狀態負責人（並保留操作狀態的人員），原本的任務負責人移至協助人員。')}}</div>
+                    <div v-else class="form-tip">{{$L('流轉到此狀態時添加狀態負責人至任務負責人。')}}</div>
                 </FormItem>
-                <FormItem prop="userlimit" :label="$L('限制负责人')">
+                <FormItem prop="userlimit" :label="$L('限制負責人')">
                     <iSwitch v-model="userData.userlimit" :true-value="1" :false-value="0"/>
-                    <div v-if="userData.userlimit===1" class="form-tip">{{$L('在此状态的任务状态负责人、项目管理员可以修改状态。')}}</div>
-                    <div v-else class="form-tip">{{$L('在此状态的任务任务负责人、项目管理员可以修改状态。')}}</div>
+                    <div v-if="userData.userlimit===1" class="form-tip">{{$L('在此狀態的任務狀態負責人、項目管理員可以修改狀態。')}}</div>
+                    <div v-else class="form-tip">{{$L('在此狀態的任務負責人、項目管理員可以修改狀態。')}}</div>
                 </FormItem>
             </Form>
             <div slot="footer" class="adaption">
@@ -284,7 +284,7 @@ export default {
                 "project_flow_item": [
                     {
                         "id": -10,
-                        "name": "待处理",
+                        "name": "待處理",
                         "status": "start",
                         "turns": [-10, -11, -12, -13, -14],
                         "userids": [],
@@ -293,7 +293,7 @@ export default {
                     },
                     {
                         "id": -11,
-                        "name": "进行中",
+                        "name": "進行中",
                         "status": "progress",
                         "turns": [-10, -11, -12, -13, -14],
                         "userids": [],
@@ -302,7 +302,7 @@ export default {
                     },
                     {
                         "id": -12,
-                        "name": "待测试",
+                        "name": "待測試",
                         "status": "test",
                         "turns": [-10, -11, -12, -13, -14],
                         "userids": [],
@@ -336,7 +336,7 @@ export default {
         onDelete(data) {
             $A.modalConfirm({
                 title: '删除工作流',
-                content: '你确定要删除工作流吗？',
+                content: '你確定要删除工作流嗎？',
                 loading: true,
                 onOk: () => {
                     if (data.id > 0) {
@@ -407,8 +407,8 @@ export default {
         onName(item) {
             $A.modalInput({
                 value: item.name,
-                title: "修改名称",
-                placeholder: "输入流程名称",
+                title: "修改名稱",
+                placeholder: "輸入流程名稱",
                 onOk: (name) => {
                     if (name) {
                         this.$set(item, 'name', name);
@@ -433,8 +433,8 @@ export default {
 
         onAdd(data) {
             $A.modalInput({
-                title: "添加状态",
-                placeholder: "输入状态名称",
+                title: "添加狀態",
+                placeholder: "輸入狀態名稱",
                 onOk: (name) => {
                     if (name) {
                         let id = $A.randNum(100000, 999999) * -1;

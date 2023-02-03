@@ -1,7 +1,7 @@
 <template>
     <div class="task-archived">
         <div class="archived-title">
-            {{$L('归档的任务')}}
+            {{$L('歸檔的任務')}}
             <div class="title-icon">
                 <Loading v-if="loadIng > 0"/>
             </div>
@@ -10,7 +10,7 @@
             <ul>
                 <li>
                     <div class="search-label">
-                        {{$L("任务名")}}
+                        {{$L("任務名")}}
                     </div>
                     <div class="search-content">
                         <Input v-model="keys.name" clearable/>
@@ -24,7 +24,7 @@
                         transfer>
                         <Button :loading="loadIng > 0" type="primary" icon="ios-search" @click="onSearch">{{$L('搜索')}}</Button>
                         <div slot="content">
-                            <Button v-if="keyIs" type="text" @click="keyIs=false">{{$L('取消筛选')}}</Button>
+                            <Button v-if="keyIs" type="text" @click="keyIs=false">{{$L('取消篩選')}}</Button>
                             <Button v-else :loading="loadIng > 0" type="text" @click="getLists">{{$L('刷新')}}</Button>
                         </div>
                     </Tooltip>
@@ -120,7 +120,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('任务名称'),
+                    title: this.$L('任務名稱'),
                     key: 'name',
                     minWidth: 200,
                     render: (h, {row}) => {
@@ -134,7 +134,7 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('完成时间'),
+                    title: this.$L('完成時間'),
                     key: 'complete_at',
                     width: 168,
                     render: (h, {row}) => {
@@ -146,17 +146,17 @@ export default {
                     }
                 },
                 {
-                    title: this.$L('归档时间'),
+                    title: this.$L('歸檔時間'),
                     key: 'archived_at',
                     width: 168,
                 },
                 {
-                    title: this.$L('归档会员'),
+                    title: this.$L('歸檔會員'),
                     key: 'archived_userid',
                     minWidth: 100,
                     render: (h, {row}) => {
                         if (!row.archived_userid) {
-                            return h('Tag', this.$L('系统自动'));
+                            return h('Tag', this.$L('系统自助'));
                         }
                         return h('UserAvatar', {
                             props: {
@@ -177,7 +177,7 @@ export default {
                                 style: {
                                     color: '#888',
                                 },
-                            }, this.$L('已还原'));
+                            }, this.$L('已還原'));
                         }
                         const vNodes = [
                             h('span', {
@@ -194,7 +194,7 @@ export default {
                             }, this.$L('查看')),
                             h('Poptip', {
                                 props: {
-                                    title: this.$L('你确定要还原归档吗？'),
+                                    title: this.$L('你確定要還原歸檔嗎？'),
                                     confirm: true,
                                     transfer: true,
                                     placement: 'left',
@@ -210,10 +210,10 @@ export default {
                                         this.recovery(params.row);
                                     }
                                 },
-                            }, this.$L('还原')),
+                            }, this.$L('還原')),
                             h('Poptip', {
                                 props: {
-                                    title: this.$L('你确定要删除任务吗？'),
+                                    title: this.$L('你確定要删除任務嗎？'),
                                     confirm: true,
                                     transfer: true,
                                     placement: 'left',
@@ -270,10 +270,10 @@ export default {
                 this.page = data.current_page;
                 this.total = data.total;
                 this.list = data.data;
-                this.noText = '没有相关的数据';
+                this.noText = '没有相關的數據';
             }).catch(() => {
                 this.loadIng--;
-                this.noText = '数据加载失败';
+                this.noText = '數據加载失敗';
             })
         },
 

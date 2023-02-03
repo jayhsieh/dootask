@@ -1,6 +1,6 @@
 <template>
     <div :class="['project-log', taskId == 0 ? 'is-drawer' : '']">
-        <div class="log-title">{{$L('项目动态')}}</div>
+        <div class="log-title">{{$L('項目動態')}}</div>
         <ul class="logs-activity">
             <li v-for="itemA in lists">
                 <div class="logs-date">{{logDate(itemA)}}</div>
@@ -23,7 +23,7 @@
                                     <span class="log-time">{{log.time.ymd}} {{log.time.segment}} {{log.time.hi}}</span>
                                 </div>
                                 <div v-if="log.project_task" class="log-task">
-                                    <em @click="openTask(log.project_task)">{{$L('关联任务')}}: {{log.project_task.name}}</em>
+                                    <em @click="openTask(log.project_task)">{{$L('關聯任務')}}: {{log.project_task.name}}</em>
                                 </div>
                             </template>
                         </TimelineItem>
@@ -32,7 +32,7 @@
             </li>
             <li v-if="loadIng > 0 && showLoad" class="logs-loading"><Loading/></li>
             <li v-else-if="hasMorePages" class="logs-more" @click="getMore">{{$L('加载更多')}}</li>
-            <li v-else-if="totalNum == 0" class="logs-none" @click="getLists(true)">{{$L('没有任何动态')}}</li>
+            <li v-else-if="totalNum == 0" class="logs-none" @click="getLists(true)">{{$L('没有任何動態')}}</li>
         </ul>
     </div>
 </template>
@@ -224,7 +224,7 @@ export default {
                     list.push({
                         id,
                         button: '重置',
-                        content: `确定重置为【${name}】吗？`,
+                        content: `確定重置為【${name}】嗎？`,
                     })
                 }
             }
